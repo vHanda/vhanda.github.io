@@ -11,7 +11,7 @@ tags:
 
 This is something I showcased at my talk in <a href="http://conf.kde.in/" target="_blank">conf.kde.in</a>. I coded it in a couple of hours. It is a lot of fun to play around with! I can’t wait to index all my videos this way.
 
-{% youtube d41bmTSogA4 %}
+ youtube d41bmTSogA4
 
 Impressive? :D
 
