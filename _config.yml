@@ -3,7 +3,7 @@
 #highlighter:      pygments
 
 # Permalinks
-permalink: /:year/:month/:title/
+permalink: /blog/:year/:month/:title/
 #relative_permalinks: true
 
 # Setup
@@ -12,6 +12,8 @@ title:            "Vishesh Handa's blog"
 #description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
 url:              http://vhanda.in
 baseurl:          /
+blogurl:          /blog/
+paginate_path:    /blog/page:num/
 
 author:
   name:           'Vishesh Handa'
