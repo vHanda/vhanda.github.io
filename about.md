@@ -3,28 +3,20 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+I'm Vishesh Handa. I build stuff and write code.
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+![Vishesh Handa](/blog/images/2015/08/16/vhanda.jpg)
 
-There are currently two themes built on Poole:
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+## Contact
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+* **Email:** [me@vhanda.in](mailto:me@vhanda.in)
+* **Google+**: [+VisheshHanda](https://plus.google.com/+VisheshHanda/)
+* **Twitter:** [@visheshhanda](https://twitter.com/visheshhanda)
+* **GitHub:** [vHanda](https://github.com/vHanda)
+* **StackOverflow:** [vishesh-handa](http://stackoverflow.com/users/147435/vishesh-handa)
 
-## Setup
+## License
 
-Some fun facts about the setup of this project include:
+All blog posts are under the [Creative Commons License](http://creativecommons.org/licenses/by-nc/4.0/). You are free to distribute the original and remixed versions of the articles for non-commercial purposes. If you would like to use them commercially please contact me.
 
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
