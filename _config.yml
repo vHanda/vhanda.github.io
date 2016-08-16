@@ -13,13 +13,10 @@ title:            "Vishesh Handa's blog"
 url:              http://vhanda.in
 baseurl:          /
 blogurl:          /blog/
-paginate_path:    /blog/page:num/
 
 author:
   name:           'Vishesh Handa'
   url:            https://twitter.com/visheshhanda
-
-paginate:         5
 
 # Custom vars
 version:          2.1.0
@@ -27,5 +24,4 @@ version:          2.1.0
 github:
   repo:           https://github.com/vhanda
 
-gems:             ['jekyll-paginate']
 google_analytics: UA-23819011-1
