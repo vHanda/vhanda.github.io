@@ -11,7 +11,7 @@ I'm Vishesh Handa. I build stuff and write code.
 ## Contact
 
 * **Email:** [me@vhanda.in](mailto:me@vhanda.in)
-* **Google+**: [+VisheshHanda](https://plus.google.com/+VisheshHanda/)
+* **LinkedIn**: [VisheshHanda](https://www.linkedin.com/in/visheshhanda/)
 * **Twitter:** [@visheshhanda](https://twitter.com/visheshhanda)
 * **GitHub:** [vHanda](https://github.com/vHanda)
 * **StackOverflow:** [vishesh-handa](http://stackoverflow.com/users/147435/vishesh-handa)
