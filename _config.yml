@@ -28,3 +28,4 @@ github:
   repo:           https://github.com/vhanda
 
 gems:             ['jekyll-paginate']
+google_analytics: UA-23819011-1
