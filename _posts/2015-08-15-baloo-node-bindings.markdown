@@ -13,7 +13,7 @@ I took some time to write some very basic nodejs bindings for Baloo. They are av
 ###### Example
 It can be installed via **npm install baloo**
 
-```prettyprint lang-ruby
+```node
 var Baloo = require('baloo');
 
 var query = new Baloo.Query('keyword');
