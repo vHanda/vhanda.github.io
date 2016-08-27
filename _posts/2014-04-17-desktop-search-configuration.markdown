@@ -8,6 +8,8 @@ tags:
 - baloo
 ---
 
+**Update:** *This blog post is quite old and does not reflect the current state of Desktop Search in KDE. If you're just looking to disable it, you can either run the `$ balooctl disable` command or go to System Settings -> Search -> File Search -> Disable.*
+
 KDE SC 4.13 is finally out. As you may have heard this marks the release of Baloo. The bear is now out in the wild!
 
 One of the many things that has changed is the "Desktop Search" configuration module. This blog post is about why the changes were made and what the rationale was behind it.
