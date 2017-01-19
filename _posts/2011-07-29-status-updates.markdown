@@ -7,7 +7,7 @@ tags:
 - mandriva
 ---
 
-Today is the last day of 2 month long summer internship with [Mandriva](http://www.mandriva.com/en/). It has been a fun ride. I was supposed to have been working on [Metadata Sharing](http://vhanda.in/blog/2011/07/sharing-your-nepomuk-repository) and improving Nepomuk's infrastructure. Metadata sharing still has a long way to go, but I'm happy with how Nepomuk is turning out.
+Today is the last day of 2 month long summer internship with Mandriva. It has been a fun ride. I was supposed to have been working on [Metadata Sharing](http://vhanda.in/blog/2011/07/sharing-your-nepomuk-repository) and improving Nepomuk's infrastructure. Metadata sharing still has a long way to go, but I'm happy with how Nepomuk is turning out.
 
 The number of bugs have been steadily decreasing and with the introduction of the [Data Management Service](http://trueg.wordpress.com/2011/06/08/nepomuk-2-0-and-the-data-management-service/), we're now ready to try out more creative uses of Nepomuk. ( Yes, I'll be talking about these more "creative" uses soon )
 
