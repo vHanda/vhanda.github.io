@@ -1,7 +1,9 @@
 ---
 layout: page
-title: About
+modified: 2020-08-18T11:21:57+02:00
 ---
+
+# About
 
 I'm Vishesh Handa. I build stuff and write code.
 
@@ -18,5 +20,4 @@ I'm Vishesh Handa. I build stuff and write code.
 
 ## License
 
-All blog posts are under the [Creative Commons License](http://creativecommons.org/licenses/by-nc/4.0/). You are free to distribute the original and remixed versions of the articles for non-commercial purposes. If you would like to use them commercially please contact me.
-
+All blog posts are under the [Creative Commons License](http://creativecommons.org/licenses/by-nc/4.0/). You are free to distribute the original and remixed versions of the articles for non-commercial purposes. If you would like to use them commercially please contact me
