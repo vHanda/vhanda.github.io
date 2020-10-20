@@ -16,3 +16,6 @@ author:
   email: "me@vhanda.in"
 
 google_analytics: UA-23819011-1
+
+plugins:
+  - jekyll-postcss
