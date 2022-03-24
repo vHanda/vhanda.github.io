@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>testing on Vishesh Handa&#39;s blog</title>
+    <link>http://vhanda.in/tags/testing/</link>
+    <description>Recent content in testing on Vishesh Handa&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Jul 2012 21:51:03 +0000</lastBuildDate><atom:link href="http://vhanda.in/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Better unit tests</title>
+      <link>http://vhanda.in/blog/2012/07/Better-unit-tests/</link>
+      <pubDate>Thu, 26 Jul 2012 21:51:03 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/07/Better-unit-tests/</guid>
+      
+        <description>A little while ago, before Akademy, I started implementing the Shared Hash Memory table, so as to improve Nepomuk&amp;rsquo;s architecture. Architectural designs really interest me. I decided to be smart about it, if I was going to refactor some of the main classes, there was a very high chance I would break something. The code is quite complex.
+I needed a way to make sure I was on the right track.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

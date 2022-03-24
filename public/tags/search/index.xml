@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>search on Vishesh Handa&#39;s blog</title>
+    <link>http://vhanda.in/tags/search/</link>
+    <description>Recent content in search on Vishesh Handa&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 12 Mar 2011 07:33:42 +0000</lastBuildDate><atom:link href="http://vhanda.in/tags/search/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nepomuk Audio Search</title>
+      <link>http://vhanda.in/blog/2011/03/Nepomuk-Audio-Search/</link>
+      <pubDate>Sat, 12 Mar 2011 07:33:42 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/03/Nepomuk-Audio-Search/</guid>
+      
+        <description>This is something I showcased at my talk in conf.kde.in. I coded it in a couple of hours. It is a lot of fun to play around with! I can’t wait to index all my videos this way.
+youtube d41bmTSogA4
+Impressive? :D
+This was showcased at the beginning of the Nepomuk talk under the section “Nepomuk is not about searching, but here are some cool things that it can do!”</description>
+      
+    </item>
+    
+  </channel>
+</rss>

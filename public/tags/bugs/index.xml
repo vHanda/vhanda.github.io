@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bugs on Vishesh Handa&#39;s blog</title>
+    <link>http://vhanda.in/tags/bugs/</link>
+    <description>Recent content in bugs on Vishesh Handa&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Feb 2010 00:28:51 +0000</lastBuildDate><atom:link href="http://vhanda.in/tags/bugs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fixing a bug :KDE</title>
+      <link>http://vhanda.in/blog/2010/02/Fixing-a-bug-KDE/</link>
+      <pubDate>Tue, 16 Feb 2010 00:28:51 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/02/Fixing-a-bug-KDE/</guid>
+      
+        <description>EDIT: I&amp;rsquo;d just like to say that I did NOT solve the bug, and I introduced another one in the process. But it was a good learning experience. :)
+A couple of weeks back I started learning about Qt, and then about KDE. I thought it was time I start contributing, specially since I can. KDE consists of million lines of code, and getting acquainted with such a huge system is a terribly daunting task.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

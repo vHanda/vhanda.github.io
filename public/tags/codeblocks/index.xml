@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>codeblocks on Vishesh Handa&#39;s blog</title>
+    <link>http://vhanda.in/tags/codeblocks/</link>
+    <description>Recent content in codeblocks on Vishesh Handa&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Dec 2009 13:32:38 +0000</lastBuildDate><atom:link href="http://vhanda.in/tags/codeblocks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emacs Hype</title>
+      <link>http://vhanda.in/blog/2009/12/Emacs-Hype/</link>
+      <pubDate>Fri, 18 Dec 2009 13:32:38 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2009/12/Emacs-Hype/</guid>
+      
+        <description>I&amp;rsquo;ve never really understood the hype behind Emacs (and Vi), but thats probably because I&amp;rsquo;ve never had the patience to actually use them. I always plan to learn how to, and I do. I read the introduction part, familiarize myself with the keys, but thats all that ever happens. Yesterday, I planned to start using it again, because I read an article saying &amp;ldquo;How AWESOME it is&amp;rdquo;, I even started reading The Emacs Lisp Manual.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

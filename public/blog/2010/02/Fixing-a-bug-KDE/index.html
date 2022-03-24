@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      Vishesh Handa
+        |
+        Fixing a bug :KDE
+
+
+      
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.95.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Vishesh Handa" />
+  <meta
+    name="description"
+    content="
+      Haven&#39;t figured out a description
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.5259d55db7b9c675f751f0865411bd84a410f3ffcb5105b8fc00b22fcb739309.css"
+      integrity="sha256-UlnVXbe5xnX3UfCGVBG9hKQQ8//LUQW4/ACyL8tzkwk="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="canonical" href="http://vhanda.in/blog/2010/02/Fixing-a-bug-KDE/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fixing a bug :KDE"/>
+<meta name="twitter:description" content="EDIT: I&rsquo;d just like to say that I did NOT solve the bug, and I introduced another one in the process. But it was a good learning experience. :)
+A couple of weeks back I started learning about Qt, and then about KDE. I thought it was time I start contributing, specially since I can. KDE consists of million lines of code, and getting acquainted with such a huge system is a terribly daunting task."/>
+
+
+
+  
+  <meta property="og:title" content="Fixing a bug :KDE" />
+<meta property="og:description" content="EDIT: I&rsquo;d just like to say that I did NOT solve the bug, and I introduced another one in the process. But it was a good learning experience. :)
+A couple of weeks back I started learning about Qt, and then about KDE. I thought it was time I start contributing, specially since I can. KDE consists of million lines of code, and getting acquainted with such a huge system is a terribly daunting task." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://vhanda.in/blog/2010/02/Fixing-a-bug-KDE/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2010-02-16T00:28:51+00:00" />
+<meta property="article:modified_time" content="2010-02-16T00:28:51+00:00" /><meta property="og:site_name" content="Vishesh Handa" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "blog",
+        "name": "Fixing a bug :KDE",
+        "headline": "Fixing a bug :KDE",
+        "alternativeHeadline": "",
+        "description": "
+      
+        EDIT: I\u0026rsquo;d just like to say that I did NOT solve the bug, and I introduced another one in the process. But it was a good learning experience. :)\nA couple of weeks back I started learning about Qt, and then about KDE. I thought it was time I start contributing, specially since I can. KDE consists of million lines of code, and getting acquainted with such a huge system is a terribly daunting task.
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/vhanda.in\/blog\/2010\/02\/Fixing-a-bug-KDE\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "copyrightYear" : "2010",
+        "dateCreated": "2010-02-16T00:28:51.00Z",
+        "datePublished": "2010-02-16T00:28:51.00Z",
+        "dateModified": "2010-02-16T00:28:51.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Vishesh Handa",
+            "url": "http://vhanda.in",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/vhanda.infavicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+      ]
+
+    ,
+        "url" : "http:\/\/vhanda.in\/blog\/2010\/02\/Fixing-a-bug-KDE\/",
+        "wordCount" : "1375",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "kde"
+
+    
+      
+        ,
+
+      
+      "linux"
+
+    
+      
+        ,
+
+      
+      "bugs"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/blog/images/2015/08/16/vhanda.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/">Vishesh Handa</a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Haven't figured out a description</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.linkedin.com/in/visheshhanda/" rel="me" aria-label="Linkedin" title="Linkedin">
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/vhanda" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a href="https://twitter.com/visheshhanda" rel="me" aria-label="Twitter" title="Twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:me@vhanda.in" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Vishesh Handa
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Fixing a Bug :KDE</h1>
+      <p>EDIT: I&rsquo;d just like to say that I did NOT solve the bug, and I introduced another one in the process. But it was a good learning experience. :)</p>
+<p>A couple of weeks back I started learning about Qt, and then about KDE. I thought it was time I start contributing, specially since I can. KDE consists of million lines of code, and getting acquainted with such a huge system is a terribly daunting task. Fortunately, they have pretty good documentation.</p>
+<p>One of the best ways to acquaint yourself with the huge code base is to, allegedly, fix a bug. I&rsquo;ve never really fix a bug before, so it seemed like a task which would need loads of experience, proper understanding of the code, and many other things. Turns out, it isn&rsquo;t that way at all. Bugs are of all types, some are simple some are sweet.</p>
+<p><a href="http://forum.kde.org/viewtopic.php?f=76&amp;t=16626&amp;start=0">This post</a> is what got me started. Ksnapshot seemed like a simple enough program, and it is &hellip; kinda. This blog post is about how I fixed <a href="https://bugs.kde.org/show_bug.cgi?id=204628"><strong>this bug</strong></a>, and the thought process behind it.</p>
+<p><strong>Getting the code -</strong> This was fairly simple, and after reading the <a href="http://techbase.kde.org/Getting_Started/Sources/Using_Subversion_with_KDE">SVN guide at KDE</a>, I even understand the structure of the code base. I generally tend to use Bazaar to mange my code, and I&rsquo;ve heard a lot about git. Svn is a step below, so it really wasn&rsquo;t a problem for me.</p>
+<p><strong>Compiling the code -</strong> The only small problem I encountered was when I  tried to build <em>ksnapshot</em> instead of <em>kdegraphics</em>. And on trying to compile *kdegraphics *I ran into loads of <em>N**epomuk</em> and <em>ontology</em> dependency problems. I fixed this by removing <em>okular</em> and <em>gwenview</em> and then running the entire *cmake *process.</p>
+<p><strong>Setting up the Environment –</strong> Many of the <a href="http://techbase.kde.org/Getting_Started/Sources/Using_Subversion_with_KDE">KDE techbase articles</a> are about setting up the entire KDE code-base for development. This consists of either creating a new user (generally kde-devel) or using scripts. I preferred the new user approach, and download the entire source code. But in the end, all of that didn&rsquo;t really matter. It was just an inconvenience. So, I guess you should go with the recommended approach. I didn&rsquo;t really understand any of the scripts and they didn&rsquo;t do squat for me. For a small project like <em>ksnapshot</em> this wasn&rsquo;t really required.</p>
+<p>Now, came the actual part – <strong>Understanding the code.</strong> The usual problem I have with reading source code is that I don&rsquo;t really know where to start. Every open source project is different and almost all of them are constructed differently. I don&rsquo;t really have much experience reading source code – Gimp, VLC, and a couple others. All of them were largely C programs. Qt and KDE just make love C++ more and more. :-) Anyway, the ideal place I found to start in KDE apps is main.cpp, and follow the included files from there. Fortunately, <em>ksnapshot</em> isn&rsquo;t that large just 14 files (C++ and headers) and despite what I thought earlier. You don&rsquo;t need to understand the entire source code to fix one bug.</p>
+<p>I was using KDE&rsquo;s inbuilt text editor Kate for browsing the source code, with its Documents tab it was quite nifty, though it lacks stuff like <em>go to declaration</em> and <em>type of variable.</em> Nevertheless it was a simple solution. One that didn&rsquo;t require me to configure anything. Just jump in and start reading.</p>
+<p><img src="/blog/images/2010/02/16/kate1.jpeg" alt="kate"></p>
+<p>I usually keep a pencil and some paper in front of me that way I can draw diagrams (loosely based on UML ) and jot down points to remember. Some editors have different mechanisms to add comments, but I somehow prefer a more traditional pencil and paper.</p>
+<p>Before attempting to solve bugs in KDE, I went through some of the <a href="http://techbase.kde.org/Development/Tutorials">tutorials</a> and some parts of the API <!-- raw HTML omitted -->(Here is the ultimate reference)<!-- raw HTML omitted --> Look at <!-- raw HTML omitted -->this page<!-- raw HTML omitted --> for a walk through about what the bug was about. No point repeating it over here.</p>
+<p>Now I&rsquo;m just going to catalogue the information I gathered -</p>
+<ul>
+<li>
+<p><strong>main.cpp</strong> – Fairly standard. The only out of the norm thing (for me) was the 	inclusion of custom Command Line arguments, but I presume that is 	the norm.</p>
+</li>
+<li>
+<p>**ksnapshotobject – **Now, this was one odd class. It initially seemed like it should have been a <em>namespace</em> as none of the public function actually modify any of 	the variables. This is not quite apparent as they weren&rsquo;t declared <em>const</em>. Maybe they should have been static member functions? Overall 	this class contained 6 data members and 3 additions protected member 	functions. They were fairly easy to understand. <code>autoincFilename</code> has been a subject of bug reports earlier.</p>
+</li>
+<li>
+<p><strong>ksnapshot</strong> – This class was derived from <code>ksnapshotobject</code> and 	<code>kdialog</code>. Multiple inheritance! I don&rsquo;t really have any experience with multiple inheritance and generally tend to avoid it (For no apparent reason!) But over here it seems to be fine. This is class is the heart of the application, and the largest.</p>
+</li>
+<li>
+<p><strong>Rest of the files</strong> – Stuff like <code>regiongrabber</code>, <code>windowgrabber</code> and <code>snapshottimer</code> didn&rsquo;t really seem relevant to the bug I was trying 	to fix so, I really didn&rsquo;t them bother with them much.</p>
+</li>
+</ul>
+<p>Coming to the actual bug solving. After finding save functions in <code>ksnapshotobject</code> I decided to head over to them and understand what they do. (Keep the API documentation open!) The first two overloaded versions of <code>save</code> were fairly obvious and both seemed to call <code>saveEqual</code>. Here is where it got complicated. I didn&rsquo;t really know much about MIME types, apart from the basics, so when confronted by *<!-- raw HTML omitted -->KmimeType::findByUrl<!-- raw HTML omitted --> *even after reading the documentation I was fairly confused. <code>KMimeType</code> is derived from <code>KserviceType</code>, which is inherited by <code>KsyscocaEntry</code>, which made me further read a lot about the <!-- raw HTML omitted -->System Configuration Cache<!-- raw HTML omitted -->. None of this was really helping in solving the bug, though it did make me understand KDE
+better, which I suppose was the point!</p>
+<p>After that I decided the skip the specifics and get the general idea. The saveEqual function just saves the file with additional checks. So, saving wasn&rsquo;t really the problem. I headed over to open slots in <em>ksnapshot.cpp</em>. And viola! I had found the problem – Both the slots (the first one doesn&rsquo;t seem to be used anywhere – Don&rsquo;t take my word for it!) were opening a local file. This made me read a lot about KstandardDirs :-)  They should be opening a local file if the file wasn&rsquo;t already saved, otherwise they should open the saved file. Logically.</p>
+<p><img src="/blog/images/2010/02/16/orig-code.jpeg" alt="orig code"></p>
+<p>Then came the actual coding process. Fixing the bug. My thought was process was something along the line that I should check whether the file has already been saved (bool variable maybe?) and then subsequently open it or a temp file. I really didn&rsquo;t want to introduce new variables as this wasn&rsquo;t my code. Another thing I noticed was that <em>fileOpen</em> (the main variable in consideration) was a <em>QString</em> and later on it was being <em><strong>implicitly</strong></em> typecasted into a KUrl. I generally tend to avoid implicit type conversion, and the code stuck struck me as some what wrong. I decided to change it to a KUrl (a lot safer) and add a check. As this change was required in two functions, in an attempt to avoid code duplication, I encapsulated it in a function.</p>
+<p><img src="/blog/images/2010/02/16/code-change.jpeg" alt="code change"></p>
+<p>I tested it out. Fixed a couple of typos and I was done. :-) After than I proceeded to <!-- raw HTML omitted -->create a patch<!-- raw HTML omitted -->. I tend to subconsciously indent code as I&rsquo;m reading it, so the patch I created (svn diff) had those changes as well. Not something I wanted. I landed up reverting the code to the original, and <em>just</em> making the changes to fix the bug. Still some code indentation got transferred to the patch. Anyone knows how to fix this?</p>
+<p>After that I added the patch to the original bug report (<a href="https://bugs.kde.org/show_bug.cgi?id=204628">link</a>) and crossed my fingers and waited. After a couple of days I got tired of waiting and landed up mailing the author. (Am I too impatient?) Hopefully, my contribution will be added to <em>ksnapshot</em>.</p>
+<p>The entire process was quite enlightening, and was a great learning experience. I learned a lot about KDE and Qt. I think fixing bugs is an amazing way to get acquainted with a project. Specially one with such a huge code base. :-)</p>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/kde/">kde</a><a class="tag" href="/tags/linux/">linux</a><a class="tag" href="/tags/bugs/">bugs</a></span>
+
+
+
+
+      
+    </div>
+
+    
+  </div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Vishesh Handa
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script></body>
+</html>

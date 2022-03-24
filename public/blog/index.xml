@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Vishesh Handa&#39;s blog</title>
+    <link>http://vhanda.in/blog/</link>
+    <description>Recent content in Blogs on Vishesh Handa&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 22 Oct 2015 00:13:11 +0000</lastBuildDate><atom:link href="http://vhanda.in/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up a KDE Development Environment</title>
+      <link>http://vhanda.in/blog/2015/10/Setting-up-a-KDE-Development-Environment/</link>
+      <pubDate>Thu, 22 Oct 2015 00:13:11 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2015/10/Setting-up-a-KDE-Development-Environment/</guid>
+      
+        <description>Season of KDE is about to start, and I&amp;rsquo;ve been getting a number of emails with students struggling to setup a development environment. For KDE, it isn&amp;rsquo;t quite trivial.
+While there are multiple ways to setup a development environment, I&amp;rsquo;m going to go through how mine functions. I know many developers who have a similar setup.
+Step 1 - Choose your distribution I develop exclusively on Linux, so do most KDE developers.</description>
+      
+    </item>
+    
+    <item>
+      <title>Baloo 5.15</title>
+      <link>http://vhanda.in/blog/2015/10/Baloo-5.15/</link>
+      <pubDate>Sat, 10 Oct 2015 16:57:00 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2015/10/Baloo-5.15/</guid>
+      
+        <description>We have a new release of Baloo. For those of you who don&amp;rsquo;t know about it - It&amp;rsquo;s a file indexing and searching solution for Linux. It&amp;rsquo;s quite fast, and shipped by default in KDE Plasma.
+Baloo is part of KDE Frameworks and has a fast 1 month release cycle. So, I&amp;rsquo;m probably going to be spamming you about the big changes in Baloo each month.
+The 5.15 release focused a lot on tooling and bug fixing.</description>
+      
+    </item>
+    
+    <item>
+      <title>Baloo and NodeJs</title>
+      <link>http://vhanda.in/blog/2015/08/Baloo-and-NodeJs/</link>
+      <pubDate>Sat, 15 Aug 2015 19:01:38 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2015/08/Baloo-and-NodeJs/</guid>
+      
+        <description>I took some time to write some very basic nodejs bindings for Baloo. They are available on github and npm.
+Example It can be installed via npm install baloo
+var Baloo = require(&amp;#39;baloo&amp;#39;); var query = new Baloo.Query(&amp;#39;keyword&amp;#39;); query.exec(function(results) { results.forEach(function(filePath) { console.log(filePath); }); }); I&amp;rsquo;m aware of a few people who have deployed Baloo on a server. I&amp;rsquo;m hoping this will help them. It also paves the way for some interesting web-based user interfaces for file-searching.</description>
+      
+    </item>
+    
+    <item>
+      <title>KDE and The Semantic Desktop</title>
+      <link>http://vhanda.in/blog/2015/03/KDE-and-The-Semantic-Desktop/</link>
+      <pubDate>Fri, 13 Mar 2015 17:11:22 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2015/03/KDE-and-The-Semantic-Desktop/</guid>
+      
+        <description>During the KDE4 years the Semantic Desktop was one of the main pillars of KDE. Nepomuk was a massive, all encompassing, and integrated with many different part of KDE. However few people know what The Semantic Desktop was all about, and where KDE is heading.
+History The Semantic Desktop as it was originally envisioned comprised of both the technology and the philosophy behind The Semantic Web.
+The Semantic Web is built on top of RDF and Graphs.</description>
+      
+    </item>
+    
+    <item>
+      <title>KDE ... NOW</title>
+      <link>http://vhanda.in/blog/2015/02/KDE-...-NOW/</link>
+      <pubDate>Thu, 12 Feb 2015 21:27:48 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2015/02/KDE-...-NOW/</guid>
+      
+        <description>Last week I got decently annoyed by having to lookup my flight information before FOSDEM. Also, you always forget when your flight is afterwards.
+Google started &amp;ldquo;Google Now&amp;rdquo; which aims to provide useful information about current events through your Android phone. But that does involve it going through your email.
+With that in mind, as a weekend project, I started to write a replacement. Initially, I started with just scrapping the information from the emails.</description>
+      
+    </item>
+    
+    <item>
+      <title>KRunner and Plasma 5</title>
+      <link>http://vhanda.in/blog/2014/10/KRunner-and-Plasma-5/</link>
+      <pubDate>Mon, 13 Oct 2014 16:37:16 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2014/10/KRunner-and-Plasma-5/</guid>
+      
+        <description>Let&amp;rsquo;s talk us about KRunner and what has changed over the course of Plasma 5.
+KDE 4 and KRunner During the KDE 4 series, KRunner was an important part of the KDE Workspace, and it was tied very closely to Plasma. The KRunner library was in fact a part of the Plasma library.
+The entire UI was based on QGraphicsScene. Considering that we were moving to QML for Plasma 5, the UI needed a complete rewrite.</description>
+      
+    </item>
+    
+    <item>
+      <title>Search Folders in Plasma 5.1</title>
+      <link>http://vhanda.in/blog/2014/10/Search-Folders-in-Plasma-5.1/</link>
+      <pubDate>Fri, 10 Oct 2014 14:34:44 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2014/10/Search-Folders-in-Plasma-5.1/</guid>
+      
+        <description>Everyone loves Search Folders. These are custom folders which can show you files based on a search result.
+In the KDE4 days, Nepomuk provided some of this, and we even had a tags:// protocol. Now, with Plasma 5.1, we&amp;rsquo;re pushing the first incarnation of &amp;ldquo;Search Folders&amp;rdquo; built on top of Baloo.
+Here are some quick examples -
+baloosearch://?query=Random Words baloosearch://?query=tag:Death baloosearch://?query=tag:Death OR artist:Coldplay baloosearch://?query=width:100 AND tag:Sunset  The query syntax supports simple property names which you would expect along with any values.</description>
+      
+    </item>
+    
+    <item>
+      <title>Extended Attributes Updates</title>
+      <link>http://vhanda.in/blog/2014/08/Extended-Attributes-Updates/</link>
+      <pubDate>Wed, 20 Aug 2014 11:14:29 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2014/08/Extended-Attributes-Updates/</guid>
+      
+        <description>Recently I blogged about how we have been reducing the number of databases in Plasma. We have been doing this by using the file system to store additional information such as tags, ratings and comments.
+Unfortunately, extended attributes are not supported on all file systems. The most notable ones are &amp;ldquo;FAT&amp;rdquo; and any Network File Share. With Plasma 5.1, Baloo will not support tags, ratings or comments in these file systems.</description>
+      
+    </item>
+    
+    <item>
+      <title>Text Splitting and Indexing</title>
+      <link>http://vhanda.in/blog/2014/07/Text-Splitting-and-Indexing/</link>
+      <pubDate>Thu, 31 Jul 2014 13:28:51 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2014/07/Text-Splitting-and-Indexing/</guid>
+      
+        <description>Over the last week, we have been working on improving the file searching experience in Plasma. We were mostly doing a decent job, but we were lacking in terms of proper Unicode support and making it simpler to search in non English languages. This blog post is a simplified explanation about now what goes on internally.
+For the purpose of this discussion, I&amp;rsquo;m going to treat all files as blobs of text.</description>
+      
+    </item>
+    
+    <item>
+      <title>Tagging your Files</title>
+      <link>http://vhanda.in/blog/2014/07/Tagging-your-Files/</link>
+      <pubDate>Thu, 03 Jul 2014 15:43:07 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2014/07/Tagging-your-Files/</guid>
+      
+        <description>In 4.13, we moved away from a monolithic Nepomuk based system to a far more decentralized approach. Some parts of this are called Baloo, but to be honest, Baloo is not really responsible for managing your tags.
+The Nepomuk Days Back in the era of Nepomuk, every time you would tag a file. 2 things would be done -
+ A tag would be created / fetched from the central Database The tag would be linked with the file in the same database.</description>
+      
+    </item>
+    
+    <item>
+      <title>Desktop Search Configuration</title>
+      <link>http://vhanda.in/blog/2014/04/Desktop-Search-Configuration/</link>
+      <pubDate>Thu, 17 Apr 2014 17:09:15 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2014/04/Desktop-Search-Configuration/</guid>
+      
+        <description>Update: This blog post is quite old and does not reflect the current state of Desktop Search in KDE. If you&amp;rsquo;re just looking to disable it, you can either run the $ balooctl disable command or go to System Settings -&amp;gt; Search -&amp;gt; File Search -&amp;gt; Disable.
+KDE SC 4.13 is finally out. As you may have heard this marks the release of Baloo. The bear is now out in the wild!</description>
+      
+    </item>
+    
+    <item>
+      <title>Introducing Milou</title>
+      <link>http://vhanda.in/blog/2014/03/Introducing-Milou/</link>
+      <pubDate>Thu, 20 Mar 2014 13:35:08 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2014/03/Introducing-Milou/</guid>
+      
+        <description>As many of you may have heard, with KDE SC 4.13, the searching infrastructure has been through a big overhaul. Along with these changes, we will also be releasing a dedicated search plasmoid called &amp;ldquo;Milou&amp;rdquo;.
+Milou can also be used as an alternative to KRunner, and does provide application launching. The main difference is that it concentrates more on searching.
+Previews Milou also offers experimental support for previews for different results types.</description>
+      
+    </item>
+    
+    <item>
+      <title>More Nepomuk Performance Upgrades</title>
+      <link>http://vhanda.in/blog/2013/05/More-Nepomuk-Performance-Upgrades/</link>
+      <pubDate>Wed, 29 May 2013 17:36:05 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/05/More-Nepomuk-Performance-Upgrades/</guid>
+      
+        <description>As you might have read, the 4.11 release of Nepomuk is a lot faster while doing writes and therefore indexing is going to much faster. However, read performance was nearly the same.
+Architecture All application communicate to Nepomuk via the Storage Service which acts like a server. It is responsible for loading the ontologies, managing virtuoso and sending change notifications. The read communications happen over a local socket whereas the writes are sent over dbus.</description>
+      
+    </item>
+    
+    <item>
+      <title>We need more Indexers</title>
+      <link>http://vhanda.in/blog/2013/05/We-need-more-Indexers/</link>
+      <pubDate>Wed, 29 May 2013 10:36:05 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/05/We-need-more-Indexers/</guid>
+      
+        <description>With the 4.10 release of Nepomuk, we decided to move away from Strigi and write our own indexers. We support most of the commonly used formats. Also, the new code is faster and more importantly more maintainable and easier to contribute to. So far this decision has worked pretty well for us.
+That being said - we still do not have enough indexers. Over the last week I managed to write simple ODF and Office2007 indexers, but we still need some more.</description>
+      
+    </item>
+    
+    <item>
+      <title>The Nepomuk Migration</title>
+      <link>http://vhanda.in/blog/2013/04/The-Nepomuk-Migration/</link>
+      <pubDate>Fri, 19 Apr 2013 16:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/04/The-Nepomuk-Migration/</guid>
+      
+        <description>A couple of days ago I talked about how we have been clearing up some unwanted data in Nepomuk for the 4.11 release - mainly graphs. This change comes with a increased performance of over 100% in many cases, and makes the codebase simpler, and easier to maintain.
+Unfortunately, it comes at a cost.
+The graphs in the old database need to be merged to a small number. This operation is a very time consuming process cause merging graphs is equivalent to slowly removing your entire database and reinserting it.</description>
+      
+    </item>
+    
+    <item>
+      <title>Merging Nepomuk Graphs</title>
+      <link>http://vhanda.in/blog/2013/04/Merging-Nepomuk-Graphs/</link>
+      <pubDate>Tue, 16 Apr 2013 17:40:00 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/04/Merging-Nepomuk-Graphs/</guid>
+      
+        <description>Since I&amp;rsquo;ve become the maintainer of Nepomuk we have put a strong emphasis on performance and stability. One of the core parts of Nepomuk are the high level operations that are exposed to the applications. These operations are typically used to insert and modify data into Nepomuk. Each of these operations is quite complex and involves a number of complicated queries.
+For this 4.11 release we wanted to simplify that code and make it more efficient.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk - Simplifying the debugging process</title>
+      <link>http://vhanda.in/blog/2013/03/Nepomuk-Simplifying-the-debugging-process/</link>
+      <pubDate>Thu, 21 Mar 2013 22:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/03/Nepomuk-Simplifying-the-debugging-process/</guid>
+      
+        <description>When something goes wrong in Nepomuk, its easy for us Nepomuk developers to track it down, but for other developers and users it can be quite hard. Even simple things like reporting which component is malfunctioning isn&amp;rsquo;t completely obvious.
+Over the last month, we have simplified some of the external details and added tools which will help us debug your problems so that we can fix things more easily. These all will be shipped with nepomuk-core in 4.</description>
+      
+    </item>
+    
+    <item>
+      <title>What&#39;s new with Nepomuk 4.10</title>
+      <link>http://vhanda.in/blog/2013/02/Whats-new-with-Nepomuk-4.10/</link>
+      <pubDate>Fri, 01 Feb 2013 19:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/02/Whats-new-with-Nepomuk-4.10/</guid>
+      
+        <description>I&amp;rsquo;ve blogged about some of the more prominent changes in this new Nepomuk release. I thought it would be a good idea to document all the changes, which Nepomuk has gone through thanks to Blue Systems!
+File Indexing As the release announcement has been saying, the file indexer has undergone the maximum number of changes.
+New Double Queue Architecture We&amp;rsquo;ve split the working of the indexer into two parts - The first basic indexing and second full file indexing.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Tags Kioslave</title>
+      <link>http://vhanda.in/blog/2013/01/Nepomuk-Tags-Kioslave/</link>
+      <pubDate>Thu, 31 Jan 2013 18:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/01/Nepomuk-Tags-Kioslave/</guid>
+      
+        <description>Nepomuk has long required a convenient way of managing tags. I&amp;rsquo;ve previously tried this with a simple Tag Managing Application, but that wasn&amp;rsquo;t something that we wanted to ship. For the KDE Workspace 4.10 release, we are releasing a Nepomuk Tags kioslave.
+Listing Tags The kioslave provides a very convenient way of listing all the tags. You can even rename and delete tags, just like you would for any other folder.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Cleaner</title>
+      <link>http://vhanda.in/blog/2013/01/Nepomuk-Cleaner/</link>
+      <pubDate>Wed, 30 Jan 2013 11:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/01/Nepomuk-Cleaner/</guid>
+      
+        <description>Nepomuk has a unique problem of maintaining an RDF store. Unlike traditional SQL based stores, RDF offers a very loose schema, which is a HUGE advantage. Unfortunately all of the current RDF stores do not support any form of schema enforcement. It&amp;rsquo;s up to the client code to make sure that the data being pushed is valid.
+This has resulted in a number of problems such as strings being stored where an integer should go.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Indexing Architecture</title>
+      <link>http://vhanda.in/blog/2013/01/Nepomuk-Indexing-Architecture/</link>
+      <pubDate>Tue, 29 Jan 2013 18:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2013/01/Nepomuk-Indexing-Architecture/</guid>
+      
+        <description>Over the last 6 months, while working for Blue Systems, Nepomuk has undergone a number of changes. The most public and noticeable change has been the major refactoring of the file indexer. One large part of this has been the migration from Strigi. The other large part is the introduction of 2 phase indexing.
+With 4.9 and earlier, the file indexing service used to just have one queue, whose speed could be controlled.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk without Strigi</title>
+      <link>http://vhanda.in/blog/2012/11/Nepomuk-without-Strigi/</link>
+      <pubDate>Wed, 07 Nov 2012 21:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/11/Nepomuk-without-Strigi/</guid>
+      
+        <description>Strigi has always been a large part of Nepomuk. In fact a lot of users still do not understand the difference between the two. It&amp;rsquo;s quite common to see bug reports saying mentioning &amp;ldquo;Strigi/Nepomuk&amp;rdquo;. Lots of blog posts do the same.
+Strigi consists of a number of different parts. In Nepomuk we just used to use libstreams and libstreamanalyzer. These were pure C++ libraries. The great thing about Strigi is that it is based on streams, instead of files.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk and KDE 4.9.1</title>
+      <link>http://vhanda.in/blog/2012/09/Nepomuk-and-KDE-4.9.1/</link>
+      <pubDate>Mon, 03 Sep 2012 13:36:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/09/Nepomuk-and-KDE-4.9.1/</guid>
+      
+        <description>Last week 4.9.1 was tagged, and it should release any day now. A large part of my time was spent bug fixing and stabilizing some of the most user visible features. This blog post highlights some of the more user visible changes.
+File Watcher Apart from minor fixes such as extra checks for buffer overflows, and kernel version checks, we have two major improvements:
+Memory Leak The Nepomuk File monitoring service had a serious memory leak in 4.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Widgets Repository</title>
+      <link>http://vhanda.in/blog/2012/08/Nepomuk-Widgets-Repository/</link>
+      <pubDate>Tue, 28 Aug 2012 11:36:18 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/08/Nepomuk-Widgets-Repository/</guid>
+      
+        <description>With KDE 4.9, we introduced a new repository called nepomuk-core. This contained a combination of kdelibs/nepomuk and kde-runtime/nepomuk. It was created because of the API freeze present in kdelibs. Considering that most of the client libraries are thin wrappers over the runtime components, it made sense to combine them in one repository..
+In order to be compatibile with kdelibs, the new library is installed with the Nepomuk2 namespace.
+Now with KDE 4.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Technical Documentation</title>
+      <link>http://vhanda.in/blog/2012/08/Nepomuk-Technical-Documentation/</link>
+      <pubDate>Fri, 24 Aug 2012 14:54:29 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/08/Nepomuk-Technical-Documentation/</guid>
+      
+        <description>I have been working a lot to improve Nepomuk&amp;rsquo;s technical documentation on the techbase. And it now finally reached the point where I think it covers most of the major aspects of Nepomuk. If you&amp;rsquo;re using Nepomuk in your applications, you should read it.
+It&amp;rsquo;s a little hard for me to objectively state if I&amp;rsquo;ve explained stuff properly considering that I have been so involved in the development. If you feel some section is lacking or you&amp;rsquo;re having trouble understanding it, please contact me.</description>
+      
+    </item>
+    
+    <item>
+      <title>Faster Nepomuk Queries</title>
+      <link>http://vhanda.in/blog/2012/08/Faster-Nepomuk-Queries/</link>
+      <pubDate>Tue, 21 Aug 2012 20:03:59 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/08/Faster-Nepomuk-Queries/</guid>
+      
+        <description>Nepomuk has a very decentralized architecture where the different components exist as different processes. They are all variants of the same executable - nepomukservicestub. This servicestub loads appropriate service plugin. The main reason for doing this was stability. If one of the components crashes, then it doesn&amp;rsquo;t take all the other components with it.
+Unfortunately this architecture doesn&amp;rsquo;t hold very well when the different components need to communicate with one another.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Without Files</title>
+      <link>http://vhanda.in/blog/2012/08/Nepomuk-Without-Files/</link>
+      <pubDate>Mon, 06 Aug 2012 16:04:21 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/08/Nepomuk-Without-Files/</guid>
+      
+        <description>Most people assume that if they switch off file indexing in Nepomuk, then all the nepomuk file services will get disabled. This is however not the case. Nepomuk consists of two services which are used to deal with files -
+ Nepomuk File Watcher Nepomuk File Indexer  The Nepomuk File Indexer is responsible for calling the strigi plugins to index the files, whereas the FileWatch service is a general service that monitors file move, creation and deletion events.</description>
+      
+    </item>
+    
+    <item>
+      <title>Better unit tests</title>
+      <link>http://vhanda.in/blog/2012/07/Better-unit-tests/</link>
+      <pubDate>Thu, 26 Jul 2012 21:51:03 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/07/Better-unit-tests/</guid>
+      
+        <description>A little while ago, before Akademy, I started implementing the Shared Hash Memory table, so as to improve Nepomuk&amp;rsquo;s architecture. Architectural designs really interest me. I decided to be smart about it, if I was going to refactor some of the main classes, there was a very high chance I would break something. The code is quite complex.
+I needed a way to make sure I was on the right track.</description>
+      
+    </item>
+    
+    <item>
+      <title>A few updates</title>
+      <link>http://vhanda.in/blog/2012/07/A-few-updates/</link>
+      <pubDate>Tue, 24 Jul 2012 17:25:56 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/07/A-few-updates/</guid>
+      
+        <description>Just some quick updates -
+ I graduated from college about a month back I&amp;rsquo;m now working on Nepomuk full time courtesy of Blue Systems I&amp;rsquo;m now a KDE e.V member  Yaye! :)</description>
+      
+    </item>
+    
+    <item>
+      <title>Shared Memory Hash Table</title>
+      <link>http://vhanda.in/blog/2012/07/Shared-Memory-Hash-Table/</link>
+      <pubDate>Thu, 19 Jul 2012 14:16:43 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/07/Shared-Memory-Hash-Table/</guid>
+      
+        <description>For the last month I&amp;rsquo;ve been working on a hash table which is stored in shared memory and can thus easily be used across applications. This is ideal for simple caches of data that reside in multiple applications. My specific use case was the Nepomuk Resource class, which is a glorified cache of key value pairs and uses a hash table. A considerable amount of effort has gone into making sure that each application&amp;rsquo;s Resource classes are consistent with the other applications.</description>
+      
+    </item>
+    
+    <item>
+      <title>Opening up Nepomuk Development</title>
+      <link>http://vhanda.in/blog/2012/07/Opening-up-Nepomuk-Development/</link>
+      <pubDate>Wed, 18 Jul 2012 13:27:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/07/Opening-up-Nepomuk-Development/</guid>
+      
+        <description>The Nepomuk development process has been fairly closed to outsiders. This was never a conscious decision made by the Nepomuk Team, we just never took the effort to open up the development, and make it more appealing to new comers.
+For most of the last 2 years, the development model has been Sebastian and I working on our own personal list of things, and occasionally sending private emails to each other or communicating via IRC.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk KIO Upgrade</title>
+      <link>http://vhanda.in/blog/2012/07/Nepomuk-KIO-Upgrade/</link>
+      <pubDate>Tue, 10 Jul 2012 19:16:43 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/07/Nepomuk-KIO-Upgrade/</guid>
+      
+        <description>In case you haven&amp;rsquo;t been running trunk, or haven&amp;rsquo;t tried out the latest release candidates (you really should), you should know that dolphin has had a lot of major improvements since the last release. One of the features I really love is better Nepomuk integration. This enhanced user visibility lands up exposing bottlenecks, and performance problems. That&amp;rsquo;s exactly what happened with the nepomuk search kio slave.
+Dolphin exposes this neat sidebar which allows users to list out the different kind of files - Documents, Images, Audio and Videos.</description>
+      
+    </item>
+    
+    <item>
+      <title>The Nepomuk BOF</title>
+      <link>http://vhanda.in/blog/2012/07/The-Nepomuk-BOF/</link>
+      <pubDate>Thu, 05 Jul 2012 16:16:43 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/07/The-Nepomuk-BOF/</guid>
+      
+        <description>For those of you who don&amp;rsquo;t know, I&amp;rsquo;m currently at Tallinn, Estonia for Akademy 2012.
+Here at Akademy, yesterday was an amazing day for Nepomuk. Early morning we had a Nepomuk BOF titled &amp;lsquo;Constructive Criticism - Prioritizing Nepomuk development&amp;rsquo;, and it was really good. I wasn&amp;rsquo;t sure if I shouldn&amp;rsquo;t have named it such, cause that might have ended in people just coming and complaining, but surprisingly everyone was really nice and constructive.</description>
+      
+    </item>
+    
+    <item>
+      <title>Virtuoso problems no more</title>
+      <link>http://vhanda.in/blog/2012/04/Virtuoso-problems-no-more/</link>
+      <pubDate>Sun, 01 Apr 2012 12:16:43 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/04/Virtuoso-problems-no-more/</guid>
+      
+        <description>The Nepomuk team has been working really hard to fix the problems with virtuoso consuming too much memory and often just going bat crazy. And now finally we&amp;rsquo;ve figured it out.
+It wasn&amp;rsquo;t the obvious solution, but we think it&amp;rsquo;s going to work out very well. From now on virtuoso won&amp;rsquo;t be shown in ksysguard.
+Since we won&amp;rsquo;t be able to see virtuoso using up our memory and CPU, it obviously won&amp;rsquo;t be doing it.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Test Framework</title>
+      <link>http://vhanda.in/blog/2012/03/Nepomuk-Test-Framework/</link>
+      <pubDate>Mon, 12 Mar 2012 18:17:13 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/03/Nepomuk-Test-Framework/</guid>
+      
+        <description>Back in October 2010, I was trying to write automated tests for Nepomuk Backup. That turned out to be a huge disaster, but the test suite was still had some pretty good stuff in it.
+Most of it was based on George Goldberg&amp;rsquo;s Telepathy Test Lib.
+Over the last month, I&amp;rsquo;ve finally moved it to git, cleaned it up and started using it for real tests.
+Why do we need a testing framework?</description>
+      
+    </item>
+    
+    <item>
+      <title>Add Download Metadata in Nepomuk</title>
+      <link>http://vhanda.in/blog/2012/02/Add-Download-Metadata-in-Nepomuk/</link>
+      <pubDate>Sun, 19 Feb 2012 18:47:21 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/02/Add-Download-Metadata-in-Nepomuk/</guid>
+      
+        <description>I land up using wget a lot. I know there are better alternatives, but wget&amp;rsquo;s simplicity has won me over. Plus, with applications like firefox, I&amp;rsquo;m not always sure I&amp;rsquo;ll be able to continue the download. That&amp;rsquo;s important when I&amp;rsquo;m downloading big files, but for small files, it really doesn&amp;rsquo;t matter.
+A couple of days back, Martin and I were chatting about storing the metadata of a downloaded file in Nepomuk.</description>
+      
+    </item>
+    
+    <item>
+      <title>Notably v0.4</title>
+      <link>http://vhanda.in/blog/2012/02/Notably-v0.4/</link>
+      <pubDate>Wed, 08 Feb 2012 18:22:43 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/02/Notably-v0.4/</guid>
+      
+        <description>I meant to release a new version of Notably on Friday, but I got sidetracked with some stuff. Plus, I&amp;rsquo;ve been spending a lot of time on designing the UI for this release, which I think isn&amp;rsquo;t a good idea. Notably is still not quite mature, and I think right now features are more important than polish.
+Last week, I showcased some tagging UIs. They aren&amp;rsquo;t yet ready to be deployed in KDE, as they need to be polished quite a bit.</description>
+      
+    </item>
+    
+    <item>
+      <title>Virtuoso going crazy?</title>
+      <link>http://vhanda.in/blog/2012/02/Virtuoso-going-crazy/</link>
+      <pubDate>Tue, 07 Feb 2012 16:29:55 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/02/Virtuoso-going-crazy/</guid>
+      
+        <description>There have been cases of virtuoso going a little crazy and consuming a lot of CPU cycles. It&amp;rsquo;s extremely frustrating. However, it&amp;rsquo;s ever more annoying when you have no idea what&amp;rsquo;s wrong.
+Most of bug reports we get just say that virtuoso is consuming too much CPU, and that isn&amp;rsquo;t the least bit helpful. So, here is a short guide to figure out what query is causing virtuoso to go crazy.</description>
+      
+    </item>
+    
+    <item>
+      <title>A better Tagging Widget</title>
+      <link>http://vhanda.in/blog/2012/02/A-better-Tagging-Widget/</link>
+      <pubDate>Wed, 01 Feb 2012 22:30:42 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/02/A-better-Tagging-Widget/</guid>
+      
+        <description>A long long time ago, a very simple tagging widget was implemented. We always though - &amp;ldquo;Eh! This is temporary. We&amp;rsquo;ll come up with a better one later.&amp;rdquo; But that never happened.
+There is a lot of code in Nepomuk. However most of it is backend stuff which does absolutely marvelous things behind the scenes - Auto duplicate merging, type checking with respect to the ontologies, caching and lots more. We, however, lack good UIs.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Tag Manager</title>
+      <link>http://vhanda.in/blog/2012/01/Nepomuk-Tag-Manager/</link>
+      <pubDate>Tue, 31 Jan 2012 22:22:39 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/01/Nepomuk-Tag-Manager/</guid>
+      
+        <description>Welcome to Nepomuk Tag Week! Well, not really, since it&amp;rsquo;s not an official thing. I&amp;rsquo;ve just been working a lot with tags lately, and this week I&amp;rsquo;m going to be spamming you with some tag related updates (One for every day of the week, minus Monday)
+I thought I&amp;rsquo;ll start with something small - Tag Management.
+We&amp;rsquo;ve been badly needing a UI to allow the users to modify, merge and delete their tags.</description>
+      
+    </item>
+    
+    <item>
+      <title>Chat logs in Nepomuk</title>
+      <link>http://vhanda.in/blog/2012/01/Chat-logs-in-Nepomuk/</link>
+      <pubDate>Sat, 21 Jan 2012 15:33:12 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2012/01/Chat-logs-in-Nepomuk/</guid>
+      
+        <description>Prototyping is fun. You don&amp;rsquo;t need to care about proper libraries. Your code can be absolutely horrible, cause &amp;ldquo;Hey! It&amp;rsquo;s just a prototype!&amp;rdquo;
+Yesterday, I started the process of importing my entire gTalk chat history into Nepomuk. It turned out to be a lot simpler that I thought it would be.
+Step 1: Get the chat logs GMail fortunately allows you to export your chat logs via SMTP. They don&amp;rsquo;t implement the traditional XMPP-0136 for fetching offline messages.</description>
+      
+    </item>
+    
+    <item>
+      <title>Shaastra</title>
+      <link>http://vhanda.in/blog/2011/09/Shaastra/</link>
+      <pubDate>Wed, 28 Sep 2011 12:04:56 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/09/Shaastra/</guid>
+      
+        <description>In India, we have 16 premier engineering institutes. They go by the name of IIT (Indian Institute of Technology), and are considered one of top engineering colleges in India.
+In a couple of hours, I&amp;rsquo;ll be flying down to IIT Madras to attend their annual technical festival: Shaastra. I&amp;rsquo;ve been invited to conduct a hackfest, whose primary objective would be to introduce people to the world of KDE. From what I know, there are 25 people signed up right now.</description>
+      
+    </item>
+    
+    <item>
+      <title>Notably v0.3</title>
+      <link>http://vhanda.in/blog/2011/09/Notably-v0.3/</link>
+      <pubDate>Wed, 21 Sep 2011 12:58:56 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/09/Notably-v0.3/</guid>
+      
+        <description>I finally decided on a name - Nepomuk Notes is now known as notably.
+Unlike last time, Notably now has its own project page on projects.kde.org.
+This release adds a sidebar which lets you browse your notes, sorted in a reverse chronological order.
+Next Steps  Make/Find someone to create a nice icon Allow browsing by tags Better KWin integration  </description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Notes v0.2</title>
+      <link>http://vhanda.in/blog/2011/09/Nepomuk-Notes-v0.2/</link>
+      <pubDate>Fri, 09 Sep 2011 16:58:56 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/09/Nepomuk-Notes-v0.2/</guid>
+      
+        <description>Another week has gone by and I&amp;rsquo;ve decided to release another version of my favorite note taking application. Like last time the code is still in my scratch repository.
+New Features Tagging Support I&amp;rsquo;ve added tagging support. So, now you can tag all your notes. I didn&amp;rsquo;t want to use the traditional tagging widget, and wanted something that was more usable. So I ended up with a simple text box where you can type your tags.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Notes v0.1</title>
+      <link>http://vhanda.in/blog/2011/09/Nepomuk-Notes-v0.1/</link>
+      <pubDate>Thu, 01 Sep 2011 22:36:28 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/09/Nepomuk-Notes-v0.1/</guid>
+      
+        <description>About 5 months back I started jotting down notes about stuff that was going on. Some of them were personal, and some technical. For the personal stuff I had a separate folder where I would chronologically arrange my notes. A separate file for each day. The technical ones would be saved in other random places in variably getting lost. Thinking of a unique file name and file url is hard!</description>
+      
+    </item>
+    
+    <item>
+      <title>HTML5 Videos</title>
+      <link>http://vhanda.in/blog/2011/09/HTML5-Videos/</link>
+      <pubDate>Thu, 01 Sep 2011 12:22:45 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/09/HTML5-Videos/</guid>
+      
+        <description>Flash is annoying. Specially in Linux where it goes bat crazy at times and starts gobbling up your CPU. That&amp;rsquo;s one of the reasons why I really think HTML 5 Video tag is the way forward.
+YouTube has had an HTML5 beta for quite some time. Unfortunately, I don&amp;rsquo;t like viewing videos on the YouTube player. I like the feel of my favorite media player - VLC. The great thing about the Flash videos was that they used to be cached in /tmp/Fl*.</description>
+      
+    </item>
+    
+    <item>
+      <title>Status Updates</title>
+      <link>http://vhanda.in/blog/2011/07/Status-Updates/</link>
+      <pubDate>Fri, 29 Jul 2011 17:01:42 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/07/Status-Updates/</guid>
+      
+        <description>Today is the last day of 2 month long summer internship with Mandriva. It has been a fun ride. I was supposed to have been working on Metadata Sharing and improving Nepomuk&amp;rsquo;s infrastructure. Metadata sharing still has a long way to go, but I&amp;rsquo;m happy with how Nepomuk is turning out.
+The number of bugs have been steadily decreasing and with the introduction of the Data Management Service, we&amp;rsquo;re now ready to try out more creative uses of Nepomuk.</description>
+      
+    </item>
+    
+    <item>
+      <title>Sharing your Nepomuk Repository</title>
+      <link>http://vhanda.in/blog/2011/07/Sharing-your-Nepomuk-Repository/</link>
+      <pubDate>Wed, 06 Jul 2011 18:18:10 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/07/Sharing-your-Nepomuk-Repository/</guid>
+      
+        <description>How many of you know that Nepomuk is an abbreviation? Oh! You knew that? Well, you have 5 seconds, can you tell me its full form? I doubt it. Unless your fingers are really fast, and you managed to open the Wikipedia article of Nepomuk in less than 5 seconds.
+The &amp;lsquo;N&amp;rsquo; in Nepomuk stands for Networked. And that is exactly what I&amp;rsquo;ve been working on over the last week. So far it works quite well over a local Network.</description>
+      
+    </item>
+    
+    <item>
+      <title>BuBye Wordpress</title>
+      <link>http://vhanda.in/blog/2011/06/BuBye-Wordpress/</link>
+      <pubDate>Fri, 10 Jun 2011 12:33:20 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/06/BuBye-Wordpress/</guid>
+      
+        <description>A couple of days ago, I finally jumped ship. I moved away from Wordpress. My blog looks a lot simpler now. I should probably state that I have shamelessly copied the CSS style from Ant Zucaro. I&amp;rsquo;ll get around to modifying it to suit my needs.
+My last attempt to move from Wordpress, was a spectacular failure. That migration is the reason there are no blog posts between July and November 2010.</description>
+      
+    </item>
+    
+    <item>
+      <title>Server Outage</title>
+      <link>http://vhanda.in/blog/2011/03/Server-Outage/</link>
+      <pubDate>Fri, 18 Mar 2011 14:43:40 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/03/Server-Outage/</guid>
+      
+        <description>On Monday around noon, my virtual private server providerhad a complete disk failure on one of the nodes containing a set of VPSs. Unfortunately, I did not have a backup, and neither did my server provider.
+Yea, that sucks!
+Fortunately, I&amp;rsquo;m a big believer in data redundancy and have duplicates of most of my important data on my desktop and laptop. I apparently do not consider my blog that important, cause there were no backups of it.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Audio Search</title>
+      <link>http://vhanda.in/blog/2011/03/Nepomuk-Audio-Search/</link>
+      <pubDate>Sat, 12 Mar 2011 07:33:42 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/03/Nepomuk-Audio-Search/</guid>
+      
+        <description>This is something I showcased at my talk in conf.kde.in. I coded it in a couple of hours. It is a lot of fun to play around with! I can’t wait to index all my videos this way.
+youtube d41bmTSogA4
+Impressive? :D
+This was showcased at the beginning of the Nepomuk talk under the section “Nepomuk is not about searching, but here are some cool things that it can do!”</description>
+      
+    </item>
+    
+    <item>
+      <title>conf.kde.in is going to rock!</title>
+      <link>http://vhanda.in/blog/2011/02/conf.kde.in-is-going-to-rock/</link>
+      <pubDate>Sat, 19 Feb 2011 11:14:42 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2011/02/conf.kde.in-is-going-to-rock/</guid>
+      
+        <description>I’m going to state the most utterly insane thing I can think of – “You have not heard about conf.kde.in!“. I know, I’m crazy! But just in case you haven’t – conf.kde.in is the first Indian KDE Conference to be held in Bengalurufrom the 9th – 13th March.
+We have a spectacular list of talksabout topics ranging from Localization to Packaging to hard core coding! Additionally we have a series of workshops planned to get you started with KDE, and, help, you discover the amazing KDE community.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk Backup</title>
+      <link>http://vhanda.in/blog/2010/11/Nepomuk-Backup/</link>
+      <pubDate>Fri, 26 Nov 2010 07:42:03 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/11/Nepomuk-Backup/</guid>
+      
+        <description>Roughly 2 weeks ago, just before the feature freeze, the Nepomuk backupsync service was pushed into the trunk.
+A long time ago I posted a lot of features about the ‘planned’ Nepomuk Backup service. I did land up implementing most of those features, but ultimately disabled some of them for a more stable backup experience. I thought it would be better to have a stable backup tool, without all the frills, compared to unstable tool which may potentially mess up your data.</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk: Backup &amp; Sync</title>
+      <link>http://vhanda.in/blog/2010/06/Nepomuk-Backup-Sync/</link>
+      <pubDate>Thu, 24 Jun 2010 00:02:24 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/06/Nepomuk-Backup-Sync/</guid>
+      
+        <description>﻿How time flies.. a month of the official coding period is already over, and I&amp;rsquo;m nowhere even close to saying that this part works perfectly. Most of my code is still in the requires exhaustive testing stages, but I can say that the core parts have been implemented.
+In case you&amp;rsquo;ve forgotten, or didn&amp;rsquo;t read the title, I&amp;rsquo;m implementing Metadata Backup &amp;amp; Sync. Well I&amp;rsquo;m supposed to be implementing sharing as well, but ignore that for now.</description>
+      
+    </item>
+    
+    <item>
+      <title>Qt : QMultiHash and QHashIterator</title>
+      <link>http://vhanda.in/blog/2010/06/Qt-QMultiHash-and-QHashIterator/</link>
+      <pubDate>Wed, 23 Jun 2010 22:02:10 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/06/Qt-QMultiHash-and-QHashIterator/</guid>
+      
+        <description>Qt&amp;rsquo;s implementation of QMultiHash iterator is a little non-intuitive.
+One would expect a multi hash to be implemented as &amp;lt;uniqueKey, list of values&amp;gt; pairs, where the list of values could even be a set. But QMultiHash is derived from QHash, and it stores the same key multiple times. It stores a number of unique key, value pairs.
+This can cause some amount of confusion while iterating over a multi-hash with a QHashIterator.</description>
+      
+    </item>
+    
+    <item>
+      <title>Forward Declaration Woes</title>
+      <link>http://vhanda.in/blog/2010/06/Forward-Declaration-Woes/</link>
+      <pubDate>Mon, 07 Jun 2010 04:42:04 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/06/Forward-Declaration-Woes/</guid>
+      
+        <description>I&amp;rsquo;m ashamed to admit it, but I&amp;rsquo;ve never really understood forward declaration in C++. I know it&amp;rsquo;s used to speed up compile times, and it helps me fix cyclic dependency issues, but I&amp;rsquo;ve never really understood it. To this date, my approach of forward declaration has been - &amp;ldquo;Forward declare most of the things, and then include header files to fix compiler warnings.&amp;rdquo; I know that&amp;rsquo;s not the best approach, and I should have read about it earlier, but &amp;hellip;</description>
+      
+    </item>
+    
+    <item>
+      <title>Nepomuk GSoCer&#39;s Project Introduction</title>
+      <link>http://vhanda.in/blog/2010/04/Nepomuk-GSoCers-Project-Introduction/</link>
+      <pubDate>Thu, 29 Apr 2010 21:43:52 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/04/Nepomuk-GSoCers-Project-Introduction/</guid>
+      
+        <description>Is GSoCer even a word? It seems like a Gnome version of soccer :-/
+Well, this is my first post to the Planet, and I suppose an Introduction is warranted.
+My name is Vishesh Handa, and I&amp;rsquo;m currently in my second year of B.Tech in Computer Science at Galgotia&amp;rsquo;s College of Engineering, India. I&amp;rsquo;ll be officially working on Nepomuk during the summer. (Yaye!) My project is labeled Metadata backup, sync and sharing.</description>
+      
+    </item>
+    
+    <item>
+      <title>Google Summer of Code 2010</title>
+      <link>http://vhanda.in/blog/2010/04/Google-Summer-of-Code-2010/</link>
+      <pubDate>Mon, 26 Apr 2010 23:24:16 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/04/Google-Summer-of-Code-2010/</guid>
+      
+        <description>I GOT IN!!
+Link!Hurray!!</description>
+      
+    </item>
+    
+    <item>
+      <title>Got a KDE SVN account</title>
+      <link>http://vhanda.in/blog/2010/04/Got-a-KDE-SVN-account/</link>
+      <pubDate>Mon, 26 Apr 2010 17:08:36 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/04/Got-a-KDE-SVN-account/</guid>
+      
+        <description>Before I say anything else, scream with me - &amp;ldquo;Wooo Hooo&amp;rdquo;, &amp;ldquo;Yippee&amp;rdquo;. You didn&amp;rsquo;t scream, did you? :-(
+Anyway, I&amp;rsquo;m officially allowed to commit my changes now! Yaye!
+:-D</description>
+      
+    </item>
+    
+    <item>
+      <title>First KDE Contribution</title>
+      <link>http://vhanda.in/blog/2010/03/First-KDE-Contribution/</link>
+      <pubDate>Sun, 28 Mar 2010 11:50:06 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/03/First-KDE-Contribution/</guid>
+      
+        <description>Okay! So, I haven&amp;rsquo;t been posting at all. I know, I know! :-(
+BUT, I made my first actual contribution to KDE a couple of days back! Hurray! :-D The last time I tried to fix a bug, it never really got accepted or rejected. The developer of KSnapshot never returned my emails, even after I pointed out that it was my first patch. This really dissuaded by from contributing to KSnapshot, and even though I knew how to fix other bugs, I never actually got down to doing it.</description>
+      
+    </item>
+    
+    <item>
+      <title>Fixing a bug :KDE</title>
+      <link>http://vhanda.in/blog/2010/02/Fixing-a-bug-KDE/</link>
+      <pubDate>Tue, 16 Feb 2010 00:28:51 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/02/Fixing-a-bug-KDE/</guid>
+      
+        <description>EDIT: I&amp;rsquo;d just like to say that I did NOT solve the bug, and I introduced another one in the process. But it was a good learning experience. :)
+A couple of weeks back I started learning about Qt, and then about KDE. I thought it was time I start contributing, specially since I can. KDE consists of million lines of code, and getting acquainted with such a huge system is a terribly daunting task.</description>
+      
+    </item>
+    
+    <item>
+      <title>What I love about Qt</title>
+      <link>http://vhanda.in/blog/2010/02/What-I-love-about-Qt/</link>
+      <pubDate>Sat, 06 Feb 2010 18:53:08 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/02/What-I-love-about-Qt/</guid>
+      
+        <description>For the past week I&amp;rsquo;ve been learning about the Qt Framework, mainly cause I want to start contributing to KDE, instead of just bitching about what doesn&amp;rsquo;t work, or how awesome it is! :-P
+In case you&amp;rsquo;re unaware, Qt is an application framework for developing cross-platform GUI applications. TrollTech started it in 1991, and Nokia bought it in June 2008. Qt applications can even be ported to Nokia&amp;rsquo;s Symbian platform for mobiles.</description>
+      
+    </item>
+    
+    <item>
+      <title>Emacs : A summary</title>
+      <link>http://vhanda.in/blog/2010/02/Emacs-A-summary/</link>
+      <pubDate>Wed, 03 Feb 2010 19:58:36 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/02/Emacs-A-summary/</guid>
+      
+        <description>I know I&amp;rsquo;ve been posting a lot of Emacs centric posts lately, but this is the last one. For now. I had always found Emacs to be this invigorating, powerful hacker tool, which one mastered would make me a billion times more efficient. And despite everything, I still think that way, but its just not for me.
+My Emacs journey was rocky. That&amp;rsquo;s the best way to describe it. Initially I was irritated by the key bindings, then I gradually came to accept them, then I started to love them, and now I hate other applications for not having them.</description>
+      
+    </item>
+    
+    <item>
+      <title>Configuring Emacs</title>
+      <link>http://vhanda.in/blog/2010/01/Configuring-Emacs/</link>
+      <pubDate>Thu, 14 Jan 2010 04:05:29 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/01/Configuring-Emacs/</guid>
+      
+        <description>I finally started to configure Emacs, specifically for C++ and Python. And let me tell you one thing - Emacs is NOT made for newbies or people who have used graphical user interfaces their entire lives. It will be a huge, and I mean huge, learning curve. Will it be worth it? Hell, I&amp;rsquo;m still waiting to find out. And, here is another thing - If you do not know how to type properly.</description>
+      
+    </item>
+    
+    <item>
+      <title>Checking the spell checker</title>
+      <link>http://vhanda.in/blog/2010/01/Checking-the-spell-checker/</link>
+      <pubDate>Thu, 07 Jan 2010 20:41:44 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/01/Checking-the-spell-checker/</guid>
+      
+        <description>Have you checked out the Google wave video? Isn&amp;rsquo;t it just amazing. The endless possibilities, right? Frankly, the collaborative editing tools were nice, but what really amazed me was the spell checker, and the char-by-char chatting mechanism. The amount of time I spend staring at the screen - &amp;quot;**** is typing&amp;quot;. Ugh! Maybe this feature will be added to gTalk soon? Personally, I&amp;rsquo;m hoping Facebook developers will look into it, and improve their chatting mechanism or maybe they could just get their existing chatting mechanism to work flawlessly.</description>
+      
+    </item>
+    
+    <item>
+      <title>Desktops in general</title>
+      <link>http://vhanda.in/blog/2010/01/Desktops-in-general/</link>
+      <pubDate>Sun, 03 Jan 2010 00:37:09 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2010/01/Desktops-in-general/</guid>
+      
+        <description>Anyone reading this post should be warned that I&amp;rsquo;m really sleepy right now. I have this sudden urge to type about this not so random topic. I am sleepy and you shouldn&amp;rsquo;t take this post to seriously. I&amp;rsquo;m just ranting ..
+Has anyone ever realized that our Desktops in general are really static. There is nothing about it that changes that often. Okay, maybe the wallpaper. But how often does that happen?</description>
+      
+    </item>
+    
+    <item>
+      <title>Emacs Hype</title>
+      <link>http://vhanda.in/blog/2009/12/Emacs-Hype/</link>
+      <pubDate>Fri, 18 Dec 2009 13:32:38 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2009/12/Emacs-Hype/</guid>
+      
+        <description>I&amp;rsquo;ve never really understood the hype behind Emacs (and Vi), but thats probably because I&amp;rsquo;ve never had the patience to actually use them. I always plan to learn how to, and I do. I read the introduction part, familiarize myself with the keys, but thats all that ever happens. Yesterday, I planned to start using it again, because I read an article saying &amp;ldquo;How AWESOME it is&amp;rdquo;, I even started reading The Emacs Lisp Manual.</description>
+      
+    </item>
+    
+    <item>
+      <title>Animation Managing Techniques</title>
+      <link>http://vhanda.in/blog/2009/12/Animation-Managing-Techniques/</link>
+      <pubDate>Mon, 14 Dec 2009 04:03:52 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2009/12/Animation-Managing-Techniques/</guid>
+      
+        <description>I&amp;rsquo;ve never really created a full fledged platform game. I&amp;rsquo;ve tried to, once, and I worked on it for about 6 months and I managed to create something resembling a game, if you count two characters running around many platforms with the ability to jump and bump into one another. Hehe, but then that was a long time back, and I think I&amp;rsquo;ve improved since then. At least I hope so!</description>
+      
+    </item>
+    
+    <item>
+      <title>T9 Improvements</title>
+      <link>http://vhanda.in/blog/2009/11/T9-Improvements/</link>
+      <pubDate>Wed, 25 Nov 2009 23:24:27 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2009/11/T9-Improvements/</guid>
+      
+        <description>It&amp;rsquo;s just 1am over here, and for some insane reason I&amp;rsquo;m really sleepy. But I was messaging a friend (SMS not email) and it got me thinking. I love T9. Yea, that&amp;rsquo;s right T9 - predictive text. It&amp;rsquo;s just amazing. I&amp;rsquo;m one of those people who doesn&amp;rsquo;t like the SMS lingo, and prefers to type full words and sentences instead of abbreviations and word fragments! (Yea - the whole short part of SMSs are wasted on me!</description>
+      
+    </item>
+    
+    <item>
+      <title>Bluetooth Discovery</title>
+      <link>http://vhanda.in/blog/2009/11/Bluetooth-Discovery/</link>
+      <pubDate>Sat, 14 Nov 2009 23:08:26 +0000</pubDate>
+      
+      <guid>http://vhanda.in/blog/2009/11/Bluetooth-Discovery/</guid>
+      
+        <description>I just rediscovered this blog I&amp;rsquo;d found a long time back. It&amp;rsquo;s called Stevey&amp;rsquo;s Drunken Blog Rantsand it&amp;rsquo;s a really old blog. By really old I mean 4-5 years old - h . I had originally found it when I was googling &amp;lsquo;The Singleton Design Pattern&amp;rsquo; and reading up on why it&amp;rsquo;s so bad and shouldn&amp;rsquo;t be used. EVER! (Unless you&amp;rsquo;re building a logging class.) Hereis a really nice summary, in case anyone is interested.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

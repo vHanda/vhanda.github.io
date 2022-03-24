@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      Vishesh Handa
+        |
+        Tagging your Files
+
+
+      
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.95.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Vishesh Handa" />
+  <meta
+    name="description"
+    content="
+      Haven&#39;t figured out a description
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.5259d55db7b9c675f751f0865411bd84a410f3ffcb5105b8fc00b22fcb739309.css"
+      integrity="sha256-UlnVXbe5xnX3UfCGVBG9hKQQ8//LUQW4/ACyL8tzkwk="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="canonical" href="http://vhanda.in/blog/2014/07/Tagging-your-Files/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tagging your Files"/>
+<meta name="twitter:description" content="In 4.13, we moved away from a monolithic Nepomuk based system to a far more decentralized approach. Some parts of this are called Baloo, but to be honest, Baloo is not really responsible for managing your tags.
+The Nepomuk Days Back in the era of Nepomuk, every time you would tag a file. 2 things would be done -
+ A tag would be created / fetched from the central Database The tag would be linked with the file in the same database."/>
+
+
+
+  
+  <meta property="og:title" content="Tagging your Files" />
+<meta property="og:description" content="In 4.13, we moved away from a monolithic Nepomuk based system to a far more decentralized approach. Some parts of this are called Baloo, but to be honest, Baloo is not really responsible for managing your tags.
+The Nepomuk Days Back in the era of Nepomuk, every time you would tag a file. 2 things would be done -
+ A tag would be created / fetched from the central Database The tag would be linked with the file in the same database." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://vhanda.in/blog/2014/07/Tagging-your-Files/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2014-07-03T15:43:07+00:00" />
+<meta property="article:modified_time" content="2014-07-03T15:43:07+00:00" /><meta property="og:site_name" content="Vishesh Handa" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "blog",
+        "name": "Tagging your Files",
+        "headline": "Tagging your Files",
+        "alternativeHeadline": "",
+        "description": "
+      
+        In 4.13, we moved away from a monolithic Nepomuk based system to a far more decentralized approach. Some parts of this are called Baloo, but to be honest, Baloo is not really responsible for managing your tags.\nThe Nepomuk Days Back in the era of Nepomuk, every time you would tag a file. 2 things would be done -\n A tag would be created \/ fetched from the central Database The tag would be linked with the file in the same database.
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/vhanda.in\/blog\/2014\/07\/Tagging-your-Files\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Vishesh Handa"
+        },
+        "copyrightYear" : "2014",
+        "dateCreated": "2014-07-03T15:43:07.00Z",
+        "datePublished": "2014-07-03T15:43:07.00Z",
+        "dateModified": "2014-07-03T15:43:07.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Vishesh Handa",
+            "url": "http://vhanda.in",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/vhanda.infavicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+      ]
+
+    ,
+        "url" : "http:\/\/vhanda.in\/blog\/2014\/07\/Tagging-your-Files\/",
+        "wordCount" : "522",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "planetkde"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    animated fadeInDown
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/blog/images/2015/08/16/vhanda.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/">Vishesh Handa</a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Haven't figured out a description</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.linkedin.com/in/visheshhanda/" rel="me" aria-label="Linkedin" title="Linkedin">
+            <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/vhanda" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a href="https://twitter.com/visheshhanda" rel="me" aria-label="Twitter" title="Twitter">
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:me@vhanda.in" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Vishesh Handa
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Tagging Your Files</h1>
+      <p>In 4.13, we moved away from a monolithic Nepomuk based system to a far more decentralized approach. Some parts of this are called Baloo, but to be honest, Baloo is not really responsible for managing your tags.</p>
+<h2 id="the-nepomuk-days">The Nepomuk Days</h2>
+<p>Back in the era of Nepomuk, every time you would tag a file. 2 things would be done -</p>
+<ol>
+<li>A tag would be created / fetched from the central Database</li>
+<li>The tag would be linked with the file in the same database.</li>
+</ol>
+<p>While this approach worked, a massive problem with it, was that all your precious tags were always stored in a central database. Modifying these tags needed this database (virtuoso) to be running, and more importantly, if anything were to happen to this database, all your tags would be lost.</p>
+<p>This was one of the reasons why we developed backup and restore solution for Nepomuk. It was not to sure your file index, but rather these tags (and also the ratings and comments).</p>
+<p>With Baloo, we are no longer responsible for storing the tags.</p>
+<h2 id="so-then-where-are-the-tags-stored">So then where are the tags stored?</h2>
+<p>Internally, in the file system each file is typically identified by a unique number. This number then has many attributes associated with it. Some of the standard ones are - file name, permissions, user, group, etc.</p>
+<p>Modern file Systems also allow applications to store their own custom attributes called extended attribute or xattr. It&rsquo;s a fairly common thing. In fact some popular applications such as chromium, curl and wget use them. Run the following command on a file downloaded through Chromium -</p>
+<pre tabindex="0"><code>$ getfattr -d some-file-url
+# file: some-file-url
+user.xdg.origin.url=&#34;http://bugsfiles.kde.org/attachment.cgi?id=86198&#34;
+</code></pre><p>In KDE Platform, tags are similarly stored in these extended attributes. If you have tagged some file in a KDE Application, you can run the same command to try it out -</p>
+<pre tabindex="0"><code>$ getfattr -d some-file
+# file: some-file
+user.xdg.tags=&#34;TagA,TagB&#34;
+</code></pre><h2 id="why-is-this-so-great">Why is this so great?</h2>
+<ol>
+<li>Your tags are never lost. No matter what you do to the file on any environment.</li>
+<li>Baloo or another service has no play in tagging. You&rsquo;re simply talking to the file system.</li>
+<li>We&rsquo;re using a <a href="http://www.freedesktop.org/wiki/CommonExtendedAttributes">freedesktop standard</a> standard for comments. This same standard can be expanded for tags. So hopefully, we will be able to share tags among different Desktop Environments.</li>
+</ol>
+<p>While this is awesome. It does however, come at a small price. We have no way of knowing which files have which tags unless we keep some kind of index relating the two together. This is where Baloo comes in. Baloo is just the search index. If you disable Baloo, then you can still safely tag files, you just cannot know which all files have been tagged by tag x.</p>
+<p>Another small caveat is that the FAT file system does NOT support extended attributes. On those file systems we currently store the tags in a very simple sqlite db. However, with that we loose all the advantages listed above. It also means that the code to read and write tags becomes more complex.</p>
+<p>We have been considering dropping tagging support completely in non supported file systems, however, that might just be my pipe dream.</p>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/planetkde/">planetkde</a></span>
+
+
+
+
+      
+    </div>
+
+    
+  </div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Vishesh Handa
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script></body>
+</html>
