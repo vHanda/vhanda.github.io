@@ -1,4 +1,2 @@
-_site/
-.jekyll-cache/
-/node_modules
-.DS_Store
+/resources
+/.hugo_build.lock
