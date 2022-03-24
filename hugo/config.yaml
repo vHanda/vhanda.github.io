@@ -1,0 +1,7 @@
+baseURL: http://vhanda.in
+disablePathToLower: true
+languageCode: en-us
+title: Vishesh Handa's blog
+
+permalinks:
+  blog: /blog/:year/:month/:title/
