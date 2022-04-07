@@ -11,7 +11,7 @@ blog = "/blog/:year/:month/:title/"
 title = "Vishesh Handa"
 author = "Vishesh Handa"
 description = "Haven't figured out a description"
-profilePicture = "/blog/images/2015/08/16/vhanda.jpg"
+profilePicture = "/images/profile.jpg"
 
 [[params.socialIcons]]
 icon = "fab fa-linkedin"
