@@ -10,7 +10,7 @@ blog = "/blog/:year/:month/:title/"
 [params]
 title = "Vishesh Handa"
 author = "Vishesh Handa"
-description = "Haven't figured out a description"
+description = ""
 profilePicture = "/images/profile.jpg"
 
 [[params.socialIcons]]
