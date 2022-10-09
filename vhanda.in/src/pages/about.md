@@ -1,17 +1,60 @@
 ---
 layout: "../layouts/BlogPost.astro"
 title: "About Me"
-description: "Lorem ipsum dolor sit amet"
-updatedDate: "August 08 2022"
 heroImage: "/placeholder-about.jpg"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+# About
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+I'm Vishesh Handa. I build stuff and write code.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+![Vishesh Handa](/blog/images/2015/08/16/vhanda.jpg)
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+
+## Contact
+
+* **Email:** [me@vhanda.in](mailto:me@vhanda.in)
+* **LinkedIn**: [VisheshHanda](https://www.linkedin.com/in/visheshhanda/)
+* **Twitter:** [@visheshhanda](https://twitter.com/visheshhanda)
+* **GitHub:** [vHanda](https://github.com/vHanda)
+* **StackOverflow:** [vishesh-handa](http://stackoverflow.com/users/147435/vishesh-handa)
+
+## License
+
+All blog posts are under the [Creative Commons License](http://creativecommons.org/licenses/by-nc/4.0/). You are free to distribute the original and remixed versions of the articles for non-commercial purposes. If you would like to use them commercially please contact me
+
+## GPG Public Key
+
+```
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBF+dIPwBCADWhtC1oWSrZmG6gu5bbUsK0bd28kKvlCfMAL8SvrM6Di4GEidj
+38to9ctlosEQOUfKmQCU+jwbDfJjvsgZ7SRtCQOcaBvEi18ddi0E6rCU0l2PlJSk
+ap3rm8/xwg+8PliCTVuxj9bVXEoK8DCAXL1WbTFFdVcdRfBgQ76pqbCbfr5Cc0XW
+4itj/Rkg3/9MHygLMButTPWovWHjeuaxn4CYy5mg6yeYlYs5e7oco4fwpNDdJgJu
+OtVhtTFKdGTyF86UkASm9TX/knfA5iyGQOW5hlZSzof9oIB0AkS/+K3CWV7dmJcG
+sY3yQaG4AD59WWtX5+odnuxlXQFui81KwqwxABEBAAG0HFZpc2hlc2ggSGFuZGEg
+PG1lQHZoYW5kYS5pbj6JAU4EEwEIADgWIQSDLZf2TAEgJKEUCB0qElR7vka0oAUC
+X50g/AIbAwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRAqElR7vka0oBEBB/9s
+PyS+lrnxyXsRjzBDSInQHirXH51yQRHWUczsYgX6ZpyDiM4uIVRJPwXzBLiDc7xL
+7dY9NFMdRzBiKR9kW2YIV1vToKSInsR+m8FbKvhIy9JFQDDEMZ/ypUcNHd5zfum3
+rr++Op3XGEN1oziV6NrLek/zbjR2F6kbR3Ddrusdgt/4N37WAi4MprYCYfO3mHRL
+7KrybuJJ/umAuW9sOAgsDqmqGrmW8X1iLVNzMqHSZPUwu4KVT4Hst1c5xwK/K5MZ
+shsyeYjB0QnGBOAs7jGc8D/z0mth4zdTBTsVJ52GcXyomSJUpiwwOmVByNvxlxka
+QbbcL6nCGHp+u0n3Ob0MuQENBF+dIPwBCADs1dBd9PdQGeuyzAYCVAKIoabiw/IH
+CYBA4hz/uTxL7PAplYWXKEM7yKnrhphDXMWpd1uKdeqazBZn/ZRIVohm7/c8/UWy
+pXQFGB+5ZSpEJoDG+NNoMOv0y50uct30P6J+pRHkAxwyaX4dgCEifAUKTR7HJVRf
+kqVdcQ946FXutFNSYrfYZ4nFEjiaoHypnqpQVie+cOPZJKYB9E6by3kwBCsqJdJO
+4tiiz6/uPNBaikZoYLCqEotsF0YmUnQYHOIaZKiJv0CFuGeRQQpNGWhs/smbwKwE
+xi9saQPAcOXyzOYaowHU2y8jnwi1mylZybOwYzMeBVJqNOtw1shBr7pDABEBAAGJ
+ATYEGAEIACAWIQSDLZf2TAEgJKEUCB0qElR7vka0oAUCX50g/AIbDAAKCRAqElR7
+vka0oOV3B/4gRrKYNVFR6nJQ7A7c8BP1mo9p25pofFbKAbZUvap3PMvQc5wbvaDy
+uIn/52m5mljXcO6LA/9wer7SMTn9GqXMIr9EeVZHK4TXvS3PD4s07ABD1xUTfeIk
+o/SnBYr/+5VD5fDiYU4yoQ0gM5krYtcwncYJm5r3MqJWBsZj2e55zmlrnRlVpJ7k
+a3HjLxaej+/QZ4RQVEVWSHPQ9tWPJVmg1Ck7XRXOm15In5zy7FL1A7rvUZUnM3LS
+fVI3THJ4TiwV3NCwX/IoY+J0NuCXpnDDoalZw8JAxuF01coYVMuS28Qe319m0F6e
+/eHsvCTq0UAQ8eUrNGJ4tWjk6SOK3KXN
+=0aw7
+-----END PGP PUBLIC KEY BLOCK-----
+```
