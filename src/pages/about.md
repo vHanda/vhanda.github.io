@@ -3,21 +3,19 @@ layout: "../layouts/BlogPost.astro"
 title: "About Me"
 ---
 
-
 # About
 
 I'm Vishesh Handa. I build stuff and write code.
 
 ![Vishesh Handa](/images/profile.jpg)
 
-
 ## Contact
 
-* **Email:** [me@vhanda.in](mailto:me@vhanda.in)
-* **LinkedIn**: [VisheshHanda](https://www.linkedin.com/in/visheshhanda/)
-* **Twitter:** [@visheshhanda](https://twitter.com/visheshhanda)
-* **GitHub:** [vHanda](https://github.com/vHanda)
-* **StackOverflow:** [vishesh-handa](http://stackoverflow.com/users/147435/vishesh-handa)
+- **Email:** [me@vhanda.in](mailto:me@vhanda.in)
+- **LinkedIn**: [VisheshHanda](https://www.linkedin.com/in/visheshhanda/)
+- **Twitter:** [@visheshhanda](https://twitter.com/visheshhanda)
+- **GitHub:** [vHanda](https://github.com/vHanda)
+- **StackOverflow:** [vishesh-handa](http://stackoverflow.com/users/147435/vishesh-handa)
 
 ## License
 
