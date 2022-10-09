@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk without Strigi</title>
+<meta name="title" content="Nepomuk without Strigi">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/11/nepomuk-without-strigi/">
+<meta property="og:title" content="Nepomuk without Strigi">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/11/nepomuk-without-strigi/">
+<meta property="twitter:title" content="Nepomuk without Strigi">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk without Strigi</h1>
+        <time class="astro-EKSNFE3U">2012-11-07T21:36:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Strigi has always been a large part of Nepomuk. In fact a lot of users
+still do not understand the difference between the two. It’s quite
+common to see bug reports saying mentioning “Strigi/Nepomuk”. Lots of
+blog posts do the same.</p>
+<p>Strigi consists of a number of different parts. In Nepomuk we just used
+to use libstreams and libstreamanalyzer. These were pure C++ libraries.
+The great thing about Strigi is that it is based on streams, instead of
+files. So one can theoretically even extract metadata from the album
+image embedded inside an audio files. It’s very powerful. Unfortunately,
+everything comes at a price, and this increased “awesomeness” comes with
+increased complexity. Additionally with it being a pure C++ ( no Qt or
+KDE ) library, contributing is harder.</p>
+<p>For 4.10, We decided to take a very drastic change and move away from
+Strigi. There are a large number of <a href="http://mail.kde.org/pipermail/nepomuk/2012-September/003167.html">reasons</a> for doing so. Apart from
+the technical ones there was also an economic one - A large code base
+like Strigi is difficult to maintain and comes with a lot of added
+complexity.</p>
+<p>Our own solution is based only on files (not streams) thereby making it
+a lot simpler. It directly uses the Nepomuk and KDE libraries, thereby
+making integration very simple. Integrating Strigi in Nepomuk required a
+lot of code.</p>
+<p>This new file indexer currently resides in the nepomuk-core repository
+and does not have a public interface. I’m currently still debating if it
+should be public for 4.10. Write about if it gets a public interface,
+one can theoretically write plugins in other languages.</p>
+<p>So far we have 5 indexers -</p>
+<ul>
+<li>Image File - Based on Exiv2</li>
+<li>Video Files - Based of ffmpeg (We might move to gstreamer)</li>
+<li>Audio Files - Taglib</li>
+<li>PDF Files - Poppler</li>
+<li>Plain Text files</li>
+</ul>
+<p>Writing file indexers for Nepomuk is now very simple. In fact these 5
+indexers combined are just 500 lines. Here is the important part of the
+plain text extractor -</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">QTextStream ts( &#x26;file );</span></span>
+<span class="line"><span style="color: #c9d1d9">QString contents = ts.readAll();</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">int characters = contents.length();</span></span>
+<span class="line"><span style="color: #c9d1d9">int lines = contents.count( QChar('\n') );</span></span>
+<span class="line"><span style="color: #c9d1d9">int words = contents.count( QRegExp("\\b\\w+\\b") );</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">SimpleResource fileRes( resUri );</span></span>
+<span class="line"><span style="color: #c9d1d9">fileRes.addType( NFO::PlainTextDocument() );</span></span>
+<span class="line"><span style="color: #c9d1d9">fileRes.addProperty( NIE::plainTextContent(), contents );</span></span>
+<span class="line"><span style="color: #c9d1d9">fileRes.addProperty( NFO::wordCount(), words );</span></span>
+<span class="line"><span style="color: #c9d1d9">fileRes.addProperty( NFO::lineCount(), lines );</span></span>
+<span class="line"><span style="color: #c9d1d9">fileRes.addProperty( NFO::characterCount(), characters );</span></span></code></pre>
+<p>The current file indexers cover most of the commonly used files, but
+they still need to be polished. So, if you’re interested in contributing
+to Nepomuk, here is your chance.</p>
+<p>I’ve managed to <a href="http://community.kde.org/Projects/Nepomuk/FileIndexing">catalog</a> some of the different files that I know we
+support. Our current indexers support many more formats, they just need
+to be properly tested.</p>
+<p>If you’re interested in helping, you can start by running nepomuk-core,
+and manually indexing the different file formats and updating this
+<a href="http://community.kde.org/Projects/Nepomuk/FileIndexing">page</a>. If you’re a developer, feel free to checkout
+nepomuk-core, and start writing extractors. I’ve written a simple
+<a href="http://techbase.kde.org/Projects/Nepomuk/IndexingPlugin">guide</a>.</p>
+<p>Btw, all of this Nepomuk awesomeness is powered by Blue Systems!</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

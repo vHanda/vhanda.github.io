@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk Without Files</title>
+<meta name="title" content="Nepomuk Without Files">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/08/nepomuk-without-files/">
+<meta property="og:title" content="Nepomuk Without Files">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/08/nepomuk-without-files/">
+<meta property="twitter:title" content="Nepomuk Without Files">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk Without Files</h1>
+        <time class="astro-EKSNFE3U">2012-08-06T16:04:21Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Most people assume that if they switch off file indexing in Nepomuk,
+then all the nepomuk file services will get disabled. This is however
+not the case. Nepomuk consists of two services which are used to deal
+with files -</p>
+<ul>
+<li>Nepomuk File Watcher</li>
+<li>Nepomuk File Indexer</li>
+</ul>
+<p>The Nepomuk File Indexer is responsible for calling the <a href="https://projects.kde.org/projects/kdesupport/strigi/libstreamanalyzer">strigi
+plugins</a> to index the files, whereas the FileWatch service is a
+general service that monitors file move, creation and deletion events.
+Even when the <em>File Indexer</em> does not exist, files may have metadata
+attached to them - Tags, Rating and Comments. We need the File Watcher
+to update our database whenever the url of a file changes.</p>
+<p>The File Watcher internally uses a kernel API for file monitoring -
+inotify. This API, while quite easy to use, does not allow us to
+recursively watch directories, and <em>more importantly</em>, does not provide
+file move events unless we are watching both the source and the
+destination directory.</p>
+<p>We need file move events in order to track a file’s url. This results in
+us having to create inotify watches for every single directory in your
+$HOME folder. This causes a large disk load on startup and is the cause
+of one of the <a href="https://bugs.kde.org/show_bug.cgi?id=233471">critical bugs</a> in Nepomuk. And we have no solution,
+until the kernel provides us with a better API.</p>
+<p>Anyway, Nepomuk is being used in KDE PIM and Telepathy (development
+version), and none of those use cases have anything to do with files. It
+doesn’t make sense to subjugate others to pay the price of the file
+watcher, when they are not doing anything related to files. So, with
+that in mind, please add the following lines to your nepomukserverrc, if
+you do not care about files at all -</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">[Service-nepomukfilewatch]</span></span>
+<span class="line"><span style="color: #c9d1d9">autostart=false</span></span></code></pre>
+<h1 id="warning">Warning</h1>
+<p>With the Nepomuk FileWatch Service disabled, you’ll still be able to tag
+and rate your files, but these annotations will be lost if you move or
+rename the file.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

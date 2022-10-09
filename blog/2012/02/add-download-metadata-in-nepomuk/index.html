@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Add Download Metadata in Nepomuk</title>
+<meta name="title" content="Add Download Metadata in Nepomuk">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/02/add-download-metadata-in-nepomuk/">
+<meta property="og:title" content="Add Download Metadata in Nepomuk">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/02/add-download-metadata-in-nepomuk/">
+<meta property="twitter:title" content="Add Download Metadata in Nepomuk">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Add Download Metadata in Nepomuk</h1>
+        <time class="astro-EKSNFE3U">2012-02-19T18:47:21Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>I land up using <code>wget</code> a lot. I know there are better alternatives, but
+<code>wget</code>’s simplicity has won me over. Plus, with applications like
+firefox, I’m not always sure I’ll be able to continue the download.
+That’s important when I’m downloading big files, but for small files, it
+really doesn’t matter.</p>
+<p>A couple of days back, Martin and I were chatting about storing the
+metadata of a downloaded file in Nepomuk. I knew it wouldn’t be hard.
+The <a href="http://oscaf.sourceforge.net/ndo.html">ontology</a> is already in place, so it was just a matter of pushing
+the data into Nepomuk.</p>
+<p>I estimated that it would take us around half an hour to code a simple
+prototype. Yesterday we finally decided to do it.</p>
+<p>It took around an hour. :)</p>
+<p>So, we present to you -</p>
+<h1 id="nepomuk-add-download-metadata-nadm">Nepomuk Add Download Metadata (NADM)</h1>
+<p>Yes the name is weird. In fact deciding on the name was the hardest
+part. The Nepomuk code was just around 30 lines -</p>
+<p><img src="/blog/images/2012/02/19/nepomuk-download-code.jpg" alt="image"></p>
+<p>NADM is a simple executable which when presented with the file and
+download url will attach the corresponding metadata. So, people who
+prefer commands can just call it after <code>wget</code>, or write a script to do
+it automatically.</p>
+<p>For the people who use Firfox, they can head on to <a href="http://martys.typepad.com/">Martin’s blog</a> and
+look at the <a href="http://martys.typepad.com/blog/2012/02/so-you-want-to-keep-the-url-of-downloaded-file-eh.html">cool stuff he implemented</a>.</p>
+<p><strong>Source Code:</strong> <a href="http://quickgit.kde.org/index.php?p=scratch%2Fvhanda%2Fnepomuk-add-download-metadata.git&#x26;a=summary">kde:scratch/vhanda/nepomuk-add-download-metadata</a></p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

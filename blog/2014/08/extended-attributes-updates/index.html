@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Extended Attributes Updates</title>
+<meta name="title" content="Extended Attributes Updates">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2014/08/extended-attributes-updates/">
+<meta property="og:title" content="Extended Attributes Updates">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2014/08/extended-attributes-updates/">
+<meta property="twitter:title" content="Extended Attributes Updates">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Extended Attributes Updates</h1>
+        <time class="astro-EKSNFE3U">2014-08-20T11:14:29Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Recently <a href="http://vhanda.in/blog/2014/07/tagging-your-files/">I blogged</a> about how we have been reducing the number of databases in Plasma. We have been doing this by using the file system to store additional information such as tags, ratings and comments.</p>
+<p>Unfortunately, extended attributes are not supported on all file systems. The most notable ones are “FAT” and any Network File Share. With Plasma 5.1, Baloo will <strong>not</strong> support tags, ratings or comments in these file systems.</p>
+<h2 id="why-was-this-done">Why was this done?</h2>
+<p>With the previous code base, we had to maintain multiple code paths - one for xattr supported systems and one for the other ones. This complicated the code, and more importantly, it provided a false sense of “feature completeness”. We supported tags on these other file systems, but they were -</p>
+<ul>
+<li>Stored in a custom database</li>
+<li>Not portable</li>
+<li>Not user visible mechanism to backup or restore these tags</li>
+<li>The tags break horribly over Network file systems as the tags would be stored locally.</li>
+</ul>
+<p>With these reasons, we decided to drop support for them completely. It’s better to not support something than to support them this poorly.</p>
+<h2 id="advantages">Advantages?</h2>
+<p>Not only does this greatly simplify our code base. It also allowed us to easily restructure our architecture so that we can react to xattr changes.</p>
+<p>Before 5.1, when an application changed the tags, they would also need to update the Baloo specific index, which meant that the user could not, theoretically, use a non KDE application to write tags.</p>
+<p>With 5.1, we now monitor for xattr changes. This means that all applications now no longer interact with Baloo when reading or writing tags. They directly interact with the file system. This makes it really fast, and simplifies the code.</p>
+<p>The <code>baloo_file</code> process monitors the file system and updates its index whenever the tags change.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>More Nepomuk Performance Upgrades</title>
+<meta name="title" content="More Nepomuk Performance Upgrades">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2013/05/more-nepomuk-performance-upgrades/">
+<meta property="og:title" content="More Nepomuk Performance Upgrades">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2013/05/more-nepomuk-performance-upgrades/">
+<meta property="twitter:title" content="More Nepomuk Performance Upgrades">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">More Nepomuk Performance Upgrades</h1>
+        <time class="astro-EKSNFE3U">2013-05-29T17:36:05Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>As you might have read, the 4.11 release of Nepomuk is <a href="http://vhanda.in/blog/2013/04/merging-nepomuk-graphs">a lot faster</a> while doing writes and therefore indexing is going to much faster. However, read performance was nearly the same.</p>
+<h1 id="architecture">Architecture</h1>
+<p>All application communicate to Nepomuk via the Storage Service which acts like a server. It is responsible for loading the ontologies, managing virtuoso and sending change notifications. The read communications happen over a local socket whereas the writes are sent over dbus.</p>
+<p><img src="/blog/images/2013/05/29/2013-05-before.png" alt="Original Architecture"></p>
+<p>The Storage service communicates with virtuoso via odbc, which interally also uses a local socket. This architecture is quite similar to that of Akonadi.</p>
+<h1 id="cutting-the-middle-man">Cutting the middle man</h1>
+<p>I initially <a href="https://commits.kde.org/soprano/f8747bc9d8fa916907d90b7f2bf84ffba923becb">started</a> <a href="https://commits.kde.org/soprano/4437f5ab2d4448266e96fae981ba1c248727260c">with</a> <a href="https://commits.kde.org/soprano/b8fb9056c201ba8ba9645c55d024a4d42b79a20a">many</a> <a href="https://commits.kde.org/soprano/dda25ad5818ef41832a141267f1b614a8dbc6b99">optimizations</a> in Soprano where we use ODBC to communicate with virtuoso. These gave a good 30% increase in performance. However, the largest increase in performance was by removing the local socket communication between applications and the storage service.</p>
+<p><img src="/blog/images/2013/05/29/2013-05-after.png" alt="New Architecture"></p>
+<p>All applications now directly communicate via virtuoso for reading data. The writes still go through the storage service so that we can do type checking and so that we can send the change notifications.</p>
+<h1 id="performance-increase">Performance Increase</h1>
+<p>Removing the storage service from the middle results in a performance increase of 6-7x. For example - listing 50000 results goes down from ~20 seconds to about 2.5 seconds.</p>
+<p><img src="/blog/images/2013/05/29/2013-05-charts.png" alt="Charts"></p>
+<p>Aditionally, since now the applications now directly communicate with the database, the CPU load of the Storage service also goes down a lot. It no longer has to serialize and deserialize data.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

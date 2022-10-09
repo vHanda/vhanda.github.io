@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Virtuoso going crazy?</title>
+<meta name="title" content="Virtuoso going crazy?">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/02/virtuoso-going-crazy/">
+<meta property="og:title" content="Virtuoso going crazy?">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/02/virtuoso-going-crazy/">
+<meta property="twitter:title" content="Virtuoso going crazy?">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Virtuoso going crazy?</h1>
+        <time class="astro-EKSNFE3U">2012-02-07T16:29:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>There have been cases of virtuoso going a little crazy and consuming a
+lot of CPU cycles. It’s extremely frustrating. However, it’s ever more
+annoying when you have no idea what’s wrong.</p>
+<p>Most of bug reports we get just say that virtuoso is consuming too much
+CPU, and that isn’t the least bit helpful. So, here is a short guide to
+figure out what query is causing virtuoso to go crazy.</p>
+<h1 id="listing-queries">Listing Queries</h1>
+<p>Nepomuk contains a query service which is used to cache queries and to
+execute them asynchronously. We can use it at any point to figure out
+which all queries are being executed.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ qdbus org.kde.nepomuk.services.nepomukqueryservice</span></span>
+<span class="line"><span style="color: #c9d1d9">/</span></span>
+<span class="line"><span style="color: #c9d1d9">/nepomukqueryservice</span></span>
+<span class="line"><span style="color: #c9d1d9">/nepomukqueryservice/query1</span></span>
+<span class="line"><span style="color: #c9d1d9">/nepomukqueryservice/query4</span></span>
+<span class="line"><span style="color: #c9d1d9">/servicecontrol</span></span></code></pre>
+<p>Each of the <code>/nepomukqueryservice/query[n]</code> represents one query.</p>
+<h1 id="getting-the-sparql-query">Getting the SPARQL Query</h1>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ qdbus org.kde.nepomuk.services.nepomukqueryservice</span></span>
+<span class="line"><span style="color: #c9d1d9">/nepomukqueryservice/query4 queryString</span></span></code></pre>
+<p>And you’ll get something like this -</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">select distinct ?r ?v2 where { { ?r a</span></span>
+<span class="line"><span style="color: #c9d1d9">&#x3C;http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Note> . ?r</span></span>
+<span class="line"><span style="color: #c9d1d9">&#x3C;http://www.semanticdesktop.org/ontologies/2007/08/15/nao#created> ?v2 . }</span></span>
+<span class="line"><span style="color: #c9d1d9">. ?r &#x3C;http://www.semanticdesktop.org/ontologies/2007/08/15/nao#userVisible></span></span>
+<span class="line"><span style="color: #c9d1d9">?v1 . FILTER(?v1>0) . } ORDER BY DESC ( ?v2 )</span></span></code></pre>
+<p>This query is extrememly important cause without it finding the cause is
+nearly impossible.</p>
+<h1 id="killing-queries">Killing queries</h1>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ qdbus org.kde.nepomuk.services.nepomukqueryservice /nepomukqueryservice/query4 close</span></span></code></pre>
+<p>This will end the query</p>
+<p>When/If you find virtuoso consuming too much cpu, list out all the
+queries and close each of them one by one. The moment virtuoso gets
+better, you’ll have your culprit.</p>
+<p>That’s the query you should post in the bug report.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

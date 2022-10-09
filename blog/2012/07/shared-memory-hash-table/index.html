@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Shared Memory Hash Table</title>
+<meta name="title" content="Shared Memory Hash Table">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/07/shared-memory-hash-table/">
+<meta property="og:title" content="Shared Memory Hash Table">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/07/shared-memory-hash-table/">
+<meta property="twitter:title" content="Shared Memory Hash Table">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Shared Memory Hash Table</h1>
+        <time class="astro-EKSNFE3U">2012-07-19T14:16:43Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>For the last month I’ve been working on a hash table which is stored in
+shared memory and can thus easily be used across applications. This is
+ideal for simple caches of data that reside in multiple applications. My
+specific use case was the <a href="http://api.kde.org/4.x-api/kdelibs-apidocs/nepomuk-core/html/classNepomuk2_1_1Resource.html">Nepomuk Resource</a> class, which is a
+glorified cache of key value pairs and uses a hash table. A considerable
+amount of effort has gone into making sure that each application’s
+Resource classes are consistent with the other applications.</p>
+<p>I always thought something this basic would have been implemented, but I
+just couldn’t find a shared memory hash table which actually supported
+resizing.</p>
+<h1 id="basic-hash-table">Basic Hash Table</h1>
+<p>Hashing is arguably one of the most important concepts of computer
+science. If you aren’t aware of how it works here are some nice links -</p>
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Hash_table">Wikipedia Article</a></li>
+<li><a href="https://class.coursera.org/algo/lecture/preview">Video lectures from algo-class.org</a></li>
+<li><a href="http://www.catonmat.net/blog/mit-introduction-to-algorithms-part-five/">Video lectures from MIT</a></li>
+</ol>
+<h1 id="shared-memory-hash-table">Shared Memory Hash Table</h1>
+<p>When implementing a hash table in shared memory, one encounters a couple
+of problems which normal hash tables do not have to deal with. Namely
+‘named memory locations’. In the Unix world each shared memory location
+has to be given a unique identifier so that it can be accessed by other
+applications. Because of that we cannot allocate each Node/Bucket
+independently.</p>
+<h2 id="most-hash-tables-which-handle-collisions-by-chaining-look-like-this">Most hash tables, which handle collisions <a href="http://www.algolist.net/Data_structures/Hash_table/Chaining">by chaining</a> look like this</h2>
+<p><img src="/blog/images/2012/07/19/normal-hash-table.png" alt="Normal Hash Table"></p>
+<p>Allocating a new named shared memory region for each node seems like
+quite an overkill.</p>
+<h2 id="structure">Structure</h2>
+<p>Since everything has to fit inside a contiguous memory location, we need
+to structure the hash table a little differently.</p>
+<p><img src="/blog/images/2012/07/19/shared-memory-hash-table.png" alt="Shared Memory Hash Table"></p>
+<p>We use two shared memory locations - <code>HashName</code> and <code>HashData</code>. This is
+done cause a hash table is not fixed in size, and will need to be
+reallocated. With the reallocations, a new named shared memory will have
+to be created, and all existing clients would need to be informed to use
+this newly allocated location which would have a different name.</p>
+<p>Instead we use <code>HashName</code> as the unique identifier the client knows
+about, and <code>HashData</code> is internally used and can be changed when the
+hash table needs to grow in size.</p>
+<h3 id="hash-name-data">Hash Name data</h3>
+<p><img src="/blog/images/2012/07/19/hash-name.png" alt="Hash Name"></p>
+<p>The additional integer is a micro optimization. Whenever a client needs
+to use the hash table they need to make sure that they are connected to
+the appropriate shared memory, and not the old version. The code does
+that by checking if <code>HashData</code> name is the same as the same as the one
+provided by <code>HashName</code>.</p>
+<p>This results in a string comparison, which would take a certain number
+of cycles depending on the length of the string. We use an additional
+integer to indicate the if the string has changed. Integer comparisons
+are a lot faster than string comparisons.</p>
+<h3 id="internal-data">Internal Data</h3>
+<p><img src="/blog/images/2012/07/19/hash-data.png" alt="Hash Internal Data"></p>
+<p>Most of the initial members are quite obvious, but I’m still listing
+them.</p>
+<p><strong>Size</strong>: The number of elements in the hash table</p>
+<p><strong>Capacity</strong>: The total number of elements the hash table can hold</p>
+<p><strong>Invalid</strong>: The number of buckets that invalid (have been deleted)</p>
+<p><strong>Empty-Bucket</strong>: The offset of the next empty bucket which may be used
+for insertion</p>
+<p>After this comes the array of offsets referred internally as m_buckets.
+This array instead of holding the pointers to the Buckets, like in a
+traditional hash table, it holds offsets from the beginning of the next
+array.</p>
+<p>The next array is an array of Bucket s, which is internally referred to
+as m_data. This array holds the key value pairs. A typical Bucket is
+defined as -</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">struct Bucket {</span></span>
+<span class="line"><span style="color: #c9d1d9">    KeyType key;</span></span>
+<span class="line"><span style="color: #c9d1d9">    ValueType value;</span></span>
+<span class="line"><span style="color: #c9d1d9">    int hash;</span></span>
+<span class="line"><span style="color: #c9d1d9">    int link;</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span></code></pre>
+<p>The <code>link</code> member is again not a pointer, but it contains the integer
+offset to the next Bucket from the start of <code>m_data</code>.</p>
+<h2 id="insertions">Insertions</h2>
+<p>Insert operations are quite simple. The <code>key</code> is hashed into an integer,
+which after a modulo operation is used as the index.</p>
+<p>The corresponding <code>index</code> is checked in <code>m_buckets</code>. If <code>m_buckets</code> does
+not already have some value over there, there is no collision and we
+just allocate a new Bucket and plug in its offset.</p>
+<p>Allocations of new buckets are done by consuming the location given by
+<code>emptyBucket</code>, and then incrementing its value.</p>
+<p>If <code>m_buckets</code> does not have an empty value, we go to the corresponding
+Bucket, and follow its link until the link is empty. At that point we
+allocate a new node and make the link point to this new Bucket. This
+approach is almost identical to that of conventional chaining, except
+that we are using offsets instead of pointers.</p>
+<h2 id="deletions">Deletions</h2>
+<p>Delete operations are fairly similar to insertions. The index is
+procured by hashing they key, and performing a modulo operation with the
+capacity. After which m_buckets is used to get the offset of the actual
+Bucket. Instead of deleting the bucket, which would not be possible
+cause it is stored in an array, we simply mark it as invalid.</p>
+<p>The number of invalid buckets is then updated, and m_buckets[index] is
+marked as empty. Later during the resize operation, the wasted memory
+will be cleaned up.</p>
+<p><em>Note: Deletions are actually a little more complex because of
+collisions, but you just need to traverse the entire link chain, and
+mark the corresponding Bucket as invalid</em></p>
+<h2 id="resizing">Resizing</h2>
+<p>The resize operation occurs when the loadRatio of the hash table goes
+above a certain threshold. For now, I’ve set it to 0.8.</p>
+<p><strong>loadRatio</strong> = (invalid-buckets + size) / capacity</p>
+<p>When the loadRatio goes above 0.8, a new shared memory location is
+allocated. The metadata (size, capacity, invalid and empty-Bucket) are
+initially copied to the new shared memory. After which the offset for
+each bucket is recalculated ( <code>hash % newCapacity</code> ), and it is inserted
+into the new shared memory.</p>
+<p>The invalid buckets are ignored and they are not copied.</p>
+<p>Once the copying is completed, the hash data key in <code>HashName</code> is
+updated, the id is incremented. This is done so that all other
+applications using the shared memory can update their internal pointers.</p>
+<h2 id="iterating">Iterating</h2>
+<p>Iterating over the hash table is probably the only operation that is a
+lot simpler than traditional hash tables. We already have all the data
+listed as an array - <code>m_data</code>. All we need to do is iterate over it
+while discarding invalid buckets which were created by delete
+operations.</p>
+<p>Well, in theory.</p>
+<p>In practice, safely iterating over a shared hash involves copying the
+element being accessed. Mainly because another application could have
+shrunk the entire memory and your index could no longer be valid.</p>
+<p>Another possible way is to copy its contents to a <code>QHash</code>. I’ve
+implemented a simple function for that.</p>
+<h2 id="problems">Problems</h2>
+<h3 id="dynamically-allocated-types">Dynamically allocated Types</h3>
+<p>You cannot use any types which dynamically allocate memory as the <code>key</code>
+or <code>value</code>. This rules out <code>QString</code>, <code>QUrl</code>, <code>QVariant</code> (kinda) and
+most of the commonly used Qt Data Structures. If you need to use a
+string as the key, you’ll need to explicitly set an upper limit by using
+something like <code>QVarLengthArray</code>.</p>
+<p>This is a huge problem, and makes using the shared hash very difficult
+in practice.</p>
+<h2 id="source-code">Source Code</h2>
+<p>All of the code is currently lying in my scratch repository -
+<a href="http://gitweb.kde.org/index.php?p=scratch%2Fvhanda%2Fsharedhash.git&#x26;a=summary">kde:scratch/vhanda/sharedhash</a></p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

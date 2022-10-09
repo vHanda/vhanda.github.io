@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>KRunner and Plasma 5</title>
+<meta name="title" content="KRunner and Plasma 5">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2014/10/krunner-and-plasma-5/">
+<meta property="og:title" content="KRunner and Plasma 5">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2014/10/krunner-and-plasma-5/">
+<meta property="twitter:title" content="KRunner and Plasma 5">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">KRunner and Plasma 5</h1>
+        <time class="astro-EKSNFE3U">2014-10-13T16:37:16Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Let’s talk us about KRunner and what has changed over the course of Plasma 5.</p>
+<h2 id="kde-4-and-krunner">KDE 4 and KRunner</h2>
+<p>During the KDE 4 series, KRunner was an important part of the KDE Workspace, and it was tied very closely to Plasma. The KRunner library was in fact a part of the Plasma library.</p>
+<p>The entire UI was based on <a href="http://qt-project.org/doc/qt-4.8/qgraphicsscene.html">QGraphicsScene</a>. Considering that we were moving to QML for Plasma 5, the UI needed a complete rewrite.</p>
+<h2 id="milou">Milou</h2>
+<p>A little while ago, I started a small project called <a href="http://vhanda.in/blog/2014/03/introducing-milou/">Milou</a>. The idea was to create a UI more refined for searching. During that time kdelibs and therefore Plasma were frozen. Milou needed some extra features which krunner did not provide. Therefore, we implemented our own backend code separate from KRunner. It was a far far simpler implementation than KRunner and didn’t even have a proper plugin framework. The idea was to cater specifically to Milou’s needs.</p>
+<h2 id="plasma-5">Plasma 5</h2>
+<p>With Plasma 5, the KRunner UI had to be ported to QML. Given that Milou was already based on QML, and a port to Qt 5 was in progress, it seemed prudent to use its UI instead of making one from the scratch.</p>
+<p>Also, we were at a point where kdelibs had been split up into framworks and was no longer frozen.</p>
+<p>KRunner was split up into 2 parts - <a href="http://inqlude.org/libraries/krunner.html">The KRunner Framework</a>, and KRunner the executable, which typically ran with Alt + F2. This executable is still part of the Plasma workspace.</p>
+<p><img src="/blog/images/2014/10/13/plasma_krunner.jpg" alt=""></p>
+<h3 id="so-what-about-milou">So what about Milou?</h3>
+<p>KRunner and Milou were effectively merged together. The features that Milou required were added to the KRunner Framework, and Milou’s backend code was dropped.</p>
+<p>With Plasma 5, we ship both KRunner and a Plasmoid called “Search”.</p>
+<p><img src="/blog/images/2014/10/13/plasma_milou.jpg" alt=""></p>
+<p>This plasmoid internally uses the same code as KRunner. The only missing part is the previews that Milou provided. They still need to be properly ported to Qt5. We will probably have them for Plasma 5.3.</p>
+<h2 id="sprinter">Sprinter</h2>
+<p>One of the many reasons for splitting the KRunner code out from the plasma framework was that it would make it easier for the KRunner Framework to be replaced, if required.</p>
+<p>During that time, <a href="https://projects.kde.org/projects/playground/libs/sprinter">Sprinter</a> did seem like a possible alternative. My own views on this are different, but in general, it could have been considered an alternative to the KRunner Framework.</p>
+<p>There were discussions and the conclusion was that for the Plasma 5.0 release Sprinter will not be adopted as it would involve a significant amount of work for very little or no advantage.</p>
+<p>Since then Sprinter has not had <a href="https://projects.kde.org/projects/playground/libs/sprinter/repository">much development</a>. Given that the current KRunner Framework suits our needs, there are currently no plans to change.</p>
+<p>None of this is, of course, set in stone.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

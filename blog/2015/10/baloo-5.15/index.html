@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Baloo 5.15</title>
+<meta name="title" content="Baloo 5.15">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2015/10/baloo-5.15/">
+<meta property="og:title" content="Baloo 5.15">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2015/10/baloo-5.15/">
+<meta property="twitter:title" content="Baloo 5.15">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Baloo 5.15</h1>
+        <time class="astro-EKSNFE3U">2015-10-10T16:57:00Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>We have a new release of <a href="https://community.kde.org/Baloo">Baloo</a>. For those of you who don’t know about it - It’s a file indexing and searching solution for Linux. It’s quite fast, and shipped by default in KDE Plasma.</p>
+<p>Baloo is part of KDE Frameworks and has a fast 1 month release cycle. So, I’m probably going to be spamming you about the big changes in Baloo each month.</p>
+<p>The <a href="https://www.kde.org/announcements/kde-frameworks-5.15.0.php">5.15</a> release focused a lot on tooling and bug fixing.</p>
+<p>One of our main tools <code>balooctl</code> got a few additional commands -</p>
+<ul>
+<li><code>balooctl config</code> - For Managing your configuration. Before this our options were to either directly edit the config file or use the KCM shipped with Plasma.</li>
+<li><code>balooctl check</code> - Forcibly check for updates. There are cases when we fail to pick up on file system events or baloo just isn’t running. Executing this command makes baloo recheck if every file has been indexed.</li>
+</ul>
+<p>Additionally, a large number of bugs have been fixed. The largest is fixing the corruption issue with the Baloo index. Internally, Baloo uses <a href="http://symas.com/mdb/">LMDB</a> which provides us with a very efficient BTree. The Btree file is memory mapped and we get direct access to the kernel page table. This is dangerous but also makes us very efficient as we can avoid copies. One of the way of avoiding copies was to never copy words into memory and use <a href="http://doc.qt.io/qt-5/qbytearray.html#fromRawData"><code>QByteArray::fromRawData</code></a>. This worked quite well, however since <code>QByteArray</code>, like all Qt containers, is <a href="http://doc.qt.io/qt-5/implicit-sharing.html">copy-on-write</a>, the original QByteArray would be copied and used even after the original had been destroyed.</p>
+<p>For now we have <a href="https://git.reviewboard.kde.org/r/125362/">fixed this</a> by copying the memory each time. It is a little bit slower, but much safer, and this fixes a large number of crashes. Unfortunately, this also means that the previous index needs to be discarded.</p>
+<p>With Baloo 5.15, all your files will be reindexed from scratch. It’s unavoidable.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

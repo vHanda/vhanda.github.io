@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk Cleaner</title>
+<meta name="title" content="Nepomuk Cleaner">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2013/01/nepomuk-cleaner/">
+<meta property="og:title" content="Nepomuk Cleaner">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2013/01/nepomuk-cleaner/">
+<meta property="twitter:title" content="Nepomuk Cleaner">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk Cleaner</h1>
+        <time class="astro-EKSNFE3U">2013-01-30T11:36:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Nepomuk has a unique problem of maintaining an RDF store. Unlike
+traditional SQL based stores, RDF offers a very loose schema, which is a
+HUGE advantage. Unfortunately all of the current RDF stores do not
+support any form of schema enforcement. It’s up to the client code to
+make sure that the data being pushed is valid.</p>
+<p>This has resulted in a number of problems such as strings being stored
+where an integer should go.</p>
+<p>With the KDE Workspace 4.7 release, we started employing our own form of
+schema enforcement in the Nepomuk Storage Service, but the old incorrect
+data still remains. Also, as Nepomuk has evolved as a project, we have
+found better ways to store data. Since the schemas are so loose, we
+could easily store both the old and the new data without any problems on
+the database level. This obviously results in more complex client code
+which has to handle both legacy and new data.</p>
+<p>For this release, we decided to clean up the code to a certain extent
+and stop supporting some of the legacy data. We also decided to ship a
+very basic application called the ”<strong>Nepomuk Cleaner</strong>“.</p>
+<p><img src="/blog/images/2013/01/30/nepomuk-cleaner.png" alt="image"></p>
+<p>This application is responsible to port any legacy data, clear up
+incorrect data, and merge duplicate data. We recommend that all users
+run it at least once. It will result in a performance upgrade of all
+areas of Nepomuk, including a significant impact in the indexing speed
+of emails.</p>
+<p>With the 4.11 release, we’re planning to improve the interface, add more
+cleaning jobs, and make running this application mandatory. That way we
+can safely remove all the legacy code paths.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

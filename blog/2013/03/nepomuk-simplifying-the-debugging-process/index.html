@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk - Simplifying the debugging process</title>
+<meta name="title" content="Nepomuk - Simplifying the debugging process">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2013/03/nepomuk-simplifying-the-debugging-process/">
+<meta property="og:title" content="Nepomuk - Simplifying the debugging process">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2013/03/nepomuk-simplifying-the-debugging-process/">
+<meta property="twitter:title" content="Nepomuk - Simplifying the debugging process">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk - Simplifying the debugging process</h1>
+        <time class="astro-EKSNFE3U">2013-03-21T22:36:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>When something goes wrong in Nepomuk, its easy for us Nepomuk developers to track it down, but for other developers and users it can be quite hard. Even simple things like reporting which component is malfunctioning isn’t completely obvious.</p>
+<p>Over the last month, we have simplified some of the external details and added tools which will help us debug your problems so that we can fix things more easily. These all will be shipped with nepomuk-core in 4.11</p>
+<h1 id="nepomuk2service2">Nepomuk2::Service2</h1>
+<p>Nepomuk, like most modular architectures, has a number of different plugins or as we like to call them “services”. Traditionally each service would be installed as a library that would be loaded by the <code>nepomukservicestub</code> process. When most users would try to provide debugging information they mostly just provide the process name - nepomukservicestub. This doesn’t tell us much, since all the heavy lifting is done by the nepomuk services. The client libraries are mostly just light wrappers.</p>
+<p>With the 4.10 release we have 3 major services -</p>
+<ul>
+<li>Storage Service</li>
+<li>File Watch Service</li>
+<li>File Indexing Service</li>
+</ul>
+<p>Each can be started by calling the <code>nepomukservicestub</code> along with the service name. Eg - <code>nepomukservicestub nepomukfilewatch</code>.</p>
+<p>Currently in master, we have moved away from this approach and each service now installs its own process. So you should no longer see any nepomukservicestubs. Instead you’ll see a <code>nepomukstorage</code>, <code>nepomukfilewatch</code> and <code>nepomukfileindexer</code> process.</p>
+<p>This greatly simplifies the debugging process as the users can easily report which process is problematic, and starting a service is just a matter of running the correct executable.</p>
+<h1 id="tools">Tools</h1>
+<p>Restarting Nepomuk and looking into the database has traditionally required some dbus commands. These commands were always apparent to us developers, but it’s good to have some standard ways of managing Nepomuk.</p>
+<h2 id="nepomukctl">NepomukCtl</h2>
+<p>Thanks to <a href="http://g-poesia.blogspot.in/2013/02/hello-planet.html">Gabriel</a>, we now have <code>nepomukctl</code> which acts very similar to the <code>akonadictl</code>. It can be easily used to start, stop and restart Nepomuk or any individual service.</p>
+<p>{{&#x3C; highlight bash >}}
+$ nepomukctl start
+$ nepomukctl restart
+$ nepomukctl restart fileindexer
+{{&#x3C; / highlight >}}</p>
+<p>This is a great tool to check if Nepomuk is actually running.</p>
+<h2 id="nepomuk-show">Nepomuk Show</h2>
+<p>In order to view the data inside the Nepomuk database one typically needs to issue a query. This requires the developers to know SPARQL. Typically users do not want to go into so much effort when they are debugging simple stuff.</p>
+<p>Now <code>nepomukshow</code> can be used to easily view the resource information.</p>
+<p>{{&#x3C; highlight trig >}}
+$ nepomukshow Politik.mp3</p>
+<p><a href="nepomuk:/res/94e816c8-2466-4172-9bcd-0b9129cd17f8">nepomuk:/res/94e816c8-2466-4172-9bcd-0b9129cd17f8</a>
+rdf:type            nmm:MusicPiece
+rdf:type            nfo:FileDataObject
+rdf:type            nfo:Audio
+rdf:type            nie:InformationElement
+nao:created         2013-03-21T18:06:54Z
+nao:lastModified    2013-03-21T18:06:57Z
+nie:url             file:///home/vishesh/Music/Coldplay/Politik.mp3
+nie:mimeType        audio/mpeg
+nie:title           Politik
+nie:lastModified    2009-08-20T11:58:04Z
+nie:contentCreated  2002-03-21T18:06:54Z
+nie:created         2011-11-21T15:32:52Z
+nfo:averageBitrate  1.2800000000e+05
+nfo:sampleRate      4.4100000000e+04
+nfo:fileSize        5088374
+nfo:fileName        Politik.mp3
+nfo:channels        2
+nfo:duration        318
+nmm:performer       nepomuk:/res/8ffe10cc-c375-485f-8f00-b1d5b211ae7f
+nmm:trackNumber     1
+nmm:genre           20
+nmm:musicAlbum      nepomuk:/res/22c13ad9-f234-4e60-910a-9159b47cd290
+kext:indexingLevel  2</p>
+<p>{{&#x3C; / highlight >}}</p>
+<p>This is a great tool to use to see what all information has been indexed about a file or if a file has been indexed at all. It can even be used to check if an email has been indexed, though the syntax is a little different.</p>
+<p>{{&#x3C; highlight trig >}}</p>
+<p>$ nepomukshow ‘akonadi:?item=39618’</p>
+<p><a href="nepomuk:/res/b8ef2a3f-9112-4dfb-9071-4b1ce7544b1b">nepomuk:/res/b8ef2a3f-9112-4dfb-9071-4b1ce7544b1b</a>
+rdf:type            aneo:AkonadiDataObject
+rdf:type            nmo:Email
+nao:created         2012-12-11T10:29:20Z
+nao:hasSymbol       internet-mail
+nie:isPartOf        <a href="akonadi:?collection=44">akonadi:?collection=44</a>
+nie:byteSize        3998
+nie:url             <a href="akonadi:?item=39618">akonadi:?item=39618</a>
+nmo:isRead          1
+nmo:to              nepomuk:/res/cbee003e-7a36-4dd3-8978-c71c7c91d359
+aneo:akonadiItemId  39618
+nmo:messageSubject  Re: proposals marked as to be accepted in Melange now
+nmo:sentDate        2011-04-18T16:45:59Z
+nmo:from            nepomuk:/res/b900fd2e-dacf-4395-bb72-6c9ed78f5b71
+nmo:messageId       <a href="mailto:BANLkTikYWvzvGCM4-N0cOw0NdVdO8BmOpg@mail.gmail.com">BANLkTikYWvzvGCM4-N0cOw0NdVdO8BmOpg@mail.gmail.com</a></p>
+<p>{{&#x3C; / highlight >}}</p>
+<h2 id="nepomukcmd">NepomukCmd</h2>
+<p>Most developers already know of <code>nepomukcmd</code> which was an alias on top of <code>sopranocmd</code>. It could be used to query Nepomuk and contained many more soprano specific features which are now no longer applicable.</p>
+<p>We are now shipping our own <code>nepomukcmd</code> tool, which currently only supports sparql queries. It does however support a neat <code>--inference</code> option which can be used to selectively enable and disable inferencing.</p>
+<p>These tools right now are in a very early, simple but working state and could use some polishing, and extra features in the future. Contributing to these would be a great way to get involved in Nepomuk. Message me for more details.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

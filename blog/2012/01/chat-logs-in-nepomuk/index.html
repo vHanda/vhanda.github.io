@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Chat logs in Nepomuk</title>
+<meta name="title" content="Chat logs in Nepomuk">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/01/chat-logs-in-nepomuk/">
+<meta property="og:title" content="Chat logs in Nepomuk">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/01/chat-logs-in-nepomuk/">
+<meta property="twitter:title" content="Chat logs in Nepomuk">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Chat logs in Nepomuk</h1>
+        <time class="astro-EKSNFE3U">2012-01-21T15:33:12Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Prototyping is fun. You don’t need to care about proper libraries. Your
+code can be absolutely horrible, cause “Hey! It’s just a prototype!”</p>
+<p>Yesterday, I started the process of importing my entire gTalk chat
+history into Nepomuk. It turned out to be a lot simpler that I thought
+it would be.</p>
+<h1 id="step-1-get-the-chat-logs">Step 1: Get the chat logs</h1>
+<p>GMail fortunately allows you to export your chat logs via SMTP. They
+don’t implement the traditional <a href="http://xmpp.org/extensions/xep-0136.html">XMPP-0136</a> for fetching offline
+messages. But at least, unlike Facebook, they provide a mechanism.</p>
+<p>I landed up using <a href="http://pyropus.ca/software/getmail/">getmail</a> for importing all chat logs.</p>
+<p><strong>getmailrc</strong> :</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">[retriever]</span></span>
+<span class="line"><span style="color: #c9d1d9">type = SimpleIMAPSSLRetriever</span></span>
+<span class="line"><span style="color: #c9d1d9">server = imap.gmail.com</span></span>
+<span class="line"><span style="color: #c9d1d9">mailboxes = ("[Gmail]/Chats",)</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">username = *****@gmail.com</span></span>
+<span class="line"><span style="color: #c9d1d9">password = ********</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">[destination]</span></span>
+<span class="line"><span style="color: #c9d1d9">type = Maildir</span></span>
+<span class="line"><span style="color: #c9d1d9">path = ~/Chats/</span></span></code></pre>
+<p>I originally wanted to use <a href="https://github.com/nicolas33/offlineimap">offlineimap</a> but they seem to have a
+problem fetching the Chats in GMail.</p>
+<p><img src="/blog/images/2012/01/21/chat-log-emails.jpeg" alt="There were a lot of logs!"></p>
+<h1 id="step-2-write-a-parser">Step 2: Write a parser</h1>
+<p>The chat logs are presented in a custom xml format encapsulated in the
+email. The content was in the traditional <a href="http://en.wikipedia.org/wiki/Quoted-printable">quoted-printable</a> format,
+as most emails are. Writing a parser didn’t take too long. Plus, with
+the new Nepomuk Datamanagement APIs, pushing them into Nepomuk was even
+simpler.</p>
+<p><img src="/blog/images/2012/01/21/pushing-chat-logs.jpeg" alt="The API is fun to use!"></p>
+<p>Ideally, this should be implemented as a strigi analyzer, so that it
+becomes a part of Nepomuk’s Indexing framwork. But hey! It’s a
+prototype!</p>
+<h1 id="whats-the-point-of-having-your-chat-logs-in-nepomuk">What’s the point of having your chat logs in Nepomuk</h1>
+<p>Well, for one, the Telepathians can use this to show chat logs. We’ll
+obviously need a better way of importing the chat logs. Manually calling
+<code>nepomuk-chat-feeder</code> obviously isn’t an option. So we’ll need to find a
+proper way of fetching chat logs.</p>
+<p>The second, more personal, use is that I finally have a usable dataset
+to determine important people in my life - based on the chat frequency
+and timings. AFAIK Facebook internally uses a combination of likes,
+comments, chat history and stalking to determine how important a person
+is to you, and accordingly place them higher in the auto-completion list
+and chat sidebar.</p>
+<p>This obviously has many other applications like altering the chat list
+based on the people you converse with when you’re doing one activity.</p>
+<p><strong>Source Code:</strong> <a href="http://quickgit.kde.org/?p=scratch%2Fvhanda%2Fnepomuk-gtalk-chatlogs.git&#x26;a=summary">kde:scratch/vhanda/nepomuk-gtalk-chatlogs</a></p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

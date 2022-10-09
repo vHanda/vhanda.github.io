@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>What&#39;s new with Nepomuk 4.10</title>
+<meta name="title" content="What's new with Nepomuk 4.10">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2013/02/whats-new-with-nepomuk-4.10/">
+<meta property="og:title" content="What's new with Nepomuk 4.10">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2013/02/whats-new-with-nepomuk-4.10/">
+<meta property="twitter:title" content="What's new with Nepomuk 4.10">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">What&#39;s new with Nepomuk 4.10</h1>
+        <time class="astro-EKSNFE3U">2013-02-01T19:36:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>I’ve blogged about some of the more prominent changes in this new
+Nepomuk release. I thought it would be a good idea to document all the
+changes, which Nepomuk has gone through thanks to Blue Systems!</p>
+<p><img src="/blog/images/2013/02/01/nepomuk.png" alt="image"></p>
+<h1 id="file-indexing">File Indexing</h1>
+<p>As the release announcement has been saying, the file indexer has
+undergone the maximum number of changes.</p>
+<h2 id="new-double-queue-architecture">New Double Queue Architecture</h2>
+<p>We’ve <a href="http://vhanda.in/blog/2013/01/nepomuk-indexing-architecture/">split the working</a> of the indexer into two parts - The first
+basic indexing and second full file indexing. The basic indexing quickly
+indexes the basic information about the file such as the filename and
+mimetype. This allows us to always at least answer simple queries. The
+other queue, which is only run when the user is idle, extracts the full
+information about the file.</p>
+<h2 id="new-file-indexer">New File Indexer</h2>
+<p>We’ve had some problems with Strigi earlier. With 4.10, we have finally
+decided to <a href="http://vhanda.in/blog/2012/11/nepomuk-without-strigi/">release our own solution</a>. Our solution is arguably
+technologically inferior, but it’s more maintainable and, for now,
+provides a better user experience.</p>
+<h2 id="mimetype-filtering">Mimetype Filtering</h2>
+<p>One of the advantages of moving to this new file indexing architecture
+is that mimetypes are a very important part. All of the file indexing
+plugins use mimetypes to identify which types of files they can index.
+With this, we decided to allow the user to control the type of files
+that are indexed.</p>
+<p><img src="/blog/images/2013/02/01/nepomuk-mimetype.jpg" alt="image"></p>
+<p>By default, source code is now no longer indexed. Common stuff like
+Documents, Images, Audio and Videos are.</p>
+<h1 id="kioslave-changes">KioSlave changes</h1>
+<p>Till the 4.9 release, the kioslave code hadn’t changed much. With 4.9.1,
+we managed to optimize some of the code. The 4.10 release however takes
+this to an entirely different level.</p>
+<h2 id="massive-optimizations">Massive Optimizations</h2>
+<p>The ‘nepomuksearch’ tagging slave could initially show both non-file and
+file data. This means that it would also occasionally show contacts,
+albums and other details. Selecting any of those would result in another
+search for resources related to that contact. For this release, we
+decided to optimize for the most common use case of listing files.</p>
+<p>The ‘nepomuksearch’ kioslave, and all other nepomuk kioslaves, now no
+longer show any result which does not have a URL. This coupled with a
+LOT of other optimizations, has now yielded a super fast kioslave which
+can display thousands of results in under a second.</p>
+<p>There is also some <a href="http://userbase">interesting userbase documentation</a> about custom
+queries on the nepomuksearch kioslave.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

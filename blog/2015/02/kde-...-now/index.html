@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>KDE ... NOW</title>
+<meta name="title" content="KDE ... NOW">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2015/02/kde-...-now/">
+<meta property="og:title" content="KDE ... NOW">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2015/02/kde-...-now/">
+<meta property="twitter:title" content="KDE ... NOW">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">KDE ... NOW</h1>
+        <time class="astro-EKSNFE3U">2015-02-12T21:27:48Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Last week I got decently annoyed by having to lookup my flight information before FOSDEM. Also, you always forget when your flight is afterwards.</p>
+<p>Google started “Google Now” which aims to provide useful information about current events through your Android phone. But that does involve it going through your email.</p>
+<p>With that in mind, as a weekend project, I started to write a replacement. Initially, I started with just scrapping the information from the emails. I assumed they’ll just be some 100 popular airlines. However, after writing the first couple of extractors I stumbled on a widely used <a href="https://developers.google.com/gmail/markup/reference/flight-reservation">schema</a>.</p>
+<p>This is mostly just a weekend hack, but it does seem like an interesting project to continue. Specially given the large number of information we can extract.</p>
+<p><img src="/blog/images/2015/02/12/flightinformation.jpeg" alt=""></p>
+<p>A <strong>Flight Information</strong> plasmoid, which shows information about future flights.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>We have a <code>kdenowd</code> daemon which goes through your IMAP server, fetches yours emails, and tries to extract Flight Information from the emails. A lot of airlines seem to use this standard schema in their emails, but for those which do not, I started writing scrappers. We will eventually need to use a combination of both.</p>
+<p>The Akonadi-Qt5 release isn’t quite ready now. So we’re directly creating our own IMAP connection. This is not ideal, as writing an IMAP client is not trivial, but as a starting point, this seems to work well.</p>
+<h3 id="trying-it-out">Trying it out</h3>
+<p>The code is available in my scratch repository - <a href="http://quickgit.kde.org/?p=scratch%2Fvhanda%2Fkde-now.git">kde:scratch/vhanda/kde-now</a>. You’ll need to run the <code>kdenowd</code> process with the correct IMAP Server information, and then add the plasmoid.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

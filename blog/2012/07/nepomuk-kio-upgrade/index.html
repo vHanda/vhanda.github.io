@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk KIO Upgrade</title>
+<meta name="title" content="Nepomuk KIO Upgrade">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/07/nepomuk-kio-upgrade/">
+<meta property="og:title" content="Nepomuk KIO Upgrade">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/07/nepomuk-kio-upgrade/">
+<meta property="twitter:title" content="Nepomuk KIO Upgrade">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk KIO Upgrade</h1>
+        <time class="astro-EKSNFE3U">2012-07-10T19:16:43Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>In case you haven’t been running trunk, or haven’t tried out the latest
+release candidates (you really should), you should know that dolphin has
+had a lot of major improvements since the last release. One of the
+features I really love is better Nepomuk integration. This enhanced user
+visibility lands up exposing bottlenecks, and performance problems.
+That’s exactly what happened with the nepomuk search kio slave.</p>
+<p><img src="/blog/images/2012/07/10/dolphin_sidebar.png" alt="The Nepomuk Architecture"></p>
+<p>Dolphin exposes this neat sidebar which allows users to list out the
+different kind of files - Documents, Images, Audio and Videos. A little
+more than a month ago, I tried it out and was quite disappointed with
+both the performance and the results. It was quite normal for dolphin to
+popup a message saying that ‘nepomuksearch’ kio-slave had crashed.</p>
+<p>Needless to say, RC2 fixes most of the issues and the performance is
+quite good.</p>
+<h1 id="the-original-architecture">The Original Architecture</h1>
+<p><img src="/blog/images/2012/07/10/Nepomuk_KIO_old_Architecture.png" alt="The Nepomuk Architecture"></p>
+<h2 id="step-1---remove-threading">Step 1 - Remove threading</h2>
+<p>If you look closely you can see the large number of useless threads that
+are spawned in the process of one query. The kioslave spawns a separate
+thread in the kio_nepomuksearch process, and then the <em>Query Service</em>
+spawns another thread on which it actually runs the query and send the
+results back via dbus.</p>
+<p>The thread of the nepomuk kioslave is just running an event loop waiting
+for it to get the results over DBus. This is especially useless, cause
+kioslaves can be blocking.</p>
+<h2 id="step-2---skip-the-middle-man">Step 2 - Skip the middle man</h2>
+<p>The second big bottle neck is the transmission of the query results over
+DBus via the queryservice, and the extra thread that is spawned cause of
+that. You might just ask - “What the point of the query service
+anyway?“. Well it exists to cache query results and to provide query
+updates, so it isn’t a complete waste.</p>
+<p>However, the extra overhead didn’t seem worth it.</p>
+<h1 id="the-current-architecture">The Current Architecture</h1>
+<p><img src="/blog/images/2012/07/10/Nepomuk_KIO_new_Architecture.png" alt="The Nepomuk Architecture"></p>
+<p>The extra threading has been removed from the kioslave, and it now
+directly communicates with the storage service to run the queries. It
+seems a lot cleaner this way, and is a lot faster.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

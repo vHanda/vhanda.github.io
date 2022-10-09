@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Better unit tests</title>
+<meta name="title" content="Better unit tests">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/07/better-unit-tests/">
+<meta property="og:title" content="Better unit tests">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/07/better-unit-tests/">
+<meta property="twitter:title" content="Better unit tests">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Better unit tests</h1>
+        <time class="astro-EKSNFE3U">2012-07-26T21:51:03Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>A little while ago, before <a href="http://akademy2012.kde.org/">Akademy</a>, I started implementing the
+Shared Hash Memory table, so as to improve Nepomuk’s architecture.
+Architectural designs really interest me. I decided to be smart about
+it, if I was going to refactor some of the main <a href="http://api.kde.org/4.x-api/kdelibs-apidocs/nepomuk-core/html/classNepomuk2_1_1Resource.html">classes</a>, there was a
+very high chance I would break something. The code is quite complex.</p>
+<p>I needed a way to make sure I was on the right track.</p>
+<p>The obvious conclusion was that we need comprehensive unit tests for
+Nepomuk. Unfortunately Nepomuk architecture is such that unit testing is
+a little hard. Quite often one requires a full blown nepomuk storage
+service along with a dbus session running, just in order to run simple
+tests.</p>
+<p>This is where my <a href="http://vhanda.in/blog/2012/03/nepomuk-test-framework/">Test Framework</a> came into play.</p>
+<p>Last week, the Test Library was finally merged into nepomuk-core (4.9
+and master), and I wrote a set of comprehensive tests for the Resource
+class, which is <strong>the most widely used</strong> class in Nepomuk.</p>
+<p>The good or bad part (depending on your viewpoint) is that the tests
+were so comprehensive that only about 20% of the tests actually passed.
+Ad-hoc testing cannot spot all issues, and automated testing is able to
+find more problems that slip past anyone.</p>
+<p>A couple of days, and about 20 commits later, we have all the important
+tests passing. We are making massive steps forward in improving test
+quality, though there’s always more that can be done</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

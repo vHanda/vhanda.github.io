@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Faster Nepomuk Queries</title>
+<meta name="title" content="Faster Nepomuk Queries">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/08/faster-nepomuk-queries/">
+<meta property="og:title" content="Faster Nepomuk Queries">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/08/faster-nepomuk-queries/">
+<meta property="twitter:title" content="Faster Nepomuk Queries">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Faster Nepomuk Queries</h1>
+        <time class="astro-EKSNFE3U">2012-08-21T20:03:59Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Nepomuk has a very decentralized architecture where the different
+components exist as different processes. They are all variants of the
+same executable - <code>nepomukservicestub</code>. This servicestub loads
+appropriate service plugin. The main reason for doing this was
+stability. If one of the components crashes, then it doesn’t take all
+the other components with it.</p>
+<p>Unfortunately this architecture doesn’t hold very well when the
+different components need to communicate with one another. In that case
+they need to use complex methods such as dbus or local sockets. Another
+problem is the increased memory consumption cause each process has its
+own internal cache (Nepomuk stuff) and other KDE specific stuff.</p>
+<p><img src="/blog/images/2012/08/21/query-storage-separate.png" alt="image"></p>
+<p>If you <a href="http://www.vhanda.in/blog/2012/08/nepomuk-without-files/">ignore file handling</a> in Nepomuk, we have two main services -</p>
+<ul>
+<li>Storage Service</li>
+<li>Query Service.</li>
+</ul>
+<p>The Storage Service is responsible for managing the ontologies,
+initializing virtuoso, and other data management functions. The
+QueryService exists for caching queries and running them in a separate
+thread.</p>
+<p>Now the Query Service obviously need to access the virtuoso database,
+and for that it needs to go through the storage service. This
+communication happens through a local socket. The same socket which all
+other applications use to access Nepomuk.</p>
+<p>Last week, I finally merged the query service into the storage service.</p>
+<p><img src="/blog/images/2012/08/21/query-storage-merged.png" alt="image"></p>
+<p>I was aiming for a small memory decrease, and a slight performance
+upgrade on the queries. Boy, was I wrong! The additional local socket
+seems to have been a huge bottleneck.</p>
+<p>Here are some benchmarks listing about 12,500 resources.</p>
+<p><img src="/blog/images/2012/08/21/queryservice-benchmarks.png" alt="image"></p>
+<p>There are still many more performance upgrades that can be done, but
+this seemed like a good place to start :)</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

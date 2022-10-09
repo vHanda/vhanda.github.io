@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Sharing your Nepomuk Repository</title>
+<meta name="title" content="Sharing your Nepomuk Repository">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2011/07/sharing-your-nepomuk-repository/">
+<meta property="og:title" content="Sharing your Nepomuk Repository">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2011/07/sharing-your-nepomuk-repository/">
+<meta property="twitter:title" content="Sharing your Nepomuk Repository">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Sharing your Nepomuk Repository</h1>
+        <time class="astro-EKSNFE3U">2011-07-06T18:18:10Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>How many of you know that <strong>Nepomuk</strong> is an abbreviation? Oh! You knew that? Well, you have 5 seconds, can you tell me its full form? I doubt it. Unless your fingers are really fast, and you managed to open the <a href="http://en.wikipedia.org/wiki/NEPOMUK_%28framework%29">Wikipedia article</a> of Nepomuk in less than 5 seconds.</p>
+<p><img src="/blog/images/2011/07/06/nepomuk.png" alt="Don&#x27;t we have a pretty logo?"></p>
+<p>The ‘N’ in Nepomuk stands for Networked. And that is exactly what I’ve been working on over the last week. So far it works quite well over a local Network.</p>
+<h2 id="metadata-sharing">Metadata Sharing?</h2>
+<p>One of the most requested feature in Nepomuk is the ability to share the data present. Specially when you’re dealing with real world data like Projects, Events, and People.</p>
+<p>One of the most obvious use cases that I can think of is sharing of tags - Not only file tags, but maybe even photo tags. This should be possible the moment we export the tags from digikam into Nepomuk properly.</p>
+<p>Right now, I’m able to query for entire Desktop from my laptop. I never realized that I have so many songs and movies.</p>
+<h2 id="example-code">Example Code</h2>
+<p>If you’ve ever tried to query the Nepomuk Repository, you generally use the QueryServiceClient. I’ve tried to replicate a similar API.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #8B949E">// Construct a simple query</span></span>
+<span class="line"><span style="color: #FFA657">Nepomuk</span><span style="color: #C9D1D9">::</span><span style="color: #FFA657">Query</span><span style="color: #C9D1D9">::</span><span style="color: #FFA657">LiteralTerm</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">lt</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">QLatin1String</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"Maroon 5"</span><span style="color: #C9D1D9">));</span></span>
+<span class="line"><span style="color: #FFA657">Nepomuk</span><span style="color: #C9D1D9">::</span><span style="color: #FFA657">Query</span><span style="color: #C9D1D9">::</span><span style="color: #FFA657">Query</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">q</span><span style="color: #C9D1D9">( </span><span style="color: #FFA657">lt</span><span style="color: #C9D1D9"> );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Query all the available repositories</span></span>
+<span class="line"><span style="color: #D2A8FF">foreach</span><span style="color: #C9D1D9">( </span><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> QUrl</span><span style="color: #FF7B72">&#x26;</span><span style="color: #C9D1D9"> repositoryUri, repoList ) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">Nepomuk</span><span style="color: #C9D1D9">::NetworkQueryServiceClient </span><span style="color: #FF7B72">*</span><span style="color: #C9D1D9">nqsc </span><span style="color: #FF7B72">=</span></span>
+<span class="line"><span style="color: #C9D1D9">           </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Nepomuk</span><span style="color: #C9D1D9">::</span><span style="color: #D2A8FF">NetworkQueryServiceClient</span><span style="color: #C9D1D9">( repositoryUri, </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9"> );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">connect</span><span style="color: #C9D1D9">( nqsc, </span><span style="color: #D2A8FF">SIGNAL</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">newEntries</span><span style="color: #C9D1D9">(QList</span><span style="color: #FF7B72">&#x3C;</span><span style="color: #FFA657">Nepomuk</span><span style="color: #C9D1D9">::</span><span style="color: #FFA657">Query</span><span style="color: #C9D1D9">::Result</span><span style="color: #FF7B72">></span><span style="color: #C9D1D9">)),</span></span>
+<span class="line"><span style="color: #C9D1D9">             </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">SLOT</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">newEntries</span><span style="color: #C9D1D9">(QList</span><span style="color: #FF7B72">&#x3C;</span><span style="color: #FFA657">Nepomuk</span><span style="color: #C9D1D9">::</span><span style="color: #FFA657">Query</span><span style="color: #C9D1D9">::Result</span><span style="color: #FF7B72">></span><span style="color: #C9D1D9">)) );</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #D2A8FF">connect</span><span style="color: #C9D1D9">( nqsc, </span><span style="color: #D2A8FF">SIGNAL</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">resultCount</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">)),</span></span>
+<span class="line"><span style="color: #C9D1D9">             </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9">, </span><span style="color: #D2A8FF">SLOT</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">resultCount</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">int</span><span style="color: #C9D1D9">)) );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    nqsc-></span><span style="color: #D2A8FF">query</span><span style="color: #C9D1D9">( q );</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span></code></pre>
+<h2 id="current-architecture">Current Architecture</h2>
+<p>Nepomuk Sharing is still in its very early stages. The <a href="http://sourceforge.net/apps/trac/oscaf/ticket/100">ontolgies</a> aren’t even finalized. So, all of what I tell, is susceptible to change. And probably will change.</p>
+<p>I’ve currently only implemented sharing over a local network, so that is all I’m going to be talking about.</p>
+<p>The process is broadly divided into 3 parts:</p>
+<ul>
+<li>Repository Identification</li>
+<li>Finding other Repositories</li>
+<li>Communicating with them</li>
+</ul>
+<h4 id="repository-identification">Repository Identification</h4>
+<p>We need some unique way of identifying each repository, for that we use a GUUID. Each Nepomuk Repository would contain a resource of type nso:Repository, which contains its UUID.</p>
+<p>{{&#x3C; highlight trig >}}</p>
+<p><a href="nepomuk:/res/dbc5a9c6-050f-4d1e-b720-cd8b43c23b69">nepomuk:/res/dbc5a9c6-050f-4d1e-b720-cd8b43c23b69</a>
+rdf:type nso:Repository ;
+nso:repositoryIdentifier {3ef85996-a231-4183-8ed0-140b067793d0} ;
+nso:belongsTo nepomuk:/myself .</p>
+<p>{{&#x3C; / highlight >}}</p>
+<p>A Repository can belong to a certain person. So, you can query someone’s laptop/phone/sever, or just specify that person, and let Nepomuk query all the available devices.</p>
+<h4 id="finding-other-repositories">Finding other Repositories</h4>
+<p>I chose the simplest mechanism for finding existing repositories over a local Network - DNS Service Discovery. If you already know about it, then skip the next paragraph.</p>
+<p><a href="http://en.wikipedia.org/wiki/Zero_configuration_networking">ZeroConf</a> is a set of techniques that provide 3 core technologies - Link Local addressing, multicast DNS ( hostname resolution without a DNS server ), and service discovery through DNS.</p>
+<p><img src="/blog/images/2011/07/06/200px-Avahi-logo.svg.png" alt="The Avahi logo"></p>
+<p>Service Discovery or DNS-SD allows us to browse what all services are available over a network. Each machine broadcasts ( actually multicasts ) the services that it provides using simple DNS records. Avahi, which is a free implementation of the ZeroConf protocol, provides DNS-SD. The Nepomuk Metadata sharing service advertises a <a href="http://en.wikipedia.org/wiki/SRV_record">DNS SRV</a> type <strong><code>_nepomuk._tcp</code></strong>. This is done using <a href="http://api.kde.org/4.x-api/kdelibs-apidocs/dnssd/html/index.html">KDE’s DNSSD library</a>.</p>
+<h4 id="communicating">Communicating</h4>
+<p>For communicating with other repositories, I’ve implemented a simple HTTP server, which acts a slight variant of a <a href="http://www.w3.org/TR/rdf-sparql-protocol/">SPARQL endpoint</a>. Conventionally Sparql endpoints respond to requests of the form:</p>
+<p><code>GET /sparql/query=EncodedQuery HTTP/1.1</code></p>
+<p>In Nepomuk we encourage the use the Nepomuk Query API, which allows us to optimize the queries internally, and create them programmatically. The Nepomuk endpoint accepts requests of the form</p>
+<p><code>GET /nepomuk/query=EncodedNepomukQuery HTTP/1.1</code></p>
+<p>The query results are returned in a standard <a href="http://www.w3.org/TR/rdf-sparql-XMLres/">application/sparql-results+xml</a> format.</p>
+<h2 id="trying-it-out">Trying it out</h2>
+<h3 id="git-repository">Git repository</h3>
+<p>The code is available at <a href="http://quickgit.kde.org/?p=scratch%2Fvhanda%2Fnepomuk-metadata-sharing.git&#x26;a=summary">kde:/scratch/vhanda/nepomuk-metadata-sharing</a>. As of posting this the HEAD is at <strong><code>b98205a0600908fe0e8dba49ec8fb9e78edeef5b</code></strong>. You might want to use that version, as I give no guarantee that I won’t completely change everything. This is still totally experimental.</p>
+<p>You’ll need to use the “nsoRepository” branch from the Shared Desktop Ontologies.</p>
+<h3 id="running">Running</h3>
+<p>The standard <code>cmakekde</code> should do the trick.</p>
+<p>In order to run the code you will need Avahi running, along with mDNS, so that you can resolve local addresses like <code>vdek.local</code>. Run, the service via</p>
+<p><code>nepomukservicestub nepomukmetadatasharing</code></p>
+<p>on each machine whose repository you want to share. You can run queries with the test app -</p>
+<p><strong><code>nepomuk-sharing-test</code></strong> <code>'hasTag:Fire AND hasTag:Water'</code></p>
+<p>or use the NetworkQueryServiceClient.</p>
+<h2 id="the-future">The Future</h2>
+<p>Over the next couple of weeks, I’m hoping to implement some privacy controls, and allow the queries to be sent over XMPP via Telepathy.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

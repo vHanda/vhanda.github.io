@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>The Nepomuk BOF</title>
+<meta name="title" content="The Nepomuk BOF">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/07/the-nepomuk-bof/">
+<meta property="og:title" content="The Nepomuk BOF">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/07/the-nepomuk-bof/">
+<meta property="twitter:title" content="The Nepomuk BOF">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">The Nepomuk BOF</h1>
+        <time class="astro-EKSNFE3U">2012-07-05T16:16:43Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>For those of you who don’t know, I’m currently at Tallinn, Estonia for
+<a href="http://akademy2012.kde.org/">Akademy 2012</a>.</p>
+<p>Here at Akademy, yesterday was an amazing day for Nepomuk. Early morning
+we had a <a href="http://community.kde.org/Akademy/2012/Wednesday">Nepomuk BOF</a> titled ’<strong>Constructive Criticism - Prioritizing
+Nepomuk development</strong>’, and it was really good. I wasn’t sure if I
+shouldn’t have named it such, cause that might have ended in people just
+coming and complaining, but surprisingly everyone was really nice and
+constructive.</p>
+<p><img src="http://akademy2012.kde.org/" alt="Akademy 2012"></p>
+<p>During the start of the sprint, we decided to list down each of the
+Nepomuk components along with their respective developers. Once that was
+done, I just explained what we are currently working on, and then
+‘request for comments’ period started.</p>
+<p>The initial discussion was related to the PIM feeders and how they still
+regularly cause high cpu spikes. I don’t personally use PIM, and since
+<a href="http://cmollekopf.wordpress.com/">Christian</a> is that maintainer of that code base, he handled most of
+the comments. The overall conclusion was that we need to schedule the
+indexing at a better time. For this, we would need some help from Solid
+for better idle detection.</p>
+<p>After this we started with a discussion of the most user visible
+application using Nepomuk — Dolphin. For one it should only be showing
+files, and the listing to the query results should be a lot faster.
+Maybe even something along the lines of on-demand loading. And finally,
+we talked about how it is not possible to search through both the file
+name and content at the same time.</p>
+<p><img src="/blog/images/2012/07/05/Akademy2012_NepomukBof.jpg" alt="The Nepomuk BOF WhiteBoard"></p>
+<p>With this discussion we obviously started discussing the current search
+interfaces. We wanted a separate plasmoid just for searching (something
+similar to Crystal), but someone mentioned that we already have 2 places
+for searching in KDE - krunner and kickoff, and both of them do not show
+the same results, which can be confusing. <a href="http://www.notmart.org">Marco</a>, from Plasma,
+mentioned that maybe krunner could be modified to show the search
+results in a better way. Eventually, we concluded that this is an open
+discussion which still needs a proper solution.</p>
+<p>A couple of other issues that were discussed we better technical
+documentation, ontologies, old data cleanup and migration. We also
+discussed shipping meta data writeback, which is the process of writing
+the Nepomuk Metadata back into files/Akonadi/some other representation.</p>
+<p>We then discussed the state of Nepomuk and media players - Amarok,
+Plasma Media Center, and Bangarang, and how there may be a need for a
+central library for managing multimedia via Nepomuk.And finally went on
+to discuss the current state of Digikam and Nepomuk integration which is
+very old, and needs a lot of work.</p>
+<p>And that was it. Well, not quite.</p>
+<p>Later during the day, after the Randa sprint, we had an impromptu
+meeting discussing the state of meta-contacts and its support in both
+Telepathy and Akonadi. Fortunately, we had all interested parties
+present - Telepathy and Akonadi developers, and the discussion went on
+for quite some time.</p>
+<p><img src="/blog/images/2012/07/05/Akademy2012_MetaContacts.jpg" alt="Meta Contact Whiteboard"></p>
+<p>My initial approach for solving meta-contacts using the ontologies had
+some flaws. Having all the interested developers discuss it out and come
+to a conclusion was amazing. It’s difficult to get started with
+implementing proper Nepomuk support for Telepathy if we all cannot
+decide on how to use the ontologies.</p>
+<p>We even went on to discuss semi-automatic contact merging and a lot of
+stuff related to Telepathy. Overall, a really productive day!</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

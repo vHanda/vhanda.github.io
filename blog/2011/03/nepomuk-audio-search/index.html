@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk Audio Search</title>
+<meta name="title" content="Nepomuk Audio Search">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2011/03/nepomuk-audio-search/">
+<meta property="og:title" content="Nepomuk Audio Search">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2011/03/nepomuk-audio-search/">
+<meta property="twitter:title" content="Nepomuk Audio Search">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk Audio Search</h1>
+        <time class="astro-EKSNFE3U">2011-03-12T07:33:42Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>This is something I showcased at my talk in <a href="http://conf.kde.in/" target="_blank">conf.kde.in</a>. I coded it in a couple of hours. It is a lot of fun to play around with! I can’t wait to index all my videos this way.</p>
+<p>youtube d41bmTSogA4</p>
+<p>Impressive? :D</p>
+<p>This was showcased at the beginning of the Nepomuk talk under the section “Nepomuk is not about searching, but here are some cool things that it can do!”</p>
+<h2>How does this work?</h2>
+Although this looks fairly impressive, it’s quite a simple procedure. Nepomuk don’t use any fancy audio heuristic or voice recognition. It simply searches through the subtitles and plays the video at the appropriate place.
+<p>This entire project was supposed to be used with the Nepomuk Web Extractor, which aims to allow Nepomuk get additional information from the internet to annotate your files/contacts/events. But I haven’t had the time to implement a web extractor plugin, so you need to manually provide the subtitles.</p>
+<h2>The Source Code</h2>
+The code can be found at my <a href="http://quickgit.kde.org/?p=scratch/vhanda/nepomuk-subtitle-search.git&#x26;a=summary" target="_blank">git scratch pad</a>. It is a slightly unstable prototype that was created just to illustrate subtitle searching in Nepomuk. In order to load the subtitles you have to run
+<p><code>nepomuk-subtitle-loader pathToVideoFile pathToAudioFile</code></p>
+<p>and you can run the search GUI with – <code>nepomuk-subtitle-search</code>.</p>
+<p>I’m going to try my best to get this ready in time for 4.7. Ideally, this should be somehow integrated in Dolphin, but that is going to be tough. It’s high time users start seeing Nepomuk do some really cool things!</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

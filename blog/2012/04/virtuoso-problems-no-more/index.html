@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Virtuoso problems no more</title>
+<meta name="title" content="Virtuoso problems no more">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/04/virtuoso-problems-no-more/">
+<meta property="og:title" content="Virtuoso problems no more">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/04/virtuoso-problems-no-more/">
+<meta property="twitter:title" content="Virtuoso problems no more">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Virtuoso problems no more</h1>
+        <time class="astro-EKSNFE3U">2012-04-01T12:16:43Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>The Nepomuk team has been working really hard to fix the problems with
+<code>virtuoso</code> consuming too much memory and often just going bat crazy. And
+now finally we’ve figured it out.</p>
+<p>It wasn’t the obvious solution, but we think it’s going to work out very
+well. From now on <code>virtuoso</code> won’t be shown in <code>ksysguard</code>.</p>
+<p><img src="/blog/images/2012/04/01/ksysguard-virtuoso.jpg" alt="April Fools!"></p>
+<p>Since we won’t be able to see virtuoso using up our memory and CPU, it
+obviously won’t be doing it. Now, I get that this logic is a little
+brain-dead, cause in Linux we have other ways of monitoring our
+processes as well.</p>
+<p>Fortunately, <a href="http://trueg.wordpress.com/">Trueg</a> is in the process in patching up <code>top</code>, and I’m
+going to be contacting the kernel people to see if we can remove
+virtuoso PID from <code>/proc</code>.</p>
+<p>Problem solved! :)</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

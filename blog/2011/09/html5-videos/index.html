@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>HTML5 Videos</title>
+<meta name="title" content="HTML5 Videos">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2011/09/html5-videos/">
+<meta property="og:title" content="HTML5 Videos">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2011/09/html5-videos/">
+<meta property="twitter:title" content="HTML5 Videos">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">HTML5 Videos</h1>
+        <time class="astro-EKSNFE3U">2011-09-01T12:22:45Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Flash is annoying. Specially in Linux where it goes bat crazy at times and starts gobbling up your CPU. That’s one of the reasons why I really think HTML 5 Video tag is the way forward.</p>
+<p>YouTube has had an <a href="http://www.youtube.com/html5">HTML5 beta</a> for quite some time. Unfortunately, I don’t like viewing videos on the YouTube player. I like the feel of my favorite media player - VLC. The great thing about the Flash videos was that they <em>used</em> to be cached in <code>/tmp/Fl*</code>. And then, Adobe changed their Flash cache directory.</p>
+<p>Fortunately, I found this script somewhere -</p>
+<p>{{&#x3C; highlight bash >}}
+#!/bin/sh
+args=(”$@“)</p>
+<p>args=<code>echo $args | sed 's/[/]$//'</code></p>
+<p>pids=<code>eval pgrep -f flashplayer</code>
+for pid in $pids; do
+lsoutput=$(lsof -p $pid | grep ‘/tmp/Flash[^ ]*‘)</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">IFS=$'\n'</span></span>
+<span class="line"><span style="color: #c9d1d9">for line in $lsoutput; do</span></span>
+<span class="line"><span style="color: #c9d1d9">    lsout1=`echo $line | awk '{print "/proc/" $2 "/fd/" $4}' | sed 's/[rwu]$//'`</span></span>
+<span class="line"><span style="color: #c9d1d9">    lsout2=`echo $line | awk '{print $9}' | awk -F '/' '{print $3}'`</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">    if [ -n "$args" ];then</span></span>
+<span class="line"><span style="color: #c9d1d9">        if [ -d $args ]; then</span></span>
+<span class="line"><span style="color: #c9d1d9">            echo "Copying $lsout2 to $args/"</span></span>
+<span class="line"><span style="color: #c9d1d9">            eval "cp $lsout1 $args/$lsout2.flv"</span></span>
+<span class="line"><span style="color: #c9d1d9">        else</span></span>
+<span class="line"><span style="color: #c9d1d9">            echo "The directory \"$args\" doesn't exist"</span></span>
+<span class="line"><span style="color: #c9d1d9">            break</span></span>
+<span class="line"><span style="color: #c9d1d9">        fi</span></span>
+<span class="line"><span style="color: #c9d1d9">    else</span></span>
+<span class="line"><span style="color: #c9d1d9">        echo "Copying $lsout2"</span></span>
+<span class="line"><span style="color: #c9d1d9">        eval "cp $lsout1 $lsout2.flv"</span></span>
+<span class="line"><span style="color: #c9d1d9">    fi</span></span>
+<span class="line"><span style="color: #c9d1d9">done</span></span></code></pre>
+<p>done
+{{&#x3C; / highlight >}}</p>
+<p>After switching to the HTML 5 Beta, I needed a new script.</p>
+<p>{{&#x3C; highlight bash >}}
+#!/bin/sh</p>
+<h1 id=""></h1>
+<h1 id="a-script-that-runs-all-webm-files-present-in-the-firefox-cache-with-vlc">A Script that runs all WebM files present in the FireFox cache with vlc</h1>
+<h1 id="media-player">media player.</h1>
+<h1 id="-1"></h1>
+<h1 id="author-vishesh-handa-mevhandain">Author: Vishesh Handa <a href="mailto:me@vhanda.in">me@vhanda.in</a></h1>
+<p>CACHEDIR=“$HOME/.mozilla/firefox/*/Cache/”</p>
+<p>files=<code>find $CACHEDIR -mtime -1 -size +1M -regex '[^_]*' \        -exec file -F ' ' {} \; | grep WebM | awk '{ print $1}'</code></p>
+<p>for f in $files; do
+echo $f
+vlc $f &#x26;> /dev/null
+done
+{{&#x3C; / highlight >}}</p>
+<p>Have fun!</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

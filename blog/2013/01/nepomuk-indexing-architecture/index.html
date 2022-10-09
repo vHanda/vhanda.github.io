@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk Indexing Architecture</title>
+<meta name="title" content="Nepomuk Indexing Architecture">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2013/01/nepomuk-indexing-architecture/">
+<meta property="og:title" content="Nepomuk Indexing Architecture">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2013/01/nepomuk-indexing-architecture/">
+<meta property="twitter:title" content="Nepomuk Indexing Architecture">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk Indexing Architecture</h1>
+        <time class="astro-EKSNFE3U">2013-01-29T18:36:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Over the last 6 months, while working for <a href="http://www.blue-systems.com/">Blue Systems</a>, Nepomuk has
+undergone a number of changes. The most public and noticeable change has
+been the major refactoring of the file indexer. One large part of this
+has been the <a href="http://vhanda.in/blog/2012/11/nepomuk-without-strigi/">migration from Strigi</a>. The other large part is the
+introduction of 2 phase indexing.</p>
+<p>With 4.9 and earlier, the file indexing service used to just have one
+queue, whose speed could be controlled. This queue was filled on startup
+by comparing the mtime of the file with the one stored in the database.
+This would involve scanning through all the indexed folders. Once the
+scan was complete it would also listen to the file watcher to be
+notified when a file is modified or created.</p>
+<p>This architecture had some shortcomings -</p>
+<ul>
+<li>Indexing each file is a time consuming process, and it involves
+extracting and pushing large amounts of data in Nepomuk.</li>
+<li>Since this process was slow and we did not want to annoy the users,
+artificial delays were introduced which were changed based on if the
+user is idle.</li>
+<li>The entire indexing process was suspended when on battery</li>
+<li>Faulty files which cannot be indexed do not have any information
+stored, and could not even be searched by filename</li>
+</ul>
+<p>With this new release, we have split the indexing into 2 parts - Basic
+Indexing and File Indexing. The basic indexing just extracts the stat
+information and mimetype of the file. Whereas, the file indexing
+actually extracts data from the file.</p>
+<p>This basic indexing is always enabled, and is very fast. It can process
+around 10-20 files per second. Also, it consumes very little cpu.
+Extracting this basic information first allows us to search on the basis
+of type, file and enabled the timeline kioslave to work properly.</p>
+<p>The file indexing is the relatively heavy process that is only run when
+the user is idle, <a href="http://userbase.kde.org/Nepomuk/FileIndexer#Changing_the_default_behavior">by default</a>.</p>
+<p>This two phase architecture allows us to still index all the files,
+while providing a relatively light burden to the user. It also allows us
+to provide finer control than a simple on/off switch. For example - Now
+when on battery, file indexing is disabled, but the simple indexing
+still continues.</p>
+<p>This new approach will also allow us to provide more user feedback in
+future releases, such as an indexing progress bar.</p>
+<h1 id="summary">Summary</h1>
+<p>The new architecture is much faster and more resilient to abnormal files
+and faulty plugins. It tries to save the basic information first, so
+that one can easily answer simple queries. The full file information is
+stored later, when the user is idle.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

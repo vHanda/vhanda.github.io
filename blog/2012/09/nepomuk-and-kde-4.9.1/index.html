@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk and KDE 4.9.1</title>
+<meta name="title" content="Nepomuk and KDE 4.9.1">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/09/nepomuk-and-kde-4.9.1/">
+<meta property="og:title" content="Nepomuk and KDE 4.9.1">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/09/nepomuk-and-kde-4.9.1/">
+<meta property="twitter:title" content="Nepomuk and KDE 4.9.1">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk and KDE 4.9.1</h1>
+        <time class="astro-EKSNFE3U">2012-09-03T13:36:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Last week 4.9.1 was tagged, and it should release any day now. A large
+part of my time was spent bug fixing and stabilizing some of the most
+user visible features. This blog post highlights some of the more user
+visible changes.</p>
+<h1 id="file-watcher">File Watcher</h1>
+<p>Apart from minor fixes such as extra checks for <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/5609c4cdd8c7d938a9b3e99285b1044eea2fcf04">buffer overflows</a>,
+and kernel <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/55761d35bb9e9ce863797b742c301d947dab61d0">version checks</a>, we have two major improvements:</p>
+<h2 id="memory-leak">Memory Leak</h2>
+<p>The Nepomuk File monitoring service had a <a href="https://bugs.kde.org/show_bug.cgi?id=304476">serious memory leak</a> in
+4.9.0, which was unfortunately not caught in the beta or RC testing
+period. Depending on the number of directories present, the file watcher
+service would <strong>consume a good 2 GB of your RAM</strong>. Fortunately, many
+distributions patched their own tarballs before releasing to the public.</p>
+<h2 id="reindexing-events">Reindexing events</h2>
+<p>Another bug was that lots of files were being unnecessarily reindexed
+when they were opened in write mode even though no changes had been
+made. With 4.9.1 we actually <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/48d909c8aa4baca11e7bc1cf4ba5a23c1474fc22">check</a> if the modification time of the
+file has changed, even when the file notification system tells us
+otherwise.</p>
+<p>This should fix most of the problems of files unnecessarily being
+reindexed.</p>
+<h1 id="file-indexer">File Indexer</h1>
+<p>The File Indexer has also gone through a number of fixes -</p>
+<h2 id="do-not-check-for-new-files-on-startup">Do not check for new files on startup</h2>
+<p>One of the most annoying things I found about file indexing was the
+initial check for new files on startup. Even though this check runs
+silently in the background, it was very annoying. Specially for people
+who run Nepomuk all the time.</p>
+<p><img src="/blog/images/2012/09/03/scanning.png" alt="image"></p>
+<p><a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/150a55d5eaabd8ad9a97112214fc2e008e9a1d11">Now</a>, we only check if the strigi version has changed, and only then
+do we check for new files / check for any files that could not be
+indexed the last time. If someone wants to forcibly check for new files,
+they can do so with a dbus call -</p>
+<p><code>$ qdbus org.kde.nepomuk.services.nepomukfileindexer /nepomukfileindexer updateAllFolders false</code></p>
+<p>Or wait till 4.10, when I add an option to do so in the KCM.</p>
+<h2 id="secondary-indexer">Secondary Indexer</h2>
+<p>This patch technically made it into 4.9.0, but I never got the chance to
+blog about it. I’ve introduced a <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/414fd4c1c3c358aab70e1e10dd726ea2c1432e1f">SimpleIndexer</a> which serves as
+backup when the strigi indexers provide incorrect data. This way instead
+of having no data about the file we at least have the basic information
+such as filename, url and mimtype. I have plans for a more concrete
+solution for 4.10, but that’s for another blog post.</p>
+<h2 id="nasty-deadlock">Nasty Deadlock</h2>
+<p>Another <a href="https://bugs.kde.org/show_bug.cgi?id=304982">annoying bug</a> that was not caught with 4.9.0 was a deadlock
+that rendered the file indexer service useless.</p>
+<p><img src="/blog/images/2012/09/03/nepomuk-deadlock.jpg" alt="image"></p>
+<p>This only happened during the first run of Nepomuk, and led to some
+<a href="http://www.dedoimedo.com/computers/fedora-17-kde.html">unfortunate publicity</a>. In in the end it was a very simple fix once
+the proper backtrace had been provided.</p>
+<h2 id="strigi-analyzers">Strigi Analyzers</h2>
+<p>Another big change which probably has a large impact on indexing times
+is the blacklisting of certain file indexing (strigi) plugins. Currently
+by default, we only <a href="https://bugs.kde.org/show_bug.cgi?id=303670">blacklist the SHA1 hash generator</a>. With it
+blacklisted, we do not (hopefully) need to read the full contents of the
+file. This results in a noticeable performance improvement for large
+files.</p>
+<h1 id="queries">Queries</h1>
+<h2 id="file-queries">File Queries</h2>
+<p><img src="/blog/images/2012/09/03/dolphin_places_panel.png" alt="image"></p>
+<p>One of my favorite features of Dolphin is their Places Panel with all of
+those defaults - Documents, Images, Audio and Video files.
+Unfortunately, those defaults were normal Nepomuk queries and not file
+queries. With 4.9.1, they have been changed to file queries which lets
+them access a number of optimizations on our end, and allows them to
+benefit from my <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/328fbfd8a6fc66bf0b10bda7813b4827e3118d72">minor optimizations</a> in file queries.</p>
+<h2 id="query-updates">Query Updates</h2>
+<p>Most applications which currently use Nepomuk utilize the QueryService
+in order to run queries. The Query Service can then provide updates on
+those queries if there is some change in the results - It used to do so
+by running <strong>ALL open queries when any data in Nepomuk changes</strong>. This
+was not a good approach, as it obviously does not scale.</p>
+<p>With 4.9.1, we are now using <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/ead226c9571a15da8d7a92810f5c4afd35bf9de8">some simple heuristics</a> and the Resource
+Watcher to only re-run queries when affected data changes. So indexing a
+file will not result in the updating of all custom Nepomuk magic
+folders.</p>
+<h1 id="nepomuk-core-library">Nepomuk Core Library</h1>
+<p>And finally, the have been a number of <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/e4d8cd1f76192dc798f2db09b9e19310d7c1d65f">bug fixes</a> and <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/7bef7c53d3b9a971c203ed4391bf19ac79f381f5">crash fixes</a>
+in the NepomukCore library, but considering that they aren’t really that
+user visible, I’m not going to talk much about them.</p>
+<h1 id="miscellaneous">Miscellaneous</h1>
+<p>There have been a large number of improvements in the Nepomuk Testing
+Suite, and more tests have been added. Most of the tests passed, but it
+still serves as a good way of checking regressions.</p>
+<p>Along with that there have been some <a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core/repository/revisions/24caa3821aed71e590a3e55a76c6e4bc08f7d9d5">fixes</a> with Removeable Media
+handling.</p>
+<h1 id="soprano">Soprano</h1>
+<p>Recently I blogged about certain major query optimizations, which would
+only be public in 4.10. This major optimization was done by skipping a
+large part of the Soprano code. After the blog post, we identified some
+of the bottle necks, and optimized them. The most impressive result was
+a reduction of one query from <strong>6 seconds to 1 second</strong>.</p>
+<p>Again, this isn’t really a part of KDE 4.9.1, but it will be a part of
+Soprano 2.8.1. So when it releases, make sure you upgrade.</p>
+<p>That’s all for this release :)</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

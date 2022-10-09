@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>A better Tagging Widget</title>
+<meta name="title" content="A better Tagging Widget">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/02/a-better-tagging-widget/">
+<meta property="og:title" content="A better Tagging Widget">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/02/a-better-tagging-widget/">
+<meta property="twitter:title" content="A better Tagging Widget">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">A better Tagging Widget</h1>
+        <time class="astro-EKSNFE3U">2012-02-01T22:30:42Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>A long long time ago, a very simple tagging widget was implemented. We
+always though - “Eh! This is temporary. We’ll come up with a better one
+later.” But that never happened.</p>
+<p><img src="/blog/images/2012/02/01/tagging-widget-old.png" alt="The old widget"></p>
+<p>There is a lot of code in Nepomuk. However most of it is backend stuff
+which does absolutely marvelous things behind the scenes - Auto
+duplicate merging, type checking with respect to the ontologies, caching
+and lots more. We, however, lack good UIs.</p>
+<p>So, if you’re a UI designer looking for a challenge, look at Nepomuk. We
+have a lot of data.</p>
+<p>Anyway, enough promotion! Unlike <a href="http://vhanda.in/blog/2012/01/nepomuk-tag-manager/">yesterday</a>, I won’t be pointing you
+towards the source (though it isn’t that hard to find). I’ll just be
+showcasing some screenshots. You’ll get to try out the tagging widget
+and <em>whatever-is-in-store-for-tomorrow</em> on Friday.</p>
+<p><img src="/blog/images/2012/02/01/tagging-widget-new.jpeg" alt="image"></p>
+<p><img src="/blog/images/2012/02/01/tagging-widget-new-autocomplete.png" alt="image"></p>
+<p>This was originally implemented with a QListView in flow mode with a
+custom delegate for tags. Getting it to automatically resize was a pain,
+and I was missing out on a lot of effects. Eventually, a couple of hours
+back, someone at <em>#qt</em> pointed me towards <a href="http://developer.qt.nokia.com/doc/qt-4.8/layouts-flowlayout.html">Flow Layouts</a>.</p>
+<p>I’m in the process of rewriting the old item delegate code, to a widget
+based one. Minus minor variations it should look the same.</p>
+<p>As last time, if someone can make a nice mockup, I’ll be more than happy
+to implement it :)</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

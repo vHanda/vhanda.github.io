@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Setting up a KDE Development Environment</title>
+<meta name="title" content="Setting up a KDE Development Environment">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2015/10/setting-up-a-kde-development-environment/">
+<meta property="og:title" content="Setting up a KDE Development Environment">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2015/10/setting-up-a-kde-development-environment/">
+<meta property="twitter:title" content="Setting up a KDE Development Environment">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Setting up a KDE Development Environment</h1>
+        <time class="astro-EKSNFE3U">2015-10-22T00:13:11Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p><a href="https://dot.kde.org/2015/10/08/season-kde-2015-now-open">Season of KDE</a> is about to start, and I’ve been getting a number of emails with students struggling to setup a development environment. For KDE, it isn’t quite trivial.</p>
+<p>While there are multiple ways to setup a development environment, I’m going to go through how mine functions. I know many developers who have a similar setup.</p>
+<h3 id="step-1---choose-your-distribution">Step 1 - Choose your distribution</h3>
+<p>I develop exclusively on Linux, so do most KDE developers. While some parts of KDE do function on OSX and Windows, that’s not what most of us use. So pick your favorite Linux distribution.</p>
+<p>In general, I find distributions which follow a rolling release to be easier to work with. My favorite is <a href="https://www.archlinux.org/">Arch Linux</a>. If you’re new to Linux, it can be a little daunting, but I do recommend it for development.</p>
+<h3 id="step-2---install-basic-tools">Step 2 - Install basic tools</h3>
+<p>In order to work on most KDE projects you need the following tools -</p>
+<ul>
+<li>A C++ compiler (Clang is awesome)</li>
+<li>CMake</li>
+<li>Ninja</li>
+<li>Git</li>
+</ul>
+<p>Install these using your package manager. Ninja isn’t required. But my scripts use it, and I like ninja.</p>
+<h3 id="step-3---the-basic-environment">Step 3 - The basic environment</h3>
+<p>Before I start with how my environment works, here is a little mumbo jumbo which you can skip if you don’t care. Why does one need a build environment? You can just compile the project you want, install it as root and run it. The reason is so that your main system is isolated from your root system. It makes development easier as your environment can have a different version than your distribution, and it’s much safer, since it is harder to nuke your system.</p>
+<p>I like to use my main user and skip creating a special user for development. For this blog post we shall call him Bob. Bob is cool. On my system he is called Vishesh.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ mkdir ~/kde</span></span></code></pre>
+<p>Everything goes in this <code>~/kde</code> directory. This is where our entire environment will reside.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ mkdir ~/kde/.setup</span></span></code></pre>
+<p>The <code>.setup</code> folder is where the code for which sets up the environment goes. I split my environment based on environment variables and convenience functions.</p>
+<p>Create the first file <code>~/kde/.setup/env</code></p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">#!/bin/bash</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">export KF5=~/kde</span></span>
+<span class="line"><span style="color: #c9d1d9">export KDEDIR=~/kde</span></span>
+<span class="line"><span style="color: #c9d1d9">export KDE_SESSION_VERSION=5</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">export XDG_DATA_DIRS=$KF5/share:/usr/share</span></span>
+<span class="line"><span style="color: #c9d1d9">export XDG_CONFIG_DIRS=$KF5/etc/xdg:/etc/xdg</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">export PATH=$KF5/bin:$PATH</span></span>
+<span class="line"><span style="color: #c9d1d9">export QT_PLUGIN_PATH=$KF5/lib/plugins:$KF5/lib/x86_64-linux-gnu/plugins:$QT_PLUGIN_PATH</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">export QML2_IMPORT_PATH=$KF5/lib/qml:$KF5/qml:$KF5/lib/x86_64-linux-gnu/qml:$QTDIR/qml</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">export CMAKE_PREFIX_PATH=$KF5</span></span>
+<span class="line"><span style="color: #c9d1d9">export PKG_CONFIG_PATH=$KDEDIR/lib/pkgconfig:/usr/lib/pkgconfig</span></span>
+<span class="line"><span style="color: #c9d1d9">export LD_LIBRARY_PATH=$KDEDIR/lib:/usr/lib</span></span></code></pre>
+<p>Create the second file <code>~/kde/.setup/functions</code></p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">#!/bin/bash</span></span>
+<span class="line"><span style="color: #c9d1d9">export KDE_BUILD=$KDEDIR/build</span></span>
+<span class="line"><span style="color: #c9d1d9">export KDE_SRC=$KDEDIR/src</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9"># Make sure build directory exists.</span></span>
+<span class="line"><span style="color: #c9d1d9">mkdir -p "$KDE_BUILD"</span></span>
+<span class="line"><span style="color: #c9d1d9">mkdir -p "$KDE_SRC"</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">function ck {</span></span>
+<span class="line"><span style="color: #c9d1d9">        local srcFolder current</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">        srcFolder=`pwd | sed -e s,$KDE_BUILD,$KDE_SRC,`</span></span>
+<span class="line"><span style="color: #c9d1d9">        current=`pwd`</span></span>
+<span class="line"><span style="color: #c9d1d9">        if [ "$srcFolder" = "$current" ]; then</span></span>
+<span class="line"><span style="color: #c9d1d9">                cb</span></span>
+<span class="line"><span style="color: #c9d1d9">        fi</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">        cmake "$srcFolder" -DCMAKE_INSTALL_PREFIX=$KDEDIR \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -G Ninja \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DPYTHON_SITE_PACKAGES_DIR:PATH=~/.local/lib/python2.6/site-packages \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DCMAKE_BUILD_TYPE="Debug" \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DPYTHON_EXECUTABLE:FILEPATH="/usr/bin/python2" \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DCMAKE_INSTALL_PREFIX=$KDEDIR \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DCMAKE_CXX_FLAGS="-Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-exit-time-destructors -Wno-padded -Wno-sign-conversion -Wno-documentation -Wno-undefined-reinterpret-cast -fcolor-diagnostics -Wno-shorten-64-to-32 -Wno-conversion -Wno-gnu-zero-variadic-macro-arguments -Wno-shadow"</span></span>
+<span class="line"><span style="color: #c9d1d9">            # C++ 98 - It was about 17 years ago</span></span>
+<span class="line"><span style="color: #c9d1d9">            # no-undefined-reinterpret-cast -> This is because moc files typically use reinterpret casts</span></span>
+<span class="line"><span style="color: #c9d1d9">            # Padded - Nothing much that can be done. Also, it's annoying</span></span>
+<span class="line"><span style="color: #c9d1d9">            # Documentation - Maybe we should care about this one?</span></span>
+<span class="line"><span style="color: #c9d1d9">            # Sign Conversion - It's annoying, but maybe we should care about this.</span></span>
+<span class="line"><span style="color: #c9d1d9">            # -fcolor-diagnostics - For ninja coloured output</span></span>
+<span class="line"><span style="color: #c9d1d9">            # Conversion + shorten -> Cause they are annoying and I just ignore them. Bad Vishesh!</span></span>
+<span class="line"><span style="color: #c9d1d9">            # gnu-zero-variadic-macro -> When using qCDebug()</span></span>
+<span class="line"><span style="color: #c9d1d9">            # -Wno-shadow -> Just too many warnings</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">        ninja &#x26;&#x26; ninja install</span></span>
+<span class="line"><span style="color: #c9d1d9">        RETURN=$?</span></span>
+<span class="line"><span style="color: #c9d1d9">        cs</span></span>
+<span class="line"><span style="color: #c9d1d9">        return ${RETURN}</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">function ckgcc {</span></span>
+<span class="line"><span style="color: #c9d1d9">        local srcFolder current</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">        srcFolder=`pwd | sed -e s,$KDE_BUILD,$KDE_SRC,`</span></span>
+<span class="line"><span style="color: #c9d1d9">        current=`pwd`</span></span>
+<span class="line"><span style="color: #c9d1d9">        if [ "$srcFolder" = "$current" ]; then</span></span>
+<span class="line"><span style="color: #c9d1d9">                cb</span></span>
+<span class="line"><span style="color: #c9d1d9">        fi</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">        cmake "$srcFolder" -DCMAKE_INSTALL_PREFIX=$KDEDIR \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -G Ninja \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DPYTHON_SITE_PACKAGES_DIR:PATH=~/.local/lib/python2.6/site-packages \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DCMAKE_BUILD_TYPE="Debug" \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DPYTHON_EXECUTABLE:FILEPATH="/usr/bin/python2" \</span></span>
+<span class="line"><span style="color: #c9d1d9">            -DCMAKE_INSTALL_PREFIX=$KDEDIR \</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">        # nice make -j4 &#x26;&#x26; make install</span></span>
+<span class="line"><span style="color: #c9d1d9">        ninja &#x26;&#x26; ninja install</span></span>
+<span class="line"><span style="color: #c9d1d9">        RETURN=$?</span></span>
+<span class="line"><span style="color: #c9d1d9">        cs</span></span>
+<span class="line"><span style="color: #c9d1d9">        return ${RETURN}</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">function cb {</span></span>
+<span class="line"><span style="color: #c9d1d9">        local dest</span></span>
+<span class="line"><span style="color: #c9d1d9">        dest=`pwd | sed -e s,$KDE_SRC,$KDE_BUILD,`</span></span>
+<span class="line"><span style="color: #c9d1d9">        mkdir -p "$dest"</span></span>
+<span class="line"><span style="color: #c9d1d9">        cd "$dest"</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">function cs {</span></span>
+<span class="line"><span style="color: #c9d1d9">        cd `pwd | sed -e s,$KDE_BUILD,$KDE_SRC,`</span></span>
+<span class="line"><span style="color: #c9d1d9">}</span></span></code></pre>
+<h3 id="step-4---get-the-source">Step 4 - Get the source</h3>
+<p>All my source code goes in <code>~/kde/src/</code>. Look for the project you want to contribute to either on <a href="https://projects.kde.org/">projects.kde.org</a>. The code is also on <a href="https://github.com/KDE/">github</a>. This is a read only mirror so the typical github workflow will not work. I will still look at your github pull request, but other KDE developers might not.</p>
+<p>Lets take the example of Baloo.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ mkdir -p ~/kde/src</span></span>
+<span class="line"><span style="color: #c9d1d9">$ cd ~/kde/src</span></span>
+<span class="line"><span style="color: #c9d1d9">$ git clone git://anongit.kde.org/baloo</span></span></code></pre>
+<h3 id="step-5---activate-the-environment">Step 5 - Activate the Environment</h3>
+<p>The environment can be activated by sourcing those two special files we created.</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ source ~/kde/.setup/env</span></span>
+<span class="line"><span style="color: #c9d1d9">$ source ~/kde/.setup/functions</span></span></code></pre>
+<p>This needs to be done each time you open a new terminal session. Later we’ll see how we can make this even simpler.</p>
+<h3 id="step-6---project-dependencies">Step 6 - Project Dependencies</h3>
+<p>Every project has its own list of dependencies. This part is not easy to automate and requires you to install all of them. You can either compile some of them yourselves, or install them through your package manager. As a starting point I would recommend just using your package manager. Do not compile Qt.</p>
+<p>Most distros split up packages into the normal package and <code>-devel</code>. You need to install the <code>-devel</code> version of the dependency. Arch Linux is awesome, and does not split them.</p>
+<h3 id="step-7---lets-build-it">Step 7 - Lets build it!</h3>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ cd ~/kde/src/baloo</span></span>
+<span class="line"><span style="color: #c9d1d9">$ ck</span></span></code></pre>
+<p>That’s it. This will run 3 steps - <code>cmake</code>, <code>ninja</code> and <code>ninja install</code>. If you insist on using gcc instead of clang then run <code>ckgcc</code> instead. Let me explain each of these steps.</p>
+<p><code>cmake</code> is a build system which we typically use. This means we use it to figure out what all needs to be compiled, what flags should be used, where the dependencies are, etc. With our scripts its output goes in a special build directory <code>~/kde/build/baloo</code>.</p>
+<p><code>ninja</code> (or make): This command typically looks for a Ninja file (or MakeFile). It is the actual step which compiles your entire application. It can be run by going into the build directory and running <code>ninja</code>. The <code>ck</code> command automatically does this for you. If you get a compile error, you should run this command instead of running <code>ck</code> and starting from scratch.</p>
+<p><code>ninja install</code>: This command installs all the files in the correct location. For us the location is <code>~/kde</code>. We do not want to mess up our root environment. This command is also run in the build directory.</p>
+<h3 id="step-8---running-the-project">Step 8 - Running the project</h3>
+<p>If this all worked out, the project should be compiled and installed. You can run the project manually by calling the correct executable. This executable is in your <code>~/kde/bin</code> directory. This directory is in your <code>PATH</code> environment variable, so just running the executable will find it.</p>
+<h3 id="step-9---jumping-around">Step 9 - Jumping around</h3>
+<p>The <code>functions</code> file has a few convenience methods. <code>cb</code> and <code>cs</code>. These stand for ‘change to build` and ‘change to source’. They can be run at any point of jump to the build and source directory respectively. It’s quite handy since certain commands need for you to be in certain directories.</p>
+<p>That’s about it. I could write more on how to activate the environment more easily and how to make sure your IDE uses this environment as well, but I’m tired, and sleepy. It is 2 AM. Good Night.</p>
+<p>Here is a more detailed link - <a href="https://techbase.kde.org/Getting_Started/Build/Environment">https://techbase.kde.org/Getting_Started/Build/Environment</a></p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

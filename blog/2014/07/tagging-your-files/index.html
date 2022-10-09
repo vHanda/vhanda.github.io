@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Tagging your Files</title>
+<meta name="title" content="Tagging your Files">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2014/07/tagging-your-files/">
+<meta property="og:title" content="Tagging your Files">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2014/07/tagging-your-files/">
+<meta property="twitter:title" content="Tagging your Files">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Tagging your Files</h1>
+        <time class="astro-EKSNFE3U">2014-07-03T15:43:07Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>In 4.13, we moved away from a monolithic Nepomuk based system to a far more decentralized approach. Some parts of this are called Baloo, but to be honest, Baloo is not really responsible for managing your tags.</p>
+<h2 id="the-nepomuk-days">The Nepomuk Days</h2>
+<p>Back in the era of Nepomuk, every time you would tag a file. 2 things would be done -</p>
+<ol>
+<li>A tag would be created / fetched from the central Database</li>
+<li>The tag would be linked with the file in the same database.</li>
+</ol>
+<p>While this approach worked, a massive problem with it, was that all your precious tags were always stored in a central database. Modifying these tags needed this database (virtuoso) to be running, and more importantly, if anything were to happen to this database, all your tags would be lost.</p>
+<p>This was one of the reasons why we developed backup and restore solution for Nepomuk. It was not to sure your file index, but rather these tags (and also the ratings and comments).</p>
+<p>With Baloo, we are no longer responsible for storing the tags.</p>
+<h2 id="so-then-where-are-the-tags-stored">So then where are the tags stored?</h2>
+<p>Internally, in the file system each file is typically identified by a unique number. This number then has many attributes associated with it. Some of the standard ones are - file name, permissions, user, group, etc.</p>
+<p>Modern file Systems also allow applications to store their own custom attributes called extended attribute or xattr. It’s a fairly common thing. In fact some popular applications such as chromium, curl and wget use them. Run the following command on a file downloaded through Chromium -</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ getfattr -d some-file-url</span></span>
+<span class="line"><span style="color: #c9d1d9"># file: some-file-url</span></span>
+<span class="line"><span style="color: #c9d1d9">user.xdg.origin.url="http://bugsfiles.kde.org/attachment.cgi?id=86198"</span></span></code></pre>
+<p>In KDE Platform, tags are similarly stored in these extended attributes. If you have tagged some file in a KDE Application, you can run the same command to try it out -</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">$ getfattr -d some-file</span></span>
+<span class="line"><span style="color: #c9d1d9"># file: some-file</span></span>
+<span class="line"><span style="color: #c9d1d9">user.xdg.tags="TagA,TagB"</span></span></code></pre>
+<h2 id="why-is-this-so-great">Why is this so great?</h2>
+<ol>
+<li>Your tags are never lost. No matter what you do to the file on any environment.</li>
+<li>Baloo or another service has no play in tagging. You’re simply talking to the file system.</li>
+<li>We’re using a <a href="http://www.freedesktop.org/wiki/CommonExtendedAttributes">freedesktop standard</a> standard for comments. This same standard can be expanded for tags. So hopefully, we will be able to share tags among different Desktop Environments.</li>
+</ol>
+<p>While this is awesome. It does however, come at a small price. We have no way of knowing which files have which tags unless we keep some kind of index relating the two together. This is where Baloo comes in. Baloo is just the search index. If you disable Baloo, then you can still safely tag files, you just cannot know which all files have been tagged by tag x.</p>
+<p>Another small caveat is that the FAT file system does NOT support extended attributes. On those file systems we currently store the tags in a very simple sqlite db. However, with that we loose all the advantages listed above. It also means that the code to read and write tags becomes more complex.</p>
+<p>We have been considering dropping tagging support completely in non supported file systems, however, that might just be my pipe dream.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

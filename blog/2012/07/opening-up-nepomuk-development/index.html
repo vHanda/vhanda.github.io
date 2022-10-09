@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Opening up Nepomuk Development</title>
+<meta name="title" content="Opening up Nepomuk Development">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/07/opening-up-nepomuk-development/">
+<meta property="og:title" content="Opening up Nepomuk Development">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/07/opening-up-nepomuk-development/">
+<meta property="twitter:title" content="Opening up Nepomuk Development">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Opening up Nepomuk Development</h1>
+        <time class="astro-EKSNFE3U">2012-07-18T13:27:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>The Nepomuk development process has been fairly closed to outsiders.
+This was never a conscious decision made by the Nepomuk Team, we just
+never took the effort to open up the development, and make it more
+appealing to new comers.</p>
+<p>For most of the last 2 years, the development model has been
+<a href="http://trueg.wordpress.com/">Sebastian</a> and I working on our own personal list of things, and
+occasionally sending private emails to each other or communicating via
+IRC.</p>
+<p>I’m trying to change all of this. The aim is to make Nepomuk development
+more open and friendlier to new developers. Getting developer feedback
+at the <a href="http://vhanda.in/blog/2012/06/the-nepomuk-bof/">Nepomuk BOF</a> at Akademy was the first step.</p>
+<h1 id="compiling-nepomuk">Compiling Nepomuk</h1>
+<p>One of the largest hurdles in contributing to Nepomuk was that the code
+resided in kdelibs. Fortunately, with 4.9, we have our own repository -
+<a href="https://projects.kde.org/projects/kde/kdelibs/nepomuk-core">nepomuk-core</a>, where most of the Nepomuk related code has moved.</p>
+<p>For most of Nepomuk development, you just need to compile nepomuk-core.
+However for some stuff like the kioslaves, controller, and kcm, you’ll
+still need <a href="https://projects.kde.org/projects/kde/kde-runtime">kde-runtime</a>.</p>
+<h1 id="nepomuk-tasks">Nepomuk Tasks</h1>
+<p>Over the last week, I’ve created a separate mailing list for <a href="https://mail.kde.org/mailman/listinfo/nepomuk-bugs">Nepomuk
+Bug Coordination</a>, and I’ve been adding simple tasks to bugzilla
+(mostly from my personal TODO list).</p>
+<p>The idea is to make the Nepomuk development process more public. Anyone
+can see the current list of tasks that we are working on, and which
+developer is working on which task (Assigned field)</p>
+<p>Right now there are just about 20 tasks at Bugzilla. I’m in the process
+of splitting down the big tasks, like <a href="https://bugs.kde.org/show_bug.cgi?id=303726">Fix Nepomuk Backup</a>, into
+smaller chunks which individual developers can handle.</p>
+<p>I’ve listed some simple tasks which do not require any knowledge of RDF,
+SPARQL or the ontologies.</p>
+<h2 id="beginner-junior-jobs">Beginner Junior Jobs</h2>
+<ul>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303383">Port QueryService to ResultIterator</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303382">Port nepomuksearch kioslave to Result Iterator</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303667">Add Nepomuk/Vocabulary header</a></li>
+</ul>
+<h2 id="user-interface">User Interface</h2>
+<ul>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303664">Nepomuk Controller Alignment</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303662">Only show Indexing Options if the FileIndexer is enabled</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303661">Split “Folders to Index” and “Include Exclude Filters”</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303660">Discard “Query Base Folder listing” from the KCM</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303658">Add a button to check for new files</a></li>
+</ul>
+<h2 id="scripting">Scripting</h2>
+<ul>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303651">Proper Nepomuk2 namespace</a></li>
+</ul>
+<h2 id="git-skills">Git skills</h2>
+<ul>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303700">nepomuk-widgets repository</a></li>
+</ul>
+<h2 id="api-design">API Design</h2>
+<ul>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303653">API for controlling list of indexed files</a></li>
+</ul>
+<h2 id="medium-level-tasks">Medium Level tasks</h2>
+<ul>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303670">Disable SHA1 Analyzer</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303369">Index new files when on Battery</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303665">Port to QDbusConnection::Call</a></li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=303666">Merge kded module into the QueryService</a></li>
+</ul>
+<h1 id="but-where-are-you-guys">But where are you guys?</h1>
+<p>If you’re interested come talk to us -</p>
+<ul>
+<li><strong>IRC:</strong> #nepomuk-kde</li>
+<li><strong>Mailing List:</strong> <a href="https://mail.kde.org/mailman/listinfo/nepomuk"></a><a href="mailto:nepomuk@kde.org">nepomuk@kde.org</a></li>
+</ul>
+<p>Get involved!!</p>
+<p>Also, if you have any suggestions on how we can make Nepomuk development
+more appealing or be more open about what we are working on, please let
+us know.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

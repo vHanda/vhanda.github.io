@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Desktop Search Configuration</title>
+<meta name="title" content="Desktop Search Configuration">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2014/04/desktop-search-configuration/">
+<meta property="og:title" content="Desktop Search Configuration">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2014/04/desktop-search-configuration/">
+<meta property="twitter:title" content="Desktop Search Configuration">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Desktop Search Configuration</h1>
+        <time class="astro-EKSNFE3U">2014-04-17T17:09:15Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p><strong>Update:</strong> <em>This blog post is quite old and does not reflect the current state of Desktop Search in KDE. If you’re just looking to disable it, you can either run the <code>$ balooctl disable</code> command or go to System Settings -> Search -> File Search -> Disable.</em></p>
+<p>KDE SC 4.13 is finally out. As you may have heard this marks the release of Baloo. The bear is now out in the wild!</p>
+<p>One of the many things that has changed is the “Desktop Search” configuration module. This blog post is about why the changes were made and what the rationale was behind it.</p>
+<h2 id="the-configuration-module">The Configuration Module</h2>
+<p><img src="/blog/images/2014/04/17/nepomuk_kcm1.png" alt="Main Nepomuk Configuration"></p>
+<p>The old module was built on top of Nepomuk and it explicitly mentions that on the top. While “Nepomuk” was a decently known brand within the KDE Community, a normal user cannot be expected to know what it is.</p>
+<p>It also presented a plethora of options in order to disable and enable Nepomuk, the File Indexer (used to say Strigi) and the PIM indexing. It also provides ways to control the indexing and labels to show what exactly is going on.</p>
+<p>With the new module we have removed all of these options. The user should not need to know about the project called “Baloo”, and indexing is an internal implementation detail in order to make searches faster. It doesn’t need to be broadcasted.</p>
+<p>Additionally now that we’re so much faster, we can no longer afford to inform the user about each file. We often indexing hundreds of files per second. Plus, the files are indexed in multiple stages.</p>
+<p>The old module’s primary function was to control what is indexed. This was done in another tab -</p>
+<p><img src="/blog/images/2014/04/17/nepomuk_kcm2.png" alt="Nepomuk Indexing Configuration"></p>
+<p>This allowed the user to set which types and mimetypes of files should be indexed, control the list of regular expressions which should be matched against the filename, and control the list of directories which should be indexed, and which should not.</p>
+<p>Quite a few things.</p>
+<p>In contrast, the new KCM is quite minimalistic.</p>
+<p><img src="/blog/images/2014/04/17/baloo_kcm.png" alt="Baloo KCM"></p>
+<p>Here are some of the key things that we have changed -</p>
+<ul>
+<li>
+<p>The KCM now uses a new search icon which clearly demonstrates that this is related to search.</p>
+</li>
+<li>
+<p>We now index your HOME directory by default and allow you to black list certain directories which you may not want to appear in the search results.</p>
+</li>
+<li>
+<p>The custom regular expression and mimetype filtering has been removed. We believe that it wasn’t something an average user would know or care about. Also, we don’t think anyone should need to micro-optimize the indexer to such a level.</p>
+</li>
+<li>
+<p>This current release does not fully support removable media. By default all removable media are not indexed. You can however remove them if the blacklist in order to index them.</p>
+</li>
+<li>
+<p>There is no explicit “Enable/Disable” button any more. We would like to promote the use of searching and feel that Baloo should never get in the users way. However, we are smart about it and IF you add your HOME directory to the list of “excluded folders”, Baloo will switch itself off since it no longer has anything to index.</p>
+</li>
+<li>
+<p>Tags, Rating and Comments are no longer mentioned as they are not related to “Desktop Search”. I’ll talk about how they are now handled in another blog post.</p>
+</li>
+</ul>
+<p>This new KCM does remove a large number of options, but we considered those to potential optimizations from the Nepomuk days when we were not that performant. Baloo does still support most of these options, they just have sane defaults and are no longer exposed.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Baloo and NodeJs</title>
+<meta name="title" content="Baloo and NodeJs">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2015/08/baloo-and-nodejs/">
+<meta property="og:title" content="Baloo and NodeJs">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2015/08/baloo-and-nodejs/">
+<meta property="twitter:title" content="Baloo and NodeJs">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Baloo and NodeJs</h1>
+        <time class="astro-EKSNFE3U">2015-08-15T19:01:38Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>I took some time to write some very basic nodejs bindings for Baloo. They are available on <a href="https://github.com/vHanda/node-baloo">github</a> and <a href="https://www.npmjs.com/package/baloo">npm</a>.</p>
+<h6 id="example">Example</h6>
+<p>It can be installed via <strong>npm install baloo</strong></p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">var Baloo = require('baloo');</span></span>
+<span class="line"><span style="color: #c9d1d9"></span></span>
+<span class="line"><span style="color: #c9d1d9">var query = new Baloo.Query('keyword');</span></span>
+<span class="line"><span style="color: #c9d1d9">query.exec(function(results) {</span></span>
+<span class="line"><span style="color: #c9d1d9">    results.forEach(function(filePath) {</span></span>
+<span class="line"><span style="color: #c9d1d9">        console.log(filePath);</span></span>
+<span class="line"><span style="color: #c9d1d9">    });</span></span>
+<span class="line"><span style="color: #c9d1d9">});</span></span></code></pre>
+<p>I’m aware of a few people who have deployed Baloo on a server. I’m hoping this will help them. It also paves the way for some interesting web-based user interfaces for file-searching.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Nepomuk Test Framework</title>
+<meta name="title" content="Nepomuk Test Framework">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2012/03/nepomuk-test-framework/">
+<meta property="og:title" content="Nepomuk Test Framework">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2012/03/nepomuk-test-framework/">
+<meta property="twitter:title" content="Nepomuk Test Framework">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Nepomuk Test Framework</h1>
+        <time class="astro-EKSNFE3U">2012-03-12T18:17:13Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Back in <a href="http://websvn.kde.org/trunk/playground/base/nepomuk-kde/testlib/">October 2010</a>, I was trying to write automated tests for
+Nepomuk Backup. That turned out to be a huge disaster, but the test
+suite was still had some pretty good stuff in it.</p>
+<p>Most of it was based on <a href="http://grundleborg.wordpress.com/">George Goldberg</a>’s <a href="https://projects.kde.org/projects/playground/network/telepathy/ktp-testlib">Telepathy Test Lib</a>.</p>
+<p>Over the last month, I’ve finally moved it to <a href="http://quickgit.kde.org/index.php?p=scratch%2Fvhanda%2Fnepomuk-testlib.git&#x26;a=summary">git</a>, cleaned it up and
+started using it for real tests.</p>
+<h1 id="why-do-we-need-a-testing-framework">Why do we need a testing framework?</h1>
+<p>The Nepomuk Architecture is extremely decentralized. We have one central
+storage service which handles virtuoso, and other different services for
+monitoring files, indexing them, performing queries and so on.</p>
+<p>These services or plugins often require other services to be running and
+form a dependency chain. In order to properly test any them, we need the
+dependencies to be satisfied. That’s where it starts to get messy.
+Specially cause Nepomuk primarily uses local sockets and DBus to
+communicate.</p>
+<p>Right now we have a <a href="http://quickgit.kde.org/index.php?p=kde-runtime.git&#x26;a=blob&#x26;h=9b366ac3294c41d2bbe316f1c64c2fdb98eebf97&#x26;hb=feeadd5c4fed937864944e9d375b3441239c4e12&#x26;f=nepomuk%2Fservices%2Fstorage%2Ftest%2Fdatamanagementmodeltest.h">lot of tests</a> that test individual classes from
+the services, but nothing that tested if files are actually getting
+reindexed after they are modified. Such things were always tested
+manually.</p>
+<p>Now, with this testing framework, we can launch a separate KDE and DBus
+session and run tests.</p>
+<p>Another reason why we really need this is that from KDE 4.8.1
+<a href="http://api.kde.org/4.x-api/kdelibs-apidocs/nepomuk/html/classNepomuk_1_1Resource.html">Nepomuk::Resource</a> also uses DBus in order to write back any of its
+changes. That effectively kills all of its current unit tests.</p>
+<p>And we need unit tests!</p>
+<h1 id="source-code">Source Code</h1>
+<p>The code is still in <a href="http://quickgit.kde.org/index.php?p=scratch%2Fvhanda%2Fnepomuk-testlib.git&#x26;a=summary">my scratch repo</a>, and there are very few
+tests, but we’re getting there. It has already helped me replicate a
+nasty PIM Feeder bug, so Yaye! :)</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

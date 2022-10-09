@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>The Nepomuk Migration</title>
+<meta name="title" content="The Nepomuk Migration">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2013/04/the-nepomuk-migration/">
+<meta property="og:title" content="The Nepomuk Migration">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2013/04/the-nepomuk-migration/">
+<meta property="twitter:title" content="The Nepomuk Migration">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">The Nepomuk Migration</h1>
+        <time class="astro-EKSNFE3U">2013-04-19T16:36:55Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>A couple of days ago I <a href="http://vhanda.in/blog/2013/04/merging-nepomuk-graphs/">talked</a> about how we have been clearing up some unwanted data in Nepomuk for the 4.11 release - mainly graphs. This change comes with a increased performance of over <strong>100%</strong> in many cases, and makes the codebase simpler, and easier to maintain.</p>
+<p>Unfortunately, it comes at a cost.</p>
+<p>The graphs in the old database need to be merged to a small number. This operation is a very time consuming process cause merging graphs is equivalent to slowly removing your entire database and reinserting it.</p>
+<p>Given that all users will <em>have</em> to go through this migration. We decided to add some additional methods of migrating.</p>
+<p><img src="/blog/images/2013/04/19/nepomukmigrator.png" alt="Nepomuk Migration"></p>
+<ol>
+<li>
+<p><strong>Backup Tags and Rating</strong> - The user can choose to only backup their file tags and ratings, remove the entire database, and then restore the ratings. The graph merging process is only performed on the tags and ratings when creating the backup.</p>
+<p>This process is very fast and is the recommended way.</p>
+<p><img src="/blog/images/2013/04/19/nepomukmigrator_backup.png" alt="Nepomuk Backup Migration"></p>
+<p>Once this has been performed, all your files and emails will need to be indexed again, which is actually a good thing cause historically a lot of the indexed data has been quite inferior.</p>
+</li>
+<li>
+<p><strong>Migrate the existing Data</strong> - We can obviously go through the slow process of migrating all of the graphs. This can however easily take a couple of hours for medium sized databases (2.5 gb). I would not recommend this unless you have some really important data that you added on your own that option (1) does not cover.</p>
+</li>
+<li>
+<p><strong>Start Afresh</strong> - Just remove the existing database and start with a fresh Nepomuk installation.</p>
+</li>
+</ol>
+<p>So, far the user is given a choice the first time Nepomuk runs in 4.11. It’s a little ugly, but that can be fixed.</p>
+<p>I’m hoping that this will not be too much of a pain and that the users can just click through the wizard using the default option (1). For medium sized databases this entire process gets done in just a couple of minutes.</p>
+<p>On the positive side, because of this migration I had a chance to fix and test Nepomuk Backup - Just backing up the Tags and Ratings works very well right now. Backing up the full Nepomuk system still needs to be tested.</p>
+<p>I recommend developers to checkout the <code>feature/mergeGraphs</code> branch and try out the migration and just use that branch of Nepomuk for a while. When I’m confident about the migration and the internal changes, I’ll merge it into master.</p>
+<p>Happy testing!</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>

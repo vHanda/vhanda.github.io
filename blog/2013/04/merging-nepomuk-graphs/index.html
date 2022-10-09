@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-EKSNFE3U">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.4.6">
+
+<!-- Primary Meta Tags -->
+<title>Merging Nepomuk Graphs</title>
+<meta name="title" content="Merging Nepomuk Graphs">
+<meta name="description">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vhanda.in/blog/2013/04/merging-nepomuk-graphs/">
+<meta property="og:title" content="Merging Nepomuk Graphs">
+<meta property="og:description">
+<meta property="og:image" content="https://vhanda.in/placeholder-social.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vhanda.in/blog/2013/04/merging-nepomuk-graphs/">
+<meta property="twitter:title" content="Merging Nepomuk Graphs">
+<meta property="twitter:description">
+<meta property="twitter:image" content="https://vhanda.in/placeholder-social.jpg">
+
+    
+  <link rel="stylesheet" href="/assets/5d57c98f.7e8ebc48.css" />
+<link rel="stylesheet" href="/assets/7b6f844a.6aba9791.css" /></head>
+
+  <body class="astro-EKSNFE3U">
+    <header class="astro-FR777CPJ">
+  <h2 class="astro-FR777CPJ">
+    Vishesh Handa&#39;s personal website
+  </h2>
+  <nav class="astro-FR777CPJ">
+    <a href="/" class="astro-FR777CPJ astro-HA6FOUVL">
+  Home
+</a>
+
+    <a href="/blog" class="astro-FR777CPJ astro-HA6FOUVL">
+  Blog
+</a>
+
+    <a href="/about" class="astro-FR777CPJ astro-HA6FOUVL">
+  About
+</a>
+
+    <a href="https://twitter.com/visheshhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  Twitter
+</a>
+
+    <a href="https://github.com/vhanda" class="astro-FR777CPJ astro-HA6FOUVL" target="_blank">
+  GitHub
+</a>
+
+  </nav>
+</header>
+
+    <main class="astro-EKSNFE3U">
+      <article class="astro-EKSNFE3U">
+        
+        <h1 class="title astro-EKSNFE3U">Merging Nepomuk Graphs</h1>
+        <time class="astro-EKSNFE3U">2013-04-16T17:40:00Z</time>
+        
+        <hr class="astro-EKSNFE3U">
+        <p>Since I’ve become the maintainer of Nepomuk we have put a strong emphasis on performance and stability. One of the core parts of Nepomuk are the high level operations that are exposed to the applications. These operations are typically used to insert and modify data into Nepomuk. Each of these operations is quite complex and involves a number of complicated queries.</p>
+<p>For this 4.11 release we wanted to simplify that code and make it more efficient. This blog post delves in the technical details of what has changed, and then finally goes into how that affects the users.</p>
+<h1 id="graphs">Graphs</h1>
+<p>It is often said that Nepomuk operates on triples in the format -</p>
+<p><code>&#x3C;subject> &#x3C;predicate> &#x3C;object></code></p>
+<p>While this is true, it skips over the fourth parameter which is the context or graph. Statements in Nepomuk are actually of the form -</p>
+<p><code>&#x3C;subject> &#x3C;predicate> &#x3C;object> &#x3C;graph></code></p>
+<p>This fourth parameter allows us to store some additional information about the statement such as when it was added and who added it. The Nepomuk project has had a history of saving a lot of data without a clear usecase in mind. Graphs are a prime example of that.</p>
+<p>Each statement does not have its own graph, rather a group of statements are clubbed together in one graph.</p>
+<p>Before the 4.8 release, a new graph was created every 200 msecs. This graph just contained the creation date of the graph. This involved the insertion of 4 statements -</p>
+<pre is:raw="" class="astro-code" style="background-color: #0d1117; overflow-x: auto;"><code><span class="line"><span style="color: #c9d1d9">&#x3C;graph> a nrl:InstanceBase .</span></span>
+<span class="line"><span style="color: #c9d1d9">&#x3C;graph> nao:created “dateTime” .</span></span>
+<span class="line"><span style="color: #c9d1d9">&#x3C;metaDataGraph> a nrl:GraphMetadata .</span></span>
+<span class="line"><span style="color: #c9d1d9">&#x3C;metaDataGraph> nrl:coreGraphMetadataFor &#x3C;graph> .</span></span></code></pre>
+<p>These 4 statements have never seen any use.</p>
+<p>After the 4.8 release we introduced a set of central asynchronous APIs which performed a lot of the higher level functions so that application would not have to deal directly with statements.</p>
+<p>This new API created a new graph each time a call was made to any of these higher level functions. The graphs that were now created were slightly more useful. They contained the following information</p>
+<ul>
+<li>creation date</li>
+<li>creating agent</li>
+</ul>
+<p>The “Agent” in this case is the application that send the command for the data to be added. This extra “Agent” field allowed us some nice operations such as <code>removeDataByApplication</code> which allows applications to only remove the data they have added.</p>
+<p>This functionality was already present for the file indexer in the pre-4.8 days. It was then generalized and made applicable to all applications.</p>
+<p>The bottle neck is this plan is the creation of a new graph for each command. Even adding a simple property would result in a good 5-10 insert calls. This effectively kills our performance. For the 4.10 release I managed to combine a number of these insert calls and optimize the code, but we were still doing a large number of writes which served no purpose. We have never used the creation date of a graph in any way.</p>
+<p>Additionally, we had to perform complex queries to make sure the data is always present in one graph, and check for empty graphs so that they could be removed. Overall, it was quite messy.</p>
+<h1 id="new-graph-handling">New Graph Handling</h1>
+<p>With this 4.11 release I have simplified the concept of graphs. Now there are a limited number of graphs based on the number of Agents that push data into Nepomuk. Each Agent gets its own graph. This way we can still easily implement ‘removeDataByApplication’, and decrease the complexity of our code base.</p>
+<p>This grossly simplifies the internals of the Nepomuk code base since no longer need to worry about all the complicated graph handling.</p>
+<p>This big change is still in a <code>feature/mergeGraphs</code> branch. I’m still not completely ready to merge it into master.</p>
+<h1 id="benchmarks">Benchmarks</h1>
+<p>These are initial benchmarks that were taken about a month ago. There is still scope for more optimizations. Especially if we combine more of our SPARQL calls. Also these benchmarks were run on a blank database. The difference should be a <em>lot</em> larger when there is some real world data.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Function</th><th align="right">4.9</th><th align="right">4.10</th><th align="right">4.11</th></tr></thead><tbody><tr><td align="left">addProperty()</td><td align="right">130</td><td align="right">79</td><td align="right">32</td></tr><tr><td align="left">addProperty_sameData()</td><td align="right">60</td><td align="right">34</td><td align="right">32</td></tr><tr><td align="left">setProperty()</td><td align="right">150</td><td align="right">107</td><td align="right">40</td></tr><tr><td align="left">setProperty_sameData()</td><td align="right">145</td><td align="right">94</td><td align="right">41</td></tr><tr><td align="left">storeResources()</td><td align="right">85</td><td align="right">52</td><td align="right">21</td></tr><tr><td align="left">storeResources_email()</td><td align="right">300</td><td align="right">85</td><td align="right">77</td></tr><tr><td align="left">createResource()</td><td align="right">26</td><td align="right">14</td><td align="right">8</td></tr><tr><td align="left">removeResources()</td><td align="right">49</td><td align="right">30</td><td align="right">16</td></tr><tr><td align="left">removeDataByApplication()</td><td align="right">82</td><td align="right">182</td><td align="right">54</td></tr><tr><td align="left">removeDataByApplication_subResources</td><td align="right">89</td><td align="right">171</td><td align="right">58</td></tr><tr><td align="left">removeAllDataByApplication()</td><td align="right">84</td><td align="right">375</td><td align="right">55</td></tr></tbody></table>
+<p>The numbers are in msecs. The functions are the higher level functions that all applications use to push any data into Nepomuk.</p>
+<p>Whenever you add a tag in Nepomuk, the addProperty/setProperty methods are called. The file indexers and PIM feeder mostly use the <code>storeResources</code> function to push new data and <code>removeDataByApplication</code> to remove existing indexing data.</p>
+<p>If you look at the results you’ll notice a substantial increase with 4.10 except for the <code>removeDataByApplication</code> functions where they seem to have taken a severe hit. I’m not too sure why this has happened, the only change in that code base has been one bug fix which should have increased performance.</p>
+<p>As noted above the number of graphs in Nepomuk are now limited and we no longer create superfluous graphs. However, all those extra graphs are still present and need to merged into a finite number. This can be a time consuming process.</p>
+<p>Tomorrow, I’ll go into the details of how we plan to counter that.</p>
+      </article>
+    </main>
+    <footer class="astro-OCYQ4NHN">
+  &copy; 2022 Vishesh Handa. <a href="http://creativecommons.org/licenses/by-nc/4.0/" class="astro-OCYQ4NHN">Creative Commons 4.0</a>.
+</footer>
+
+  </body></html>
