@@ -1,7 +1,6 @@
 ---
 layout: "../layouts/BlogPost.astro"
 title: "About Me"
-heroImage: "/placeholder-about.jpg"
 ---
 
 
@@ -9,7 +8,7 @@ heroImage: "/placeholder-about.jpg"
 
 I'm Vishesh Handa. I build stuff and write code.
 
-![Vishesh Handa](/blog/images/2015/08/16/vhanda.jpg)
+![Vishesh Handa](/images/profile.jpg)
 
 
 ## Contact
