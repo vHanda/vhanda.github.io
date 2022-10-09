@@ -1,5 +1,5 @@
 ---
-date: "2014-03-20T13:35:08Z"
+pubDate: "2014-03-20T13:35:08Z"
 tags:
 - planetkde
 title: Introducing Milou

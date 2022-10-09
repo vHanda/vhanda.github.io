@@ -1,5 +1,5 @@
 ---
-date: "2010-06-07T04:42:04Z"
+pubDate: "2010-06-07T04:42:04Z"
 tags:
 - c++
 title: Forward Declaration Woes

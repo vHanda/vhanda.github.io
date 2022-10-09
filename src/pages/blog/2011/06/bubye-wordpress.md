@@ -1,5 +1,5 @@
 ---
-date: "2011-06-10T12:33:20Z"
+pubDate: "2011-06-10T12:33:20Z"
 tags:
 - wordpress
 - blog

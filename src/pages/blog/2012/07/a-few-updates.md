@@ -1,5 +1,5 @@
 ---
-date: "2012-07-24T17:25:56Z"
+pubDate: "2012-07-24T17:25:56Z"
 tags:
 - planetkde
 title: A few updates

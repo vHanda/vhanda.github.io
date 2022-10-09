@@ -1,5 +1,5 @@
 ---
-date: "2009-12-14T04:03:52Z"
+pubDate: "2009-12-14T04:03:52Z"
 title: Animation Managing Techniques
 layout: "@layouts/BlogPost.astro"
 ---

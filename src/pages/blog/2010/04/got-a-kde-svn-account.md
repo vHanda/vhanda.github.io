@@ -1,5 +1,5 @@
 ---
-date: "2010-04-26T17:08:36Z"
+pubDate: "2010-04-26T17:08:36Z"
 tags:
 - kde
 title: Got a KDE SVN account

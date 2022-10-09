@@ -1,5 +1,5 @@
 ---
-date: "2015-02-12T21:27:48Z"
+pubDate: "2015-02-12T21:27:48Z"
 tags:
 - planetkde
 - kde-now

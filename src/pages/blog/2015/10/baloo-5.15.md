@@ -1,5 +1,5 @@
 ---
-date: "2015-10-10T16:57:00Z"
+pubDate: "2015-10-10T16:57:00Z"
 tags:
 - planetkde
 - baloo

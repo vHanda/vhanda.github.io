@@ -1,5 +1,5 @@
 ---
-date: "2010-01-14T04:05:29Z"
+pubDate: "2010-01-14T04:05:29Z"
 tags:
 - linux
 - emacs

@@ -1,5 +1,5 @@
 ---
-date: "2014-08-20T11:14:29Z"
+pubDate: "2014-08-20T11:14:29Z"
 tags:
 - planetkde
 title: Extended Attributes Updates

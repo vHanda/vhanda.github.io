@@ -1,5 +1,5 @@
 ---
-date: "2011-07-06T18:18:10Z"
+pubDate: "2011-07-06T18:18:10Z"
 tags:
   - planetkde
 title: Sharing your Nepomuk Repository

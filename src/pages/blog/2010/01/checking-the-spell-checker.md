@@ -1,5 +1,5 @@
 ---
-date: "2010-01-07T20:41:44Z"
+pubDate: "2010-01-07T20:41:44Z"
 tags:
 - wave
 - google

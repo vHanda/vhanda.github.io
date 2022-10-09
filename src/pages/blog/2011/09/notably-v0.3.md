@@ -1,5 +1,5 @@
 ---
-date: "2011-09-21T12:58:56Z"
+pubDate: "2011-09-21T12:58:56Z"
 tags:
 - planetkde
 - kde

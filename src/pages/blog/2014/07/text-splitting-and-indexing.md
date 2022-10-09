@@ -1,5 +1,5 @@
 ---
-date: "2014-07-31T13:28:51Z"
+pubDate: "2014-07-31T13:28:51Z"
 tags:
 - planetkde
 title: Text Splitting and Indexing

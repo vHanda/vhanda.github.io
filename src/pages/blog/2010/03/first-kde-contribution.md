@@ -1,5 +1,5 @@
 ---
-date: "2010-03-28T11:50:06Z"
+pubDate: "2010-03-28T11:50:06Z"
 tags:
 - kde
 title: First KDE Contribution

@@ -1,5 +1,5 @@
 ---
-date: "2009-12-18T13:32:38Z"
+pubDate: "2009-12-18T13:32:38Z"
 tags:
 - emacs
 - codeblocks

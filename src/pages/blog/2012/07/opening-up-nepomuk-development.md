@@ -1,5 +1,5 @@
 ---
-date: "2012-07-18T13:27:55Z"
+pubDate: "2012-07-18T13:27:55Z"
 tags:
 - planetkde
 - nepomuk

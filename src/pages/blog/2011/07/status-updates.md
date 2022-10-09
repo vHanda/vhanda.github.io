@@ -1,5 +1,5 @@
 ---
-date: "2011-07-29T17:01:42Z"
+pubDate: "2011-07-29T17:01:42Z"
 tags:
 - planetkde
 - mandriva

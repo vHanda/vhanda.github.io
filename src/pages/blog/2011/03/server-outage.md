@@ -1,5 +1,5 @@
 ---
-date: "2011-03-18T14:43:40Z"
+pubDate: "2011-03-18T14:43:40Z"
 tags:
 - server
 - crash

@@ -1,5 +1,5 @@
 ---
-date: "2010-01-03T00:37:09Z"
+pubDate: "2010-01-03T00:37:09Z"
 tags:
 - kde
 - desktop

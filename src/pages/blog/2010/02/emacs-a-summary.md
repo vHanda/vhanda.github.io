@@ -1,5 +1,5 @@
 ---
-date: "2010-02-03T19:58:36Z"
+pubDate: "2010-02-03T19:58:36Z"
 tags:
 - emacs
 title: 'Emacs : A summary'

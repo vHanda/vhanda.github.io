@@ -6,8 +6,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
 const posts = (await Astro.glob("./blog/**/*.{md,mdx}")).sort(
   (a, b) =>
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf()
 );
 ---
 
@@ -41,8 +41,8 @@ const posts = (await Astro.glob("./blog/**/*.{md,mdx}")).sort(
           {
             posts.map((post) => (
               <li>
-                <time datetime={post.frontmatter.date}>
-                  {new Date(post.frontmatter.date).toLocaleDateString("en-us", {
+                <time datetime={post.frontmatter.pubDate}>
+                  {new Date(post.frontmatter.pubDate).toLocaleDateString("en-us", {
                     year: "numeric",
                     month: "short",
                     day: "numeric",

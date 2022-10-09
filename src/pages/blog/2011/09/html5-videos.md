@@ -1,5 +1,5 @@
 ---
-date: "2011-09-01T12:22:45Z"
+pubDate: "2011-09-01T12:22:45Z"
 tags:
 - scripts
 - youtube

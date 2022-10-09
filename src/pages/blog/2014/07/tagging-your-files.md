@@ -1,5 +1,5 @@
 ---
-date: "2014-07-03T15:43:07Z"
+pubDate: "2014-07-03T15:43:07Z"
 tags:
 - planetkde
 title: Tagging your Files

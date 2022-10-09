@@ -1,5 +1,5 @@
 ---
-date: "2010-11-26T07:42:03Z"
+pubDate: "2010-11-26T07:42:03Z"
 tags:
 - kde
 - backup

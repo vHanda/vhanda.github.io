@@ -1,5 +1,5 @@
 ---
-date: "2014-10-13T16:37:16Z"
+pubDate: "2014-10-13T16:37:16Z"
 tags:
 - planetkde
 title: KRunner and Plasma 5

@@ -1,5 +1,5 @@
 ---
-date: "2014-10-10T14:34:44Z"
+pubDate: "2014-10-10T14:34:44Z"
 tags:
 - planetkde
 title: Search Folders in Plasma 5.1

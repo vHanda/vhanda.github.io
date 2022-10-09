@@ -1,5 +1,5 @@
 ---
-date: "2012-07-26T21:51:03Z"
+pubDate: "2012-07-26T21:51:03Z"
 tags:
 - planetkde
 - testing

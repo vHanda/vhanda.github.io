@@ -1,5 +1,5 @@
 ---
-date: "2009-11-14T23:08:26Z"
+pubDate: "2009-11-14T23:08:26Z"
 tags:
 - bluetooth
 title: Bluetooth Discovery

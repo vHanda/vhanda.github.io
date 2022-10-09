@@ -1,5 +1,5 @@
 ---
-date: "2015-10-22T00:13:11Z"
+pubDate: "2015-10-22T00:13:11Z"
 tags:
 - planetkde
 title: Setting up a KDE Development Environment

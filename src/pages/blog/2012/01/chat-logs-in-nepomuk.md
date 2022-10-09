@@ -1,5 +1,5 @@
 ---
-date: "2012-01-21T15:33:12Z"
+pubDate: "2012-01-21T15:33:12Z"
 tags:
 - planetkde
 - gtalk
