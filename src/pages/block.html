@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pause, Vish</title>
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #1e293b;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.14);
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #c4b5fd;
+      --accent2: #7dd3fc;
+      --button: rgba(255,255,255,0.1);
+      --button-hover: rgba(255,255,255,0.16);
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.15), transparent 30%),
+        radial-gradient(circle at top right, rgba(196, 181, 253, 0.18), transparent 28%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(720px, 100%);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 36px 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0 0 22px;
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .quote {
+      margin: 22px 0 28px;
+      padding: 18px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .action {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--button);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px 14px;
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+    }
+
+    .action:hover {
+      transform: translateY(-1px);
+      background: var(--button-hover);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .action strong {
+      display: block;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .action span {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .footer {
+      margin-top: 22px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .timer {
+      margin-top: 18px;
+      font-size: 0.95rem;
+      color: var(--accent2);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">Pause</div>
+    <h1>Vish, come back to yourself.</h1>
+
+    <p class="lead">
+      You opened Facebook automatically. That is not failure. It is a cue to stop,
+      breathe, and choose the next minute on purpose.
+    </p>
+
+    <div class="quote">
+      This is part of the real work of your life:
+      learning how to regulate attention, tolerate discomfort, and return to what matters.
+    </div>
+
+    <div class="grid">
+      <a class="action" href="about:blank">
+        <strong>Close the loop</strong>
+        <span>Shut this tab and go back to the task you meant to do.</span>
+      </a>
+
+      <a class="action" href="https://www.google.com/search?q=5+minute+breathing+exercise">
+        <strong>Take a real break</strong>
+        <span>Reset your nervous system instead of numbing out.</span>
+      </a>
+
+      <a class="action" href="https://www.google.com/search?q=plain+text+online+notepad">
+        <strong>Name the urge</strong>
+        <span>Write one sentence: “Right now I am avoiding…”</span>
+      </a>
+    </div>
+
+    <div class="timer" id="timer">Stay here for one breath.</div>
+    <div class="footer">
+      You do not need to be perfect. You only need to interrupt the reflex once, right now.
+    </div>
+  </main>
+
+  <script>
+    let seconds = 10;
+    const timer = document.getElementById("timer");
+    const interval = setInterval(() => {
+      seconds -= 1;
+      if (seconds > 0) {
+        timer.textContent = `Wait ${seconds} more second${seconds === 1 ? "" : "s"} before choosing.`;
+      } else {
+        timer.textContent = "Okay. Choose deliberately.";
+        clearInterval(interval);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
